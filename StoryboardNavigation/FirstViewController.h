@@ -30,8 +30,7 @@ typedef enum {
     Fliter *fliter;
     NSString *urlstring;
     NSString *checkString;
-    //int check;
-  
+      
 }
 
 @property (nonatomic, retain)NSURLConnection *xmlConnection;

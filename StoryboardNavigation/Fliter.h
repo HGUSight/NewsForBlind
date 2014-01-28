@@ -13,6 +13,7 @@
     NSRange teg;
     NSRange r;
     NSRange hanja;
+    NSRange emptyfield;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;

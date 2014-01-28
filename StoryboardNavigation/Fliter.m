@@ -16,8 +16,9 @@
     for(int i = 0; i < [s1 length]; i++) {
         //findout the range with "sub" string
         teg = [s1 rangeOfString:@"<[^<]*>" options:NSRegularExpressionSearch];
-        r = [s1 rangeOfString:@"[[:punct:]]" options:NSRegularExpressionSearch];
-        hanja=[s1 rangeOfString:@"^0x{2E80}-0x{2EFF}0x{31C0}-0x{31EF}0x{3200}-0x{32FF}0x{3400}-0x{4DBF}0x{4E00}-0x{9FBF}0x{F900}-0x{FAFF}0x{20000}-0x{2A6DF}0x{2F800}-0x{2FA1F}" options:NSRegularExpressionSearch];
+        //r = [s1 rangeOfString:@"[[:punct:]]" options:NSRegularExpressionSearch];
+       // hanja=[s1 rangeOfString:@"^0x{2E80}-0x{2EFF}0x{31C0}-0x{31EF}0x{3200}-0x{32FF}0x{3400}-0x{4DBF}0x{4E00}-0x{9FBF}0x{F900}-0x{FAFF}0x{20000}-0x{2A6DF}//0x{2F800}-0x{2FA1F}" options:NSRegularExpressionSearch];
+        //emptyfield=[s1 rangeOfString:@"nbsp" options:NSRegularExpressionSearch];
 
         
         if(teg.location != NSNotFound) {
@@ -26,11 +27,15 @@
            
         }else if(r.location != NSNotFound) {
             
-            [s1 deleteCharactersInRange:r];
-
-        }else if(hanja.location != NSNotFound) {
+           // [s1 deleteCharactersInRange:r];
+        
+       // }else if(hanja.location != NSNotFound) {
             
-            [s1 deleteCharactersInRange:hanja];
+       //     [s1 deleteCharactersInRange:hanja];
+            
+       // }else if(emptyfield.location != NSNotFound) {
+            
+       //     [s1 deleteCharactersInRange:emptyfield];
             
         }
         else {

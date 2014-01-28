@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+@class Fliter;
+@interface ViewController : UIViewController{
+    Fliter *fliter;
+}
 @property (strong, nonatomic) IBOutlet UILabel *IbIMessage;
 @property (retain, nonatomic) IBOutlet UITextView *Textscroll;
 @property (strong, nonatomic)id passData;
 @property (strong, nonatomic)id passData1;
+@property (nonatomic, retain) NSString *textbuffer;
 @end

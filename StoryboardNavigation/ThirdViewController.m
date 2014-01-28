@@ -122,8 +122,6 @@
                 break;
         }
         
-        NSLog(@"URLDATA: %@",viewController.urldata);
-        
     }
     
 }

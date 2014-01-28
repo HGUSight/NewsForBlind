@@ -31,35 +31,25 @@
 @synthesize urlstring;
 @synthesize urldata;
 @synthesize check;
-/*
-- (void)dealloc {
-	[xmlParseData release];
-	[xmlValue release];
-	[currectItem release];
-    [receiveData release];
-    [newsdata release];
-    [textbuffer release];
-    [urlstring release];
-	
-    [super dealloc];
-}*/
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    checkString=[[NSMutableString alloc]init];
-    urlstring=[[NSMutableString alloc]init];
     
-    checkString =[check description];
+       
+        checkString=[[NSMutableString alloc]init];
+        urlstring=[[NSMutableString alloc]init];
+        checkString =[check description];
     
-    if(![checkString  isEqual: @"category"]) {
-        urlstring = @"http://myhome.chosun.com/rss/www_section_rss.xml";
-       //check=1;
-    }else{
-         urlstring=[urldata description];
-          NSLog(@"url:%@",urldata);
-          //check=0;
-    }
+        if(![checkString  isEqual: @"category"]) {
+    
+            urlstring = @"http://myhome.chosun.com/rss/www_section_rss.xml";
+       
+        }else{
+            urlstring=[urldata description];
+            NSLog(@"url:%@",urldata);
+        
+        }
     
 	xmlConnection = [[NSURLConnection alloc]
 					 initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]]
@@ -81,40 +71,6 @@
 
    }
  
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    
-    check=0;
-    urlstring=[[NSMutableString alloc]init];
-    if(!check) {
-        urlstring = @"http://myhome.chosun.com/rss/www_section_rss.xml";
-        check=1;
-    }else{
-        urlstring=[urldata description];
-        NSLog(@"url:%@",urldata);
-        check=0;
-    }
-    
-	xmlConnection = [[NSURLConnection alloc]
-					 initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]]
-					 delegate:self];
-	
-	if (xmlConnection == nil)
-		NSLog(@"Connect error");
-	else
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	
-    xmlParseData = [[NSMutableArray alloc] init];
-    xmlValue = [[NSMutableString alloc] init];
-    currectItem = [[NSMutableDictionary alloc] init];
-    receiveData = [[NSMutableData alloc] init];
-    newsdata = [[NSMutableArray alloc] init];
-    aNews=[[News alloc]init];
-    fliter=[[Fliter alloc]init];
-    textbuffer=[[NSMutableString alloc]init];
-    
-}
-
 #pragma mark URLConnection delegate methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -125,7 +81,7 @@
     
     
 }
-*/
+
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	NSLog(@"%@", [error localizedDescription]);
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -183,14 +139,14 @@
 	
     } else if ([elementName isEqualToString:@"description"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-         textbuffer=[fliter settext:xmlValue];
-          aNews.description=[NSMutableString stringWithString:textbuffer];
-      
+         //textbuffer=[fliter settext:xmlValue];
+         // aNews.description=[NSMutableString stringWithString:textbuffer];
+        //textbuffer=[fliter settext:xmlValue];
+        aNews.description=[NSMutableString stringWithString:xmlValue];
 	} else if ([elementName isEqualToString:@"category"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
            aNews.category=[NSMutableString stringWithString:xmlValue];
-           NSLog(@"category: %@",aNews.category);
-
+        
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
           aNews.pubData=[NSMutableString stringWithString:xmlValue];
@@ -220,18 +176,7 @@
     }
     return self;
 }
-/*
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
- */
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
