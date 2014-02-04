@@ -12,6 +12,7 @@
 #import "ViewController.h"
 #import "News.h"
 #import "Fliter.h"
+#import "NowViewController.h"
 
 @interface FirstViewController ()
 
@@ -31,6 +32,8 @@
 @synthesize urlstring;
 @synthesize urldata;
 @synthesize check;
+@synthesize checkString;
+
 
 - (void)viewDidLoad {
     
@@ -39,6 +42,8 @@
        
         checkString=[[NSMutableString alloc]init];
         urlstring=[[NSMutableString alloc]init];
+        nowviewctr=[[NowViewController alloc]init];
+    
         checkString =[check description];
     
         if(![checkString  isEqual: @"category"]) {
@@ -68,7 +73,6 @@
          aNews=[[News alloc]init];
          fliter=[[Fliter alloc]init];
          textbuffer=[[NSMutableString alloc]init];
-
    }
  
 #pragma mark URLConnection delegate methods
@@ -146,7 +150,7 @@
 	} else if ([elementName isEqualToString:@"category"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
            aNews.category=[NSMutableString stringWithString:xmlValue];
-        
+        NSLog(@"category%@",aNews.category);
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
           aNews.pubData=[NSMutableString stringWithString:xmlValue];
@@ -238,8 +242,16 @@
     }
     
 }
-
-
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if([checkString  isEqual: @"category"]) {
+        if([nowviewctr.nowViewcontroller  isEqual: @"viewcontroller"]) {
+          [self.navigationController popToRootViewControllerAnimated:animated];
+        }
+        
+    }
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

@@ -15,7 +15,7 @@
     NSMutableString *link;
     NSMutableString *category;
     NSMutableString *pubData;
-
+    
 }
 
 @property (nonatomic, retain) NSMutableString *title;

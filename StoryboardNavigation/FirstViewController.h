@@ -10,6 +10,9 @@
 
 @class News;
 @class Fliter;
+@class NowViewController;
+
+
 
 typedef enum {
 	etNone = 0,
@@ -30,7 +33,8 @@ typedef enum {
     Fliter *fliter;
     NSString *urlstring;
     NSString *checkString;
-      
+    NowViewController *nowviewctr;
+    
 }
 
 @property (nonatomic, retain)NSURLConnection *xmlConnection;
@@ -46,7 +50,6 @@ typedef enum {
 @property (nonatomic,retain) NSString *checkString;
 @property (strong, nonatomic)id urldata;
 @property (strong, nonatomic)id check;
-
 
 
 @end

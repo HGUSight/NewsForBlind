@@ -9,6 +9,10 @@
 #import "ViewController.h"
 #import "ThirdViewController.h"
 #import "Fliter.h"
+#import "News.h"
+#import "NowViewController.h"
+
+
 @interface ViewController ()
 
 @end
@@ -21,12 +25,18 @@
 {
     [super viewDidLoad];
     fliter=[[Fliter alloc]init];
+    nowviewctr=[[NowViewController alloc]init];
+   
     self.IbIMessage.text=[passData description];
     NSMutableString *str; 
     str =[NSMutableString stringWithString:[passData1 description]];
     textbuffer=[fliter settext:str];
     self.Textscroll.text=textbuffer;
     self.Textscroll.editable = NO;
+    nowviewctr.nowViewcontroller=@"viewcontroller";
+   
+    
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -41,26 +51,8 @@
     [_Textscroll release];
     [super dealloc];
 }
-
-- (void)viewDidUnload{
-    [super viewDidUnload];
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    
-}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self.navigationController popToRootViewControllerAnimated:animated];
-}
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    
-}
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-     [self.navigationController popToRootViewControllerAnimated:NO];
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 @end
