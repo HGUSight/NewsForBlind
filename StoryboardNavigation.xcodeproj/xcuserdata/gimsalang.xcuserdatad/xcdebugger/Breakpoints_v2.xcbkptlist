@@ -25,12 +25,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.h"
-            timestampString = "413203679.187809"
+            filePath = "StoryboardNavigation/MainNewsViewController.h"
+            timestampString = "413359465.754783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "elementType"
             landmarkType = "19">
             <Locations>
@@ -71,13 +71,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.m"
-            timestampString = "413204981.570045"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413694356.70867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "@implementation FirstViewController"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "@implementation MainNewsViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -87,12 +87,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.m"
-            timestampString = "413204981.570045"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413694356.70867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -103,12 +103,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.m"
-            timestampString = "413204981.570045"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413694356.70867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-parser:didEndElement:namespaceURI:qualifiedName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -119,12 +119,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.m"
-            timestampString = "413204981.570045"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413694356.70867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "5">
          </BreakpointContent>
@@ -135,12 +135,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.m"
-            timestampString = "413204981.570045"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413359465.754783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "newsdata"
             landmarkType = "19">
          </BreakpointContent>
@@ -181,13 +181,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ThirdViewController.h"
-            timestampString = "412431694.383594"
+            filePath = "StoryboardNavigation/CategoryViewController.h"
+            timestampString = "413351586.271437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "@interface ThirdViewController"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "@interface CategoryViewController"
             landmarkType = "2">
          </BreakpointContent>
       </BreakpointProxy>
@@ -197,12 +197,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ThirdViewController.m"
-            timestampString = "412577837.5969"
+            filePath = "StoryboardNavigation/CategoryViewController.m"
+            timestampString = "413450383.479566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -223,7 +223,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ViewController.m"
+            filePath = "StoryboardNavigation/NewsArticleViewController.m"
             timestampString = "413204981.570045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -239,7 +239,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ViewController.m"
+            filePath = "StoryboardNavigation/NewsArticleViewController.m"
             timestampString = "413204981.570045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -255,7 +255,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ViewController.m"
+            filePath = "StoryboardNavigation/NewsArticleViewController.m"
             timestampString = "413204981.570045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -271,7 +271,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ViewController.m"
+            filePath = "StoryboardNavigation/NewsArticleViewController.m"
             timestampString = "413204981.570045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -287,7 +287,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ViewController.m"
+            filePath = "StoryboardNavigation/NewsArticleViewController.m"
             timestampString = "413204981.570045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -303,7 +303,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ViewController.m"
+            filePath = "StoryboardNavigation/NewsArticleViewController.m"
             timestampString = "413204981.570045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -319,7 +319,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/ViewController.m"
+            filePath = "StoryboardNavigation/NewsArticleViewController.m"
             timestampString = "413204981.570045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -399,13 +399,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.m"
-            timestampString = "413204610.028842"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413359465.754783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "@implementation FirstViewController"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "@implementation MainNewsViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -415,14 +415,62 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoryboardNavigation/FirstViewController.m"
-            timestampString = "413205028.054022"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413359465.754783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "@implementation FirstViewController"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "@implementation MainNewsViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StoryboardNavigation/HtmlParser.m"
+            timestampString = "413359465.754783"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "@implementation HtmlParser"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StoryboardNavigation/HtmlParser.m"
+            timestampString = "413359697.9353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "-sethtml:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StoryboardNavigation/MainNewsViewController.m"
+            timestampString = "413359218.833948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -8,17 +8,18 @@
 // love gim.
 
 
-#import "FirstViewController.h"
-#import "ViewController.h"
+#import "MainNewsViewController.h"
+#import "NewsArticleViewController.h"
 #import "News.h"
 #import "Fliter.h"
 #import "NowViewController.h"
+#import "HtmlParser.h"
 
-@interface FirstViewController ()
+@interface MainNewsViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation MainNewsViewController
 
 @synthesize xmlConnection;
 @synthesize elementType;
@@ -48,7 +49,7 @@
     
         if(![checkString  isEqual: @"category"]) {
     
-            urlstring = @"http://myhome.chosun.com/rss/www_section_rss.xml";
+            urlstring = @"http://www.kyongbuk.co.kr/rss/headline.xml";
        
         }else{
             urlstring=[urldata description];
@@ -73,6 +74,7 @@
          aNews=[[News alloc]init];
          fliter=[[Fliter alloc]init];
          textbuffer=[[NSMutableString alloc]init];
+         htmlparser=[[HtmlParser alloc]init];
    }
  
 #pragma mark URLConnection delegate methods
@@ -93,6 +95,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receiveData appendData:data];
+    NSLog(@"RECEIVE DATA:%@",receiveData);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -136,21 +139,21 @@
 	if ([elementName isEqualToString:@"title"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
 		aNews.title=[NSMutableString stringWithString:xmlValue];
-       
+        NSLog(@"xmlvalue:%@",xmlValue);
 	} else if ([elementName isEqualToString:@"link"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
           aNews.link=[NSMutableString stringWithString:xmlValue];
-	
+        [htmlparser sethtml:xmlValue];
+       
+        
     } else if ([elementName isEqualToString:@"description"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-         //textbuffer=[fliter settext:xmlValue];
-         // aNews.description=[NSMutableString stringWithString:textbuffer];
-        //textbuffer=[fliter settext:xmlValue];
         aNews.description=[NSMutableString stringWithString:xmlValue];
+        
 	} else if ([elementName isEqualToString:@"category"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-           aNews.category=[NSMutableString stringWithString:xmlValue];
-        NSLog(@"category%@",aNews.category);
+        aNews.category=[NSMutableString stringWithString:xmlValue];
+        
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
           aNews.pubData=[NSMutableString stringWithString:xmlValue];
@@ -226,7 +229,7 @@
 {
     if([[segue identifier]isEqualToString:@"TableIdentifier"])
     {
-        ViewController *viewController=[segue destinationViewController];
+        NewsArticleViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
         
         News *buf=[[News alloc]init];

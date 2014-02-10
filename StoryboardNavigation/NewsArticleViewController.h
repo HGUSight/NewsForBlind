@@ -10,7 +10,7 @@
 @class Fliter;
 @class NowViewController;
 
-@interface ViewController : UIViewController{
+@interface NewsArticleViewController : UIViewController{
     Fliter *fliter;
     NowViewController *nowviewctr;
    

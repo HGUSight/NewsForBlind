@@ -6,18 +6,18 @@
 //  Copyright (c) 2013년 김사랑. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "ThirdViewController.h"
+#import "NewsArticleViewController.h"
+#import "CategoryViewController.h"
 #import "Fliter.h"
 #import "News.h"
 #import "NowViewController.h"
 
 
-@interface ViewController ()
+@interface NewsArticleViewController ()
 
 @end
 
-@implementation ViewController
+@implementation NewsArticleViewController
 @synthesize passData,passData1;
 @synthesize textbuffer;
 

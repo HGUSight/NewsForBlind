@@ -11,6 +11,7 @@
 @class News;
 @class Fliter;
 @class NowViewController;
+@class HtmlParser;
 
 
 
@@ -19,7 +20,7 @@ typedef enum {
 	etItem
 }eElementType;
 
-@interface FirstViewController : UITableViewController{
+@interface MainNewsViewController: UITableViewController{
 	NSURLConnection *xmlConnection;
 	eElementType elementType;
 	NSMutableString *xmlValue;
@@ -34,6 +35,7 @@ typedef enum {
     NSString *urlstring;
     NSString *checkString;
     NowViewController *nowviewctr;
+    HtmlParser *htmlparser;
     
 }
 

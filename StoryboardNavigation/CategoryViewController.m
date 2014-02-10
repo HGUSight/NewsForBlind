@@ -6,14 +6,14 @@
 //  Copyright (c) 2014년 김사랑. All rights reserved.
 //
 
-#import "ThirdViewController.h"
-#import "FirstViewController.h"
+#import "CategoryViewController.h"
+#import "MainNewsViewController.h"
 
-@interface ThirdViewController ()
+@interface CategoryViewController ()
 
 @end
 
-@implementation ThirdViewController
+@implementation CategoryViewController
 @synthesize itemlist;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     itemlist=[[NSMutableArray alloc]initWithObjects:@"주요뉴스",@"속보",@"정치",@"사회",@"스포츠",@"연예", nil];
+     itemlist=[[NSMutableArray alloc]initWithObjects:@"헤드라인",@"정치",@"자치행정",@"국제",@"사회",@"경제",@"문화",@"지역뉴스",@"스포츠,연예", nil];
      num=0;
 
     // Uncomment the following line to preserve selection between presentations.
@@ -78,7 +78,7 @@
 {
     if([[segue identifier]isEqualToString:@"SecondeTableIdentifier"])
     {
-        FirstViewController *viewController=[segue destinationViewController];
+        MainNewsViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
         
       
@@ -89,34 +89,46 @@
         viewController.check = @"category";
         switch (num) {
             case 0:
-                viewController.urldata=@"http://myhome.chosun.com/rss/www_section_rss.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/headline.xml";
                 
                 break;
                 
             case 1:
-                viewController.urldata=@"http://www.chosun.com/site/data/rss/rss.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/politics.xml";
                 
                 break;
                 
             case 2:
-                viewController.urldata=@"http://www.chosun.com/site/data/rss/politics.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/self-government.xml";
                 
                 break;
                 
             case 3:
-                viewController.urldata=@"http://www.chosun.com/site/data/rss/national.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/international.xml";
                
                 break;
                 
             case 4:
-                viewController.urldata=@"http://www.chosun.com/site/data/rss/sports.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/national.xml";
                 
                 break;
                 
             case 5:
-                viewController.urldata=@"http://www.chosun.com/site/data/rss/ent.xml";
-                
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/economy.xml";
                 break;
+                
+            case 6:
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/culture.xml";
+                break;
+
+            case 7:
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/regionnews.xml";
+                break;
+
+            case 8:
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml";
+                break;
+
                 
             default:
                 break;

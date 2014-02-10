@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThirdViewController : UITableViewController {
+@interface CategoryViewController : UITableViewController {
     
     NSMutableArray *itemlist;
     int num;
@@ -16,7 +16,6 @@
 }
 
 @property (nonatomic,retain) NSMutableArray *itemlist;
-
 @property (retain, nonatomic) IBOutlet UITableViewCell *categoryurl;
 
 
