@@ -14,7 +14,7 @@
 @interface NewsArticleViewController : UIViewController{
     Fliter *fliter;
     HtmlParserclass *htmlparsing;
-    MainNewsViewController *newsdataarr;
+    MainNewsViewController *newscontroller;
    
 }
 @property (retain, nonatomic) IBOutlet UITextView *Textscroll;

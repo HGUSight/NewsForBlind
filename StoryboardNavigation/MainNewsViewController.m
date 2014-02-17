@@ -34,15 +34,19 @@
 @synthesize check;
 @synthesize checkString;
 @synthesize searchResult;
+@synthesize searchbar;
+@synthesize cell;
+@synthesize controlFlag;
 
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-       
+    
         checkString=[[NSMutableString alloc]init];
         urlstring=[[NSMutableString alloc]init];
+        controlFlag = 0;
     
         checkString =[check description];
     
@@ -56,11 +60,7 @@
         
         }
     
-    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    
-    [self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
-
+    [searchbar becomeFirstResponder];
     
 	xmlConnection = [[NSURLConnection alloc]
 					 initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]]
@@ -81,8 +81,10 @@
          textbuffer=[[NSMutableString alloc]init];
          htmlparser=[[HtmlParserclass alloc]init];
          searchResult=[[NSMutableArray alloc]init];
+    
+
 }
- 
+
 #pragma mark URLConnection delegate methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -201,8 +203,11 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+  
     if([[segue identifier]isEqualToString:@"TableIdentifier"])
     {
+        controlFlag = 1;
+        
         NewsArticleViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
         
@@ -247,7 +252,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ResuableCellWithIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -290,57 +295,26 @@
         
 	}
 }
-
-/*
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    [self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
+    
+    UITableView *tableView = (UITableView *)[self view];
+    cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.cell);
+    
+}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    if([checkString  isEqual: @"category"]) {
-          [self.navigationController popToRootViewControllerAnimated:animated];
-    }
+    
+         if(controlFlag == 0)
+             [self.navigationController popToRootViewControllerAnimated:animated];
+            
 }
-*/
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
-- (void)dealloc {
-    [_searchbar release];
-    [super dealloc];
-}
 @end

@@ -35,6 +35,8 @@ typedef enum {
     NSString *checkString;
     HtmlParserclass *htmlparser;
     NSMutableArray *serachResult;
+    UITableViewCell *cell;
+    int controlFlag;
     
 }
 
@@ -53,6 +55,7 @@ typedef enum {
 @property (strong, nonatomic)id check;
 @property (strong, nonatomic)NSMutableArray *searchResult;
 @property (retain, nonatomic) IBOutlet UISearchBar *searchbar;
-
+@property (nonatomic, retain)UITableViewCell *cell;
+@property (nonatomic)int controlFlag;
 
 @end

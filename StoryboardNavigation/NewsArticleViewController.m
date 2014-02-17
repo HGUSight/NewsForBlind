@@ -11,6 +11,7 @@
 #import "Fliter.h"
 #import "News.h"
 #import "HtmlParserclass.h"
+#import "MainNewsViewController.h"
 
 
 @interface NewsArticleViewController ()
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     fliter=[[Fliter alloc]init];
     htmlparsing=[[HtmlParserclass alloc]init];
+    newscontroller=[[MainNewsViewController alloc]init];
     
     self.IbIMessage.text=[passData description];
     NSMutableString *str=[NSMutableString stringWithString:[passData1 description]];
@@ -34,13 +36,10 @@
     self.Textscroll.text=[htmlparsing sethtml:linkstring];
     self.Textscroll.editable = NO;
     
-    
-    
    // [htmlparsing sethtml:linkstring];
     NSLog(@"linkstring:%@",linkstring);
+
    
-    
-    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
