@@ -14,8 +14,7 @@
 	NSMutableString *description;	//Same name as the Entity Name.
     NSMutableString *link;
     NSMutableString *category;
-    NSMutableString *pubData;
-    
+    NSMutableString *pubData;    
 }
 
 @property (nonatomic, retain) NSMutableString *title;
@@ -23,7 +22,5 @@
 @property (nonatomic, retain) NSMutableString *link;
 @property (nonatomic, retain) NSMutableString *pubData;
 @property (nonatomic, retain) NSMutableString *category;
-
-
 
 @end

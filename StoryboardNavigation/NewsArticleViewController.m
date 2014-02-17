@@ -10,7 +10,7 @@
 #import "CategoryViewController.h"
 #import "Fliter.h"
 #import "News.h"
-#import "NowViewController.h"
+#import "HtmlParserclass.h"
 
 
 @interface NewsArticleViewController ()
@@ -18,22 +18,26 @@
 @end
 
 @implementation NewsArticleViewController
-@synthesize passData,passData1;
+@synthesize passData,passData1,passData2;
 @synthesize textbuffer;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     fliter=[[Fliter alloc]init];
-    nowviewctr=[[NowViewController alloc]init];
-   
+    htmlparsing=[[HtmlParserclass alloc]init];
+    
     self.IbIMessage.text=[passData description];
-    NSMutableString *str; 
-    str =[NSMutableString stringWithString:[passData1 description]];
+    NSMutableString *str=[NSMutableString stringWithString:[passData1 description]];
+    NSMutableString *linkstring=[NSMutableString stringWithString:[passData2 description]];
     textbuffer=[fliter settext:str];
-    self.Textscroll.text=textbuffer;
+    self.Textscroll.text=[htmlparsing sethtml:linkstring];
     self.Textscroll.editable = NO;
-    nowviewctr.nowViewcontroller=@"viewcontroller";
+    
+    
+    
+   // [htmlparsing sethtml:linkstring];
+    NSLog(@"linkstring:%@",linkstring);
    
     
     
@@ -47,12 +51,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [_Textscroll release];
-    [super dealloc];
-}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self.navigationController popToRootViewControllerAnimated:animated];
+}
+- (void)dealloc {
+    [_Textscroll release];
+    [super dealloc];
 }
 @end

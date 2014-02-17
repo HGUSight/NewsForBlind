@@ -10,8 +10,7 @@
 
 @class News;
 @class Fliter;
-@class NowViewController;
-@class HtmlParser;
+@class HtmlParserclass;
 
 
 
@@ -20,7 +19,7 @@ typedef enum {
 	etItem
 }eElementType;
 
-@interface MainNewsViewController: UITableViewController{
+@interface MainNewsViewController: UITableViewController<UISearchDisplayDelegate, UISearchBarDelegate> {
 	NSURLConnection *xmlConnection;
 	eElementType elementType;
 	NSMutableString *xmlValue;
@@ -34,8 +33,8 @@ typedef enum {
     Fliter *fliter;
     NSString *urlstring;
     NSString *checkString;
-    NowViewController *nowviewctr;
-    HtmlParser *htmlparser;
+    HtmlParserclass *htmlparser;
+    NSMutableArray *serachResult;
     
 }
 
@@ -52,6 +51,8 @@ typedef enum {
 @property (nonatomic,retain) NSString *checkString;
 @property (strong, nonatomic)id urldata;
 @property (strong, nonatomic)id check;
+@property (strong, nonatomic)NSMutableArray *searchResult;
+@property (retain, nonatomic) IBOutlet UISearchBar *searchbar;
 
 
 @end

@@ -12,8 +12,7 @@
 #import "NewsArticleViewController.h"
 #import "News.h"
 #import "Fliter.h"
-#import "NowViewController.h"
-#import "HtmlParser.h"
+#import "HtmlParserclass.h"
 
 @interface MainNewsViewController ()
 
@@ -34,6 +33,7 @@
 @synthesize urldata;
 @synthesize check;
 @synthesize checkString;
+@synthesize searchResult;
 
 
 - (void)viewDidLoad {
@@ -43,19 +43,24 @@
        
         checkString=[[NSMutableString alloc]init];
         urlstring=[[NSMutableString alloc]init];
-        nowviewctr=[[NowViewController alloc]init];
     
         checkString =[check description];
     
         if(![checkString  isEqual: @"category"]) {
     
-            urlstring = @"http://www.kyongbuk.co.kr/rss/headline.xml";
+            urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
        
         }else{
             urlstring=[urldata description];
             NSLog(@"url:%@",urldata);
         
         }
+    
+    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    [self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
+
     
 	xmlConnection = [[NSURLConnection alloc]
 					 initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]]
@@ -74,8 +79,9 @@
          aNews=[[News alloc]init];
          fliter=[[Fliter alloc]init];
          textbuffer=[[NSMutableString alloc]init];
-         htmlparser=[[HtmlParser alloc]init];
-   }
+         htmlparser=[[HtmlParserclass alloc]init];
+         searchResult=[[NSMutableArray alloc]init];
+}
  
 #pragma mark URLConnection delegate methods
 
@@ -95,7 +101,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receiveData appendData:data];
-    NSLog(@"RECEIVE DATA:%@",receiveData);
+    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -143,7 +149,8 @@
 	} else if ([elementName isEqualToString:@"link"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
           aNews.link=[NSMutableString stringWithString:xmlValue];
-        [htmlparser sethtml:xmlValue];
+        //[htmlparser sethtml:xmlValue];
+        NSLog(@"link:%@",aNews.link);
        
         
     } else if ([elementName isEqualToString:@"description"]) {
@@ -153,6 +160,7 @@
 	} else if ([elementName isEqualToString:@"category"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
         aNews.category=[NSMutableString stringWithString:xmlValue];
+        NSLog(@"category%@",aNews.category);
         
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
@@ -189,40 +197,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [xmlParseData count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"ResuableCellWithIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-	NSDictionary *dict = [xmlParseData objectAtIndex:indexPath.row];
-	[[cell textLabel] setText:[dict objectForKey:@"title"]];
-       
-       
-      // Configure the cell...
-    
-    return cell;
-}
 #pragma mark - Table view delegate
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -237,25 +211,94 @@
         //buffer=newsdata[currentindex];
         NSString *data=buf.title;
         NSMutableString *data1=buf.description;
-        NSLog(@"%@",data);
+        NSMutableString *data2=buf.link;
+        
         //[NSString stringWithFormat:@"Row %d has been selected",currentIndexPath.row];
         viewController.passData=data;
         viewController.passData1=data1;
-
-    }
-    
-}
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    if([checkString  isEqual: @"category"]) {
-        if([nowviewctr.nowViewcontroller  isEqual: @"viewcontroller"]) {
-          [self.navigationController popToRootViewControllerAnimated:animated];
-        }
+        viewController.passData2=data2;
+        
         
     }
     
 }
 
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    if (tableView==self.tableView) {
+        
+        return xmlParseData.count;
+    
+    }else {
+        
+        return searchResult.count;
+    }
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"ResuableCellWithIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+       News *buf=[[News alloc]init];
+        buf=[searchResult objectAtIndex:indexPath.row];
+        cell.textLabel.text=buf.title;
+    }
+    else {
+        
+        NSDictionary *dict = [xmlParseData objectAtIndex:indexPath.row];
+        [[cell textLabel] setText:[dict objectForKey:@"title"]];
+    }
+    
+      // Configure the cell...
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)TableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+	[[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastIndex"];
+	
+	[self selectTableViewCell:indexPath];
+	
+}
+- (void)selectTableViewCell:(NSIndexPath*)indexPath
+{
+	@try {
+		[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+		NSManagedObjectModel *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+	}
+	@catch (NSException * e) {
+		
+	}
+	@finally {
+        
+	}
+}
+
+/*
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if([checkString  isEqual: @"category"]) {
+          [self.navigationController popToRootViewControllerAnimated:animated];
+    }
+}
+*/
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -295,17 +338,9 @@
 }
 */
 
-#pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+- (void)dealloc {
+    [_searchbar release];
+    [super dealloc];
 }
-
 @end
