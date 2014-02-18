@@ -38,31 +38,33 @@
 @synthesize cell;
 @synthesize controlFlag;
 
-
+BOOL moveBack;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
     
-        checkString=[[NSMutableString alloc]init];
-        urlstring=[[NSMutableString alloc]init];
-        controlFlag = 0;
+    checkString=[[NSMutableString alloc]init];
+    urlstring=[[NSMutableString alloc]init];
+    controlFlag = 0;
     
-        checkString =[check description];
+    checkString =[check description];
     
-        if(![checkString  isEqual: @"category"]) {
-    
-            urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
-       
-        }else{
-            urlstring=[urldata description];
-            NSLog(@"url:%@",urldata);
+    if(![checkString  isEqual: @"category"]) {
         
-        }
+        urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
+        moveBack = false;
+    }else{
+        urlstring=[urldata description];
+        NSLog(@"url:%@",urldata);
+        moveBack = true;
+        
+    }
+    
     
     [searchbar becomeFirstResponder];
     
-	xmlConnection = [[NSURLConnection alloc]
+    xmlConnection = [[NSURLConnection alloc]
 					 initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]]
 					 delegate:self];
 	
@@ -71,18 +73,18 @@
 	else
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-	     xmlParseData = [[NSMutableArray alloc] init];
-	     xmlValue = [[NSMutableString alloc] init];
-	     currectItem = [[NSMutableDictionary alloc] init];
-	     receiveData = [[NSMutableData alloc] init];
-         newsdata = [[NSMutableArray alloc] init];
-         aNews=[[News alloc]init];
-         fliter=[[Fliter alloc]init];
-         textbuffer=[[NSMutableString alloc]init];
-         htmlparser=[[HtmlParserclass alloc]init];
-         searchResult=[[NSMutableArray alloc]init];
+    xmlParseData = [[NSMutableArray alloc] init];
+    xmlValue = [[NSMutableString alloc] init];
+    currectItem = [[NSMutableDictionary alloc] init];
+    receiveData = [[NSMutableData alloc] init];
+    newsdata = [[NSMutableArray alloc] init];
+    aNews=[[News alloc]init];
+    fliter=[[Fliter alloc]init];
+    textbuffer=[[NSMutableString alloc]init];
+    htmlparser=[[HtmlParserclass alloc]init];
+    searchResult=[[NSMutableArray alloc]init];
     
-
+    
 }
 
 #pragma mark URLConnection delegate methods
@@ -129,9 +131,9 @@
 	
 	if ([elementName isEqualToString:@"item"])
 		elementType = etItem;
-       //NSLog(@"%@",etItem);
-       //NSLog(@"%@",elementType);
-
+    //NSLog(@"%@",etItem);
+    //NSLog(@"%@",elementType);
+    
 	[xmlValue setString:@""];
 }
 
@@ -143,17 +145,17 @@
 		return;
     
     
-
+    
 	if ([elementName isEqualToString:@"title"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
 		aNews.title=[NSMutableString stringWithString:xmlValue];
         NSLog(@"xmlvalue:%@",xmlValue);
 	} else if ([elementName isEqualToString:@"link"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-          aNews.link=[NSMutableString stringWithString:xmlValue];
+        aNews.link=[NSMutableString stringWithString:xmlValue];
         //[htmlparser sethtml:xmlValue];
         NSLog(@"link:%@",aNews.link);
-       
+        
         
     } else if ([elementName isEqualToString:@"description"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
@@ -166,20 +168,20 @@
         
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-          aNews.pubData=[NSMutableString stringWithString:xmlValue];
+        aNews.pubData=[NSMutableString stringWithString:xmlValue];
         
 	} else if ([elementName isEqualToString:@"item"]) {
 		[xmlParseData addObject:[NSDictionary dictionaryWithDictionary:currectItem]];
-          [newsdata addObject:aNews];
-          aNews = [[News alloc]init];
-    
+        [newsdata addObject:aNews];
+        aNews = [[News alloc]init];
+        
 	}
     
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSMutableString *)string {
 	if (elementType == etItem) {
-            [xmlValue appendString:string];
+        [xmlValue appendString:string];
 	}
     
 }
@@ -203,10 +205,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  
+    moveBack = false;
     if([[segue identifier]isEqualToString:@"TableIdentifier"])
     {
-        controlFlag = 1;
+        //
         
         NewsArticleViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
@@ -237,11 +239,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     if (tableView==self.tableView) {
         
         return xmlParseData.count;
-    
+        
     }else {
         
         return searchResult.count;
@@ -259,7 +261,7 @@
     }
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-       News *buf=[[News alloc]init];
+        News *buf=[[News alloc]init];
         buf=[searchResult objectAtIndex:indexPath.row];
         cell.textLabel.text=buf.title;
     }
@@ -269,7 +271,7 @@
         [[cell textLabel] setText:[dict objectForKey:@"title"]];
     }
     
-      // Configure the cell...
+    // Configure the cell...
     
     return cell;
 }
@@ -297,6 +299,22 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    checkString =[check description];
+    
+    if(![checkString  isEqual: @"category"]) {
+        
+        //urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
+        moveBack = false;
+    }else{
+        //urlstring=[urldata description];
+        //NSLog(@"url:%@",urldata);
+        moveBack = true;
+        
+    }
+    
+    
+    
     NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     
@@ -311,9 +329,9 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
-         if(controlFlag == 0)
-             [self.navigationController popToRootViewControllerAnimated:animated];
-            
+    if(moveBack==true)
+        [self.navigationController popToRootViewControllerAnimated:animated];
+    
 }
 
 
