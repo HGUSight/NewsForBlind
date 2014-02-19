@@ -24,6 +24,10 @@
     }
     return self;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    
+    
+}
 
 - (void)viewDidLoad
 {
@@ -188,10 +192,10 @@
 }
 
  */
-
+/*
 - (void)dealloc {
    [super dealloc];
     [_categoryurl release];
     
-}
+}*/
 @end

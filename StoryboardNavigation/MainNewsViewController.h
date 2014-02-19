@@ -37,6 +37,8 @@ typedef enum {
     NSMutableArray *serachResult;
     UITableViewCell *cell;
     int controlFlag;
+    NSMutableArray *titlelist;
+    NSMutableArray *searchResultdetail;
     
 }
 
@@ -57,5 +59,9 @@ typedef enum {
 @property (retain, nonatomic) IBOutlet UISearchBar *searchbar;
 @property (nonatomic, retain)UITableViewCell *cell;
 @property (nonatomic)int controlFlag;
+@property (nonatomic, strong)NSMutableArray *titlelist;
+@property (nonatomic, strong)NSMutableArray *searchResultdetail;
+
+
 
 @end

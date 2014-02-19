@@ -37,30 +37,30 @@
 @synthesize searchbar;
 @synthesize cell;
 @synthesize controlFlag;
+@synthesize titlelist;
+@synthesize searchResultdetail;
 
 BOOL moveBack;
+BOOL DoSearch;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
+    DoSearch==false;
     
-    checkString=[[NSMutableString alloc]init];
-    urlstring=[[NSMutableString alloc]init];
     controlFlag = 0;
-    
     checkString =[check description];
     
     if(![checkString  isEqual: @"category"]) {
-        
         urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
         moveBack = false;
+        
     }else{
         urlstring=[urldata description];
         NSLog(@"url:%@",urldata);
         moveBack = true;
         
     }
-    
     
     [searchbar becomeFirstResponder];
     
@@ -83,19 +83,17 @@ BOOL moveBack;
     textbuffer=[[NSMutableString alloc]init];
     htmlparser=[[HtmlParserclass alloc]init];
     searchResult=[[NSMutableArray alloc]init];
-    
+    titlelist=[[NSMutableArray alloc]init];
+    searchResultdetail=[[NSMutableArray alloc]init];
     
 }
 
 #pragma mark URLConnection delegate methods
-
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	NSLog(@"Receive: %@, %@, %d",
 		  [response URL],
 		  [response MIMEType],
 		  [response expectedContentLength]);
-    
-    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -105,57 +103,41 @@ BOOL moveBack;
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receiveData appendData:data];
-    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:receiveData];
 	
     [parser setDelegate:self];
-	
-    [parser parse];
-	[parser release];
-	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	
-	[xmlConnection release];
-	[receiveData release];
-	
+	[parser parse];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	UITableView *tableView = (UITableView *)[self view];
 	[tableView reloadData];
 }
 
 #pragma mark XMLParse delegate methods
-
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	
 	if ([elementName isEqualToString:@"item"])
 		elementType = etItem;
-    //NSLog(@"%@",etItem);
-    //NSLog(@"%@",elementType);
     
 	[xmlValue setString:@""];
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     
-    
-    
 	if (elementType != etItem)
 		return;
-    
-    
     
 	if ([elementName isEqualToString:@"title"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
 		aNews.title=[NSMutableString stringWithString:xmlValue];
-        NSLog(@"xmlvalue:%@",xmlValue);
+        NSLog(@"TITLE:%@",aNews.title);
+        [self.titlelist addObject:aNews.title];
+        
 	} else if ([elementName isEqualToString:@"link"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
         aNews.link=[NSMutableString stringWithString:xmlValue];
-        //[htmlparser sethtml:xmlValue];
-        NSLog(@"link:%@",aNews.link);
-        
         
     } else if ([elementName isEqualToString:@"description"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
@@ -164,7 +146,6 @@ BOOL moveBack;
 	} else if ([elementName isEqualToString:@"category"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
         aNews.category=[NSMutableString stringWithString:xmlValue];
-        NSLog(@"category%@",aNews.category);
         
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
@@ -186,49 +167,99 @@ BOOL moveBack;
     
 }
 
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
+
 #pragma mark - Table view delegate
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     moveBack = false;
+    
     if([[segue identifier]isEqualToString:@"TableIdentifier"])
     {
-        //
         
         NewsArticleViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
         
-        News *buf=[[News alloc]init];
-        buf=[newsdata objectAtIndex:currentIndexPath.row];
-        //buffer=newsdata[currentindex];
-        NSString *data=buf.title;
-        NSMutableString *data1=buf.description;
-        NSMutableString *data2=buf.link;
         
-        //[NSString stringWithFormat:@"Row %d has been selected",currentIndexPath.row];
-        viewController.passData=data;
-        viewController.passData1=data1;
-        viewController.passData2=data2;
+        if(DoSearch==false) {
+            
+            News *buf=[[News alloc]init];
+            buf=[newsdata objectAtIndex:currentIndexPath.row];
+            NSString *data=buf.title;
+            NSMutableString *data1=buf.description;
+            NSMutableString *data2=buf.link;
+        
+            viewController.passData=data;
+            viewController.passData1=data1;
+            viewController.passData2=data2;
+        
+        }else {
+            
+            DoSearch=false;
+            News *buf=[[News alloc]init];
+            buf=[searchResultdetail objectAtIndex:currentIndexPath.row];
+            NSString *data=buf.title;
+            NSMutableString *data1=buf.description;
+            NSMutableString *data2=buf.link;
+            
+            viewController.passData=data;
+            viewController.passData1=data1;
+            viewController.passData2=data2;
+            
+        }
+        
+        
         
         
     }
     
 }
+
+
+-(void)searchThroughData
+{
+    self.searchResult=nil;
+    NSPredicate *resultPredicate=[NSPredicate predicateWithFormat:@"self contains [search]%@",self.searchbar.text];
+    NSLog(@"title:%@",titlelist);
+    NSLog(@"searchbartext:%@",self.searchbar.text);
+    self.searchResult=[[self.titlelist filteredArrayUsingPredicate:resultPredicate]mutableCopy];
+    NSLog(@"searchstring:%@",[self.titlelist filteredArrayUsingPredicate:resultPredicate]);
+    
+    DoSearch=true;
+    [self stringToObject];
+    
+}
+-(void)stringToObject
+{
+    News *buf=[[News alloc]init];
+    
+    for(int i=0;i<self.searchResult.count;i++) {
+         for(int j=0;j<self.newsdata.count;j++) {
+             buf=newsdata[j];
+             if([searchResult[i] isEqual: buf.title]) {
+                 [searchResultdetail addObject:buf];
+                  NSLog(@"searchResulttitle:%@",searchResult[i]);
+                  //NSLog(@"buf:%@",buf.title);
+                  NSLog(@"searchDetail:%@",searchResultdetail[i]);
+             }
+             else
+                 break;
+            
+         }
+    }
+    
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [self searchThroughData];
+}
+
 
 #pragma mark - Table view data source
 
@@ -242,10 +273,11 @@ BOOL moveBack;
     
     if (tableView==self.tableView) {
         
-        return xmlParseData.count;
+        return newsdata.count;
         
     }else {
         
+        [self searchThroughData];
         return searchResult.count;
     }
     
@@ -254,21 +286,23 @@ BOOL moveBack;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ResuableCellWithIdentifier";
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        News *buf=[[News alloc]init];
-        buf=[searchResult objectAtIndex:indexPath.row];
-        cell.textLabel.text=buf.title;
+        //News *buf=[[News alloc]init];
+        //buf=[searchResult objectAtIndex:indexPath.row];
+        cell.textLabel.text=[searchResult objectAtIndex:indexPath.row];
     }
     else {
         
         NSDictionary *dict = [xmlParseData objectAtIndex:indexPath.row];
         [[cell textLabel] setText:[dict objectForKey:@"title"]];
+        
     }
     
     // Configure the cell...
@@ -326,11 +360,15 @@ BOOL moveBack;
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.cell);
     
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if(moveBack==true){
+        [self.navigationController popToRootViewControllerAnimated:animated];
+        NSLog(@"move to root");
+    }
+}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    
-    if(moveBack==true)
-        [self.navigationController popToRootViewControllerAnimated:animated];
     
 }
 
