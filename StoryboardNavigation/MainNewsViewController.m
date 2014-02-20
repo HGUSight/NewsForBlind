@@ -14,6 +14,8 @@
 #import "Fliter.h"
 #import "HtmlParserclass.h"
 
+
+
 @interface MainNewsViewController ()
 
 @end
@@ -52,7 +54,10 @@ BOOL DoSearch;
     checkString =[check description];
     
     if(![checkString  isEqual: @"category"]) {
-        urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
+         urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
+        //urlstring =@"http://203.252.118.80/NewsForBlind/test/total.xml";
+         //urlstring = @"http://myhome.chosun.com/rss/www_section_rss.xml";
+        //urlstring = @"http://rss.joins.com/joins_news_list.xml";
         moveBack = false;
         
     }else{
@@ -106,6 +111,13 @@ BOOL DoSearch;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+    NSString *str = [[NSString alloc] initWithData:receiveData encoding:-2147481280];
+    str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
+    receiveData=[str dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@",str);
+    
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:receiveData];
 	
     [parser setDelegate:self];
@@ -184,37 +196,36 @@ BOOL DoSearch;
         
         NewsArticleViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath=nil;
+
         
+        if(self.searchDisplayController.isActive) {
         
-        if(DoSearch==false) {
+            indexPath=[[self.searchDisplayController searchResultsTableView]indexPathForSelectedRow];
+            News *buf=[[News alloc]init];
+            buf=[searchResultdetail objectAtIndex:indexPath.row];
+            NSString *data=buf.title;
+            NSMutableString *data1=buf.description;
+            NSMutableString *data2=buf.link;
             
+            viewController.passData=data;
+            viewController.passData1=data1;
+            viewController.passData2=data2;
+
+            
+        }else {
+        
             News *buf=[[News alloc]init];
             buf=[newsdata objectAtIndex:currentIndexPath.row];
             NSString *data=buf.title;
             NSMutableString *data1=buf.description;
             NSMutableString *data2=buf.link;
-        
-            viewController.passData=data;
-            viewController.passData1=data1;
-            viewController.passData2=data2;
-        
-        }else {
-            
-            DoSearch=false;
-            News *buf=[[News alloc]init];
-            buf=[searchResultdetail objectAtIndex:currentIndexPath.row];
-            NSString *data=buf.title;
-            NSMutableString *data1=buf.description;
-            NSMutableString *data2=buf.link;
             
             viewController.passData=data;
             viewController.passData1=data1;
             viewController.passData2=data2;
-            
+
         }
-        
-        
-        
         
     }
     
@@ -230,7 +241,6 @@ BOOL DoSearch;
     self.searchResult=[[self.titlelist filteredArrayUsingPredicate:resultPredicate]mutableCopy];
     NSLog(@"searchstring:%@",[self.titlelist filteredArrayUsingPredicate:resultPredicate]);
     
-    DoSearch=true;
     [self stringToObject];
     
 }
@@ -243,9 +253,9 @@ BOOL DoSearch;
              buf=newsdata[j];
              if([searchResult[i] isEqual: buf.title]) {
                  [searchResultdetail addObject:buf];
-                  NSLog(@"searchResulttitle:%@",searchResult[i]);
+                  //NSLog(@"searchResulttitle:%@",searchResult[i]);
                   //NSLog(@"buf:%@",buf.title);
-                  NSLog(@"searchDetail:%@",searchResultdetail[i]);
+                  //NSLog(@"searchDetail:%@",searchResultdetail[i]);
              }
              else
                  break;
@@ -311,6 +321,9 @@ BOOL DoSearch;
 }
 - (void)tableView:(UITableView *)TableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if(self.searchDisplayController.isActive) {
+        [self performSegueWithIdentifier:@"TableIdentifier" sender:self];
+    }
     
 	[[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastIndex"];
 	
@@ -321,7 +334,7 @@ BOOL DoSearch;
 {
 	@try {
 		[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-		NSManagedObjectModel *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+		 //NSManagedObjectModel *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         
 	}
 	@catch (NSException * e) {

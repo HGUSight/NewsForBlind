@@ -54,8 +54,5 @@
     [super viewDidDisappear:animated];
     [self.navigationController popToRootViewControllerAnimated:animated];
 }
-- (void)dealloc {
-    [_Textscroll release];
-    [super dealloc];
-}
+
 @end

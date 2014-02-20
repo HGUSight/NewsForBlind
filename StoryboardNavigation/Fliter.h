@@ -14,6 +14,7 @@
     NSRange r;
     NSRange hanja;
     NSRange emptyfield;
+    NSRange a;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;

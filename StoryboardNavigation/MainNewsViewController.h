@@ -19,7 +19,7 @@ typedef enum {
 	etItem
 }eElementType;
 
-@interface MainNewsViewController: UITableViewController<UISearchDisplayDelegate, UISearchBarDelegate> {
+@interface MainNewsViewController: UITableViewController<UISearchDisplayDelegate, UISearchBarDelegate,NSXMLParserDelegate> {
 	NSURLConnection *xmlConnection;
 	eElementType elementType;
 	NSMutableString *xmlValue;

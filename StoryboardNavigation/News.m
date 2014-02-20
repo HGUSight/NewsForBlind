@@ -12,16 +12,4 @@
 
 @synthesize title,description,link,pubData,category;
 
-- (void) dealloc {
-	
-	[description release];
-	[title release];
-    [link release];
-    [pubData release];
-    [category release];
-    
-	[super dealloc];
-}
-
-
 @end

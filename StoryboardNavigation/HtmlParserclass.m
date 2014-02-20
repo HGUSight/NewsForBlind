@@ -11,12 +11,14 @@
 #import "HTMLParser.h"
 #import "Fliter.h"
 
+int count;
 
 @implementation HtmlParserclass
 @synthesize str,newstext;
 
 -(NSString*) sethtml:(NSMutableString *)htmllink {
     
+    count=0;
     fliter=[[Fliter alloc]init];
     
     NSError *error = nil;
@@ -36,14 +38,15 @@
     
     for (HTMLNode *divNode in divNodes) {
         if ([[divNode getAttributeNamed:@"id"] isEqualToString:@"news_text"]) {
-            NSLog(@"data:%@", [divNode  rawContents]); //Answer to second question
+            //NSLog(@"data:%@", [divNode  rawContents]); //Answer to second question
             str =[NSMutableString stringWithString:[divNode rawContents]];
+            //count++;
         }
         
     }
     
     NSMutableString *newstext =[NSMutableString stringWithString:[fliter settext:str]];
-    NSLog(@"newsdata:%@", newstext);
+    //NSLog(@"newsdata:%@", newstext);
     
     return newstext;
 
