@@ -10,12 +10,16 @@
 @class Fliter;
 @class HtmlParserclass;
 @class MainNewsViewController;
+@class News;
 
 @interface NewsArticleViewController : UIViewController{
     
     Fliter *fliter;
     HtmlParserclass *htmlparsing;
     MainNewsViewController *newscontroller;
+    NSMutableArray * saveNewsArr;
+    News *news;
+    
    
 }
 
@@ -26,6 +30,8 @@
 @property (strong, nonatomic)id passData2;
 @property (nonatomic, retain) NSString *textbuffer;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doscrap;
+@property (strong, nonatomic) NSMutableArray *saveNewArr;
+
 
 
 @end

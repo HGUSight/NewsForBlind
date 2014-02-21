@@ -21,6 +21,8 @@
 @implementation NewsArticleViewController
 @synthesize passData,passData1,passData2;
 @synthesize textbuffer;
+@synthesize saveNewArr;
+@synthesize doscrap;
 
 - (void)viewDidLoad
 {
@@ -28,16 +30,19 @@
     fliter=[[Fliter alloc]init];
     htmlparsing=[[HtmlParserclass alloc]init];
     newscontroller=[[MainNewsViewController alloc]init];
+    news=[[News alloc]init];
     
     self.IbIMessage.text=[passData description];
     NSMutableString *str=[NSMutableString stringWithString:[passData1 description]];
     NSMutableString *linkstring=[NSMutableString stringWithString:[passData2 description]];
-    textbuffer=[fliter settext:str];
     self.Textscroll.text=[htmlparsing sethtml:linkstring];
     self.Textscroll.editable = NO;
+    textbuffer=[htmlparsing sethtml:linkstring];
+    
+    [doscrap setAction:@selector(doSaveNewsdetail)];
     
    // [htmlparsing sethtml:linkstring];
-    NSLog(@"linkstring:%@",linkstring);
+    //NSLog(@"linkstring:%@",linkstring);
 
    
 	// Do any additional setup after loading the view, typically from a nib.
@@ -53,6 +58,19 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self.navigationController popToRootViewControllerAnimated:animated];
+}
+
+-(void)doSaveNewsdetail
+{
+    news.title=[NSMutableString stringWithString:[passData description]];
+    news.description=[NSMutableString stringWithString:textbuffer];
+    [saveNewArr addObject:news];
+    news = [[News alloc]init];
+    NSLog(@"SAVE TITLE:%@",news.title);
+
+    
+    
+    
 }
 
 @end

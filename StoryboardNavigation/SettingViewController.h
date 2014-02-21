@@ -10,11 +10,5 @@
 
 @interface SettingViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *increaseChar;
-@property (strong, nonatomic) IBOutlet UIButton *formerChar;
-@property (strong, nonatomic) IBOutlet UIButton *decreaseChar;
-@property (strong, nonatomic) IBOutlet UIButton *showpicture;
-@property (strong, nonatomic) IBOutlet UIButton *hidepicture;
-@property (strong, nonatomic) IBOutlet UIButton *scrapview;
 
 @end

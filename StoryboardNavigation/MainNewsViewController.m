@@ -43,12 +43,10 @@
 @synthesize searchResultdetail;
 
 BOOL moveBack;
-BOOL DoSearch;
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-    DoSearch==false;
     
     controlFlag = 0;
     checkString =[check description];
