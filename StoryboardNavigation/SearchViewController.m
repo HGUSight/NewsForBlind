@@ -45,21 +45,9 @@ BOOL moveBack;
 
     
     
-    if(![checkString  isEqual: @"category"]) {
-        urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
-        //urlstring =@"http://203.252.118.80/NewsForBlind/test/total.xml";
-        //urlstring = @"http://myhome.chosun.com/rss/www_section_rss.xml";
-        //urlstring = @"http://rss.joins.com/joins_news_list.xml";
-        moveBack = false;
-        
-    }else{
-        urlstring=[urldata description];
-        NSLog(@"url:%@",urldata);
-        moveBack = true;
-        
-    }
-    
     [searchbar becomeFirstResponder];
+    
+    urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
     
     xmlConnection = [[NSURLConnection alloc]
 					 initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]]
@@ -179,81 +167,205 @@ BOOL moveBack;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view delegate
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    moveBack = false;
+    
+    if([[segue identifier]isEqualToString:@"TableIdentifier"])
+    {
+        
+        NewsArticleViewController *viewController=[segue destinationViewController];
+        NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath=nil;
+        
+        
+        if(self.searchDisplayController.isActive) {
+            
+            indexPath=[[self.searchDisplayController searchResultsTableView]indexPathForSelectedRow];
+            News *buf=[[News alloc]init];
+            buf=[searchResultdetail objectAtIndex:indexPath.row];
+            NSString *data=buf.title;
+            NSMutableString *data1=buf.description;
+            NSMutableString *data2=buf.link;
+            
+            viewController.passData=data;
+            viewController.passData1=data1;
+            viewController.passData2=data2;
+            
+            
+        }else {
+            
+            News *buf=[[News alloc]init];
+            buf=[newsdata objectAtIndex:currentIndexPath.row];
+            NSString *data=buf.title;
+            NSMutableString *data1=buf.description;
+            NSMutableString *data2=buf.link;
+            
+            viewController.passData=data;
+            viewController.passData1=data1;
+            viewController.passData2=data2;
+            
+        }
+        
+    }
+    
+}
+
+
+-(void)searchThroughData
+{
+    self.searchResult=nil;
+    NSPredicate *resultPredicate=[NSPredicate predicateWithFormat:@"self contains [search]%@",self.searchbar.text];
+    NSLog(@"title:%@",titlelist);
+    NSLog(@"searchbartext:%@",self.searchbar.text);
+    self.searchResult=[[self.titlelist filteredArrayUsingPredicate:resultPredicate]mutableCopy];
+    NSLog(@"searchstring:%@",[self.titlelist filteredArrayUsingPredicate:resultPredicate]);
+    
+    [self stringToObject];
+    
+}
+-(void)stringToObject
+{
+    News *buf=[[News alloc]init];
+    
+    for(int i=0;i<self.searchResult.count;i++) {
+        for(int j=0;j<self.newsdata.count;j++) {
+            buf=newsdata[j];
+            if([searchResult[i] isEqual: buf.title]) {
+                [searchResultdetail addObject:buf];
+                //NSLog(@"searchResulttitle:%@",searchResult[i]);
+                //NSLog(@"buf:%@",buf.title);
+                //NSLog(@"searchDetail:%@",searchResultdetail[i]);
+            }
+            
+        }
+    }
+    
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [self searchThroughData];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    
+    if (tableView==self.tableView) {
+        
+        return newsdata.count;
+        
+    }else {
+        
+        [self searchThroughData];
+        return searchResult.count;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"ResuableCellWithIdentifier";
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        //News *buf=[[News alloc]init];
+        //buf=[searchResult objectAtIndex:indexPath.row];
+        cell.textLabel.text=[searchResult objectAtIndex:indexPath.row];
+    }
+    else {
+        
+        NSDictionary *dict = [xmlParseData objectAtIndex:indexPath.row];
+        [[cell textLabel] setText:[dict objectForKey:@"title"]];
+        
+    }
     
     // Configure the cell...
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)TableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(self.searchDisplayController.isActive) {
+        [self performSegueWithIdentifier:@"TableIdentifier" sender:self];
+    }
+    
+	[[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastIndex"];
+	
+	[self selectTableViewCell:indexPath];
+	
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)selectTableViewCell:(NSIndexPath*)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+	@try {
+		[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        //NSManagedObjectModel *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+	}
+	@catch (NSException * e) {
+		
+	}
+	@finally {
+        
+	}
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    checkString =[check description];
+    
+    if(![checkString  isEqual: @"category"]) {
+        
+        //urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
+        moveBack = false;
+    }else{
+        //urlstring=[urldata description];
+        //NSLog(@"url:%@",urldata);
+        moveBack = true;
+        
+    }
+    
+    
+    
+    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    [self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
+    
+    UITableView *tableView = (UITableView *)[self view];
+    cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.cell);
+    
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if(moveBack==true){
+        [self.navigationController popToRootViewControllerAnimated:animated];
+        NSLog(@"move to root");
+    }
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
 }
 
- */
+
 
 @end

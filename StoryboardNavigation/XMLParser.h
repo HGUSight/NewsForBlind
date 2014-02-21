@@ -1,5 +1,5 @@
 //
-//  XmlParser.h
+//  XMLParser.h
 //  StoryboardNavigation
 //
 //  Created by 김사랑 on 2014. 2. 21..
@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 
 @class News;
 @class Fliter;
@@ -20,7 +21,8 @@ typedef enum {
 }eElementType;
 
 
-@interface XmlParser : NSObject {
+@interface XMLParser : NSObject {
+    
     NSURLConnection *xmlConnection;
 	eElementType elementType;
 	NSMutableString *xmlValue;
@@ -37,8 +39,9 @@ typedef enum {
     HtmlParserclass *htmlparser;
     UITableViewCell *cell;
     int controlFlag;
-
+   
 }
+
 @property (nonatomic, retain)NSURLConnection *xmlConnection;
 @property (nonatomic)eElementType elementType;
 @property (nonatomic, retain)NSMutableString *xmlValue;
@@ -54,6 +57,8 @@ typedef enum {
 @property (strong, nonatomic)id check;
 @property (nonatomic, retain)UITableViewCell *cell;
 @property (nonatomic)int controlFlag;
+
+
 
 
 
