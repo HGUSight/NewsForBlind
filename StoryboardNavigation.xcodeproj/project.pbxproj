@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4622B63918B6FA2C00722BD5 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4622B63818B6FA2C00722BD5 /* SettingViewController.m */; };
 		467F2AB4186EBF6B0074AFB3 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 467F2AB3186EBF6B0074AFB3 /* News.m */; };
 		4684981518952503001EE057 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4684981418952503001EE057 /* CategoryViewController.m */; };
 		468B41C218A340E10036E113 /* HtmlParserclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 468B41C118A340E10036E113 /* HtmlParserclass.m */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4622B63718B6FA2C00722BD5 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		4622B63818B6FA2C00722BD5 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		467F2AB2186EBF6B0074AFB3 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		467F2AB3186EBF6B0074AFB3 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		4684981318952503001EE057 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				46931808186D9A4C00005860 /* AppDelegate.h */,
 				46931809186D9A4C00005860 /* AppDelegate.m */,
 				46931811186D9A4C00005860 /* MainStoryboard.storyboard */,
+				4622B63718B6FA2C00722BD5 /* SettingViewController.h */,
+				4622B63818B6FA2C00722BD5 /* SettingViewController.m */,
 				4684981318952503001EE057 /* CategoryViewController.h */,
 				4684981418952503001EE057 /* CategoryViewController.m */,
 				4693181C186D9B5D00005860 /* MainNewsViewController.h */,
@@ -238,6 +243,7 @@
 				469D14AF18929F800011834B /* Fliter.m in Sources */,
 				468B41C218A340E10036E113 /* HtmlParserclass.m in Sources */,
 				4693181E186D9B5D00005860 /* MainNewsViewController.m in Sources */,
+				4622B63918B6FA2C00722BD5 /* SettingViewController.m in Sources */,
 				467F2AB4186EBF6B0074AFB3 /* News.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

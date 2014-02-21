@@ -257,9 +257,7 @@ BOOL DoSearch;
                   //NSLog(@"buf:%@",buf.title);
                   //NSLog(@"searchDetail:%@",searchResultdetail[i]);
              }
-             else
-                 break;
-            
+                
          }
     }
     
@@ -373,6 +371,7 @@ BOOL DoSearch;
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.cell);
     
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     if(moveBack==true){

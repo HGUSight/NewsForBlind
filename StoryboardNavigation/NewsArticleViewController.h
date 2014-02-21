@@ -12,17 +12,20 @@
 @class MainNewsViewController;
 
 @interface NewsArticleViewController : UIViewController{
+    
     Fliter *fliter;
     HtmlParserclass *htmlparsing;
     MainNewsViewController *newscontroller;
    
 }
+
 @property (retain, nonatomic) IBOutlet UITextView *Textscroll;
 @property (strong, nonatomic) IBOutlet UILabel *IbIMessage;
 @property (strong, nonatomic)id passData;
 @property (strong, nonatomic)id passData1;
 @property (strong, nonatomic)id passData2;
 @property (nonatomic, retain) NSString *textbuffer;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doscrap;
 
 
 @end
