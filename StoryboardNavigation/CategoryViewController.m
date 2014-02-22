@@ -16,10 +16,6 @@
 @implementation CategoryViewController
 @synthesize itemlist;
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    
-}
 
 - (void)viewDidLoad
 {
@@ -32,14 +28,13 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     return 1;
 }
 

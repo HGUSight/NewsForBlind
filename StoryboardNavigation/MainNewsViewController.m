@@ -53,9 +53,7 @@ BOOL moveBack;
     
     if(![checkString  isEqual: @"category"]) {
          urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
-        //urlstring =@"http://203.252.118.80/NewsForBlind/test/total.xml";
-         //urlstring = @"http://myhome.chosun.com/rss/www_section_rss.xml";
-        //urlstring = @"http://rss.joins.com/joins_news_list.xml";
+       
         moveBack = false;
         
     }else{
@@ -114,8 +112,6 @@ BOOL moveBack;
     str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
     receiveData=[str dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@",str);
-    
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:receiveData];
 	
     [parser setDelegate:self];
@@ -142,7 +138,6 @@ BOOL moveBack;
 	if ([elementName isEqualToString:@"title"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
 		aNews.title=[NSMutableString stringWithString:xmlValue];
-        NSLog(@"TITLE:%@",aNews.title);
         [self.titlelist addObject:aNews.title];
         
 	} else if ([elementName isEqualToString:@"link"]) {
@@ -234,11 +229,9 @@ BOOL moveBack;
 {
     self.searchResult=nil;
     NSPredicate *resultPredicate=[NSPredicate predicateWithFormat:@"self contains [search]%@",self.searchbar.text];
-    NSLog(@"title:%@",titlelist);
-    NSLog(@"searchbartext:%@",self.searchbar.text);
+   
     self.searchResult=[[self.titlelist filteredArrayUsingPredicate:resultPredicate]mutableCopy];
-    NSLog(@"searchstring:%@",[self.titlelist filteredArrayUsingPredicate:resultPredicate]);
-    
+   
     [self stringToObject];
     
 }
@@ -251,9 +244,7 @@ BOOL moveBack;
              buf=newsdata[j];
              if([searchResult[i] isEqual: buf.title]) {
                  [searchResultdetail addObject:buf];
-                  //NSLog(@"searchResulttitle:%@",searchResult[i]);
-                  //NSLog(@"buf:%@",buf.title);
-                  //NSLog(@"searchDetail:%@",searchResultdetail[i]);
+                
              }
                 
          }
@@ -300,8 +291,7 @@ BOOL moveBack;
     }
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        //News *buf=[[News alloc]init];
-        //buf=[searchResult objectAtIndex:indexPath.row];
+      
         cell.textLabel.text=[searchResult objectAtIndex:indexPath.row];
     }
     else {
@@ -310,8 +300,6 @@ BOOL moveBack;
         [[cell textLabel] setText:[dict objectForKey:@"title"]];
         
     }
-    
-    // Configure the cell...
     
     return cell;
 }
@@ -346,17 +334,11 @@ BOOL moveBack;
     checkString =[check description];
     
     if(![checkString  isEqual: @"category"]) {
-        
-        //urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
         moveBack = false;
     }else{
-        //urlstring=[urldata description];
-        //NSLog(@"url:%@",urldata);
         moveBack = true;
         
     }
-    
-    
     
     NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
@@ -372,17 +354,27 @@ BOOL moveBack;
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    /*
+    
     if(moveBack==true) {
         [self.navigationController popToRootViewControllerAnimated:animated];
         NSLog(@"move to root");
     }
-     */
+    
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
+    
 }
+- (void)dealloc
+{
+    self.searchDisplayController.delegate = nil;
+    self.searchDisplayController.searchResultsDelegate = nil;
+    self.searchDisplayController.searchResultsDataSource = nil;
+    self.tableView.delegate = nil;
+    self.tableView.dataSource = nil;
+}
+
 
 
 @end
