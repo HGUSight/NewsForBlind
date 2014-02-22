@@ -16,7 +16,6 @@
 }
 
 @property (nonatomic,retain) NSMutableArray *itemlist;
-@property (retain, nonatomic) IBOutlet UITableViewCell *categoryurl;
 
 
 

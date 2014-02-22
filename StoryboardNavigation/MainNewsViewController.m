@@ -372,10 +372,12 @@ BOOL moveBack;
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if(moveBack==true){
+    /*
+    if(moveBack==true) {
         [self.navigationController popToRootViewControllerAnimated:animated];
         NSLog(@"move to root");
     }
+     */
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];

@@ -127,90 +127,6 @@
             </objects>
             <point key="canvasLocation" x="456" y="40"/>
         </scene>
-        <!--Search View Controller - Root View Controller-->
-        <scene sceneID="hyT-Nu-9W5">
-            <objects>
-                <tableViewController id="q38-iB-QPr" customClass="SearchViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Yh1-7o-DIy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="검색할 단어를 입력하시오" id="dur-Hg-db6">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="q38-iB-QPr" id="4og-11-zlp"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResuableCellWithIdentifier" id="jla-L2-wK8">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jla-L2-wK8" id="QX3-ma-4Gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Sta-8O-Y4u" kind="push" id="llG-WB-BfS"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="p8m-vL-eHJ"/>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="uSg-Db-whj" id="1h1-59-uUz"/>
-                        <outlet property="searchbar" destination="dur-Hg-db6" id="D74-aa-mzR"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nhq-0I-yXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="uSg-Db-whj">
-                    <connections>
-                        <outlet property="delegate" destination="q38-iB-QPr" id="OQL-Bz-ibk"/>
-                        <outlet property="searchBar" destination="dur-Hg-db6" id="F34-wA-4qK"/>
-                        <outlet property="searchContentsController" destination="q38-iB-QPr" id="cl9-C8-KMo"/>
-                        <outlet property="searchResultsDataSource" destination="q38-iB-QPr" id="csT-PN-5MX"/>
-                        <outlet property="searchResultsDelegate" destination="q38-iB-QPr" id="RXs-Uq-eNc"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="1191" y="774"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="LmX-Uq-hsa">
-            <objects>
-                <viewController id="Sta-8O-Y4u" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3hS-fD-f0G"/>
-                        <viewControllerLayoutGuide type="bottom" id="P5c-UR-orK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ATs-o7-R9Q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCv-St-tO5">
-                                <rect key="frame" x="29" y="84" width="247" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EPZ-sG-ihG">
-                                <rect key="frame" x="20" y="125" width="280" height="281"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="c2M-Cb-e7i"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="49o-8y-eUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1727" y="774"/>
-        </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="p5T-Jy-54c">
             <objects>
@@ -225,7 +141,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YI5-cd-Yyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="483" y="1510"/>
+            <point key="canvasLocation" x="419" y="762"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="mx1-pG-IFt">
@@ -244,23 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9W-9B-piS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191" y="1510"/>
-        </scene>
-        <!--Navigation Controller - Item-->
-        <scene sceneID="Fqq-Fa-8cl">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="8GD-aT-Xgm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6Pp-dx-vbF"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ytv-w3-a8f">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="q38-iB-QPr" kind="relationship" relationship="rootViewController" id="CP1-iI-8e8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ycj-oh-IpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="473" y="774"/>
+            <point key="canvasLocation" x="1179" y="762"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="4qB-By-pUE">
@@ -310,7 +210,6 @@
                     <connections>
                         <segue destination="eig-zB-mLS" kind="relationship" relationship="viewControllers" id="yUF-jD-VEF"/>
                         <segue destination="Srg-Kq-vE5" kind="relationship" relationship="viewControllers" id="JSv-wE-9yR"/>
-                        <segue destination="8GD-aT-Xgm" kind="relationship" relationship="viewControllers" id="J9z-xj-Uoq"/>
                         <segue destination="hRi-Qc-Bcc" kind="relationship" relationship="viewControllers" id="Maa-5J-nh0"/>
                     </connections>
                 </tabBarController>
