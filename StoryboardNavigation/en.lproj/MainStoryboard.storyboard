@@ -170,6 +170,9 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-2s-gKW">
                                                     <rect key="frame" x="18" y="40" width="284" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="sliderChanged:" destination="wkL-uH-Eou" eventType="valueChanged" id="N5f-u2-rh4"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -227,6 +230,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="설정" id="DSM-W9-2sX"/>
+                    <connections>
+                        <outlet property="hideImage" destination="koy-A8-Gl5" id="dVA-hc-hhN"/>
+                        <outlet property="myLabel" destination="877-Gw-Z5i" id="GaY-la-677"/>
+                        <outlet property="mySlider" destination="6Ia-2s-gKW" id="BU9-Pm-HJ4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9U-5r-gyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

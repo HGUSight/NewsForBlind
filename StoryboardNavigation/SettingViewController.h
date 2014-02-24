@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingViewController : UITableViewController
+@property (retain, nonatomic) IBOutlet UISlider *mySlider;
+@property (retain, nonatomic) IBOutlet UILabel *myLabel;
+@property (retain, nonatomic) IBOutlet UISwitch *hideImage;
 
 @end

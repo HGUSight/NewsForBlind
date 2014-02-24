@@ -26,12 +26,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.mySlider.minimumValue = 6;
+    self.mySlider.maximumValue = 30;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (IBAction)sliderChanged:(id)sender
+{
+    UISlider *slider = (UISlider *)sender;
+    NSInteger val = lround(slider.value);
+    //self.myLabel.text = [NSString stringWithFormat:@"%d",val];
+    [self.myLabel setFont:[UIFont systemFontOfSize:val]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,4 +128,18 @@
 
  */
 
+- (void)dealloc {
+    [_mySlider release];
+    [_hideImage release];
+    [_myLabel release];
+    [super dealloc];
+}
+
+
+
+
+
+
+
 @end
+
