@@ -1,9 +1,9 @@
 //
-//  FirstViewController.h
+//  SearchViewController.h
 //  StoryboardNavigation
 //
-//  Created by 김사랑 on 13. 12. 27..
-//  Copyright (c) 2013년 김사랑. All rights reserved.
+//  Created by 김사랑 on 2014. 2. 24..
+//  Copyright (c) 2014년 김사랑. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,7 +19,7 @@ typedef enum {
 	etItem
 }eElementType;
 
-@interface MainNewsViewController: UITableViewController<UISearchDisplayDelegate, UISearchBarDelegate,NSXMLParserDelegate> {
+@interface SearchViewController : UITableViewController<UISearchDisplayDelegate, UISearchBarDelegate,NSXMLParserDelegate> {
 	NSURLConnection *xmlConnection;
 	eElementType elementType;
 	NSMutableString *xmlValue;
@@ -34,8 +34,12 @@ typedef enum {
     NSString *urlstring;
     NSString *checkString;
     HtmlParserclass *htmlparser;
+    NSMutableArray *serachResult;
     UITableViewCell *cell;
     int controlFlag;
+    NSMutableArray *titlelist;
+    NSMutableArray *searchResultdetail;
+    NSMutableArray *linkarr;
     
 }
 
@@ -52,9 +56,13 @@ typedef enum {
 @property (nonatomic,retain) NSString *checkString;
 @property (strong, nonatomic)id urldata;
 @property (strong, nonatomic)id check;
+@property (strong, nonatomic)NSMutableArray *searchResult;
+@property (retain, nonatomic) IBOutlet UISearchBar *searchbar;
 @property (nonatomic, retain)UITableViewCell *cell;
 @property (nonatomic)int controlFlag;
-
+@property (nonatomic, strong)NSMutableArray *titlelist;
+@property (nonatomic, strong)NSMutableArray *searchResultdetail;
+@property (nonatomic, strong)NSMutableArray *linkarr;
 
 
 
