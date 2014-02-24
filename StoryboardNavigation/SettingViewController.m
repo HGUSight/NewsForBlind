@@ -7,6 +7,7 @@
 //
 
 #import "SettingViewController.h"
+#import "AppDelegate.h"
 
 @interface SettingViewController ()
 
@@ -38,10 +39,23 @@
 
 - (IBAction)sliderChanged:(id)sender
 {
+    //슬라이더에서 값을 가지고 옴
     UISlider *slider = (UISlider *)sender;
     NSInteger val = lround(slider.value);
-    //self.myLabel.text = [NSString stringWithFormat:@"%d",val];
+    
+    
+    
+    
+    //테스트로 라벨에 크기를 찍어봄: self.myLabel.text = [NSString stringWithFormat:@"%d",val];
     [self.myLabel setFont:[UIFont systemFontOfSize:val]];
+    
+    //라벨 사이즈가 조정되도록
+    self.myLabel.adjustsFontSizeToFitWidth = YES;
+    [self.myLabel sizeToFit];
+    
+    //글로벌 변수에 지정한 폰트 사이즈를 저장하여 다른 페이지에서도 폰트 크기를 적용할 수 있도록 함
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.fontS = val;
 }
 
 - (void)didReceiveMemoryWarning

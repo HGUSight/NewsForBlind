@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AppDelegate;
 
 @interface SettingViewController : UITableViewController
 @property (retain, nonatomic) IBOutlet UISlider *mySlider;

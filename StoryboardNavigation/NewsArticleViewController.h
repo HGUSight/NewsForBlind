@@ -11,6 +11,7 @@
 @class HtmlParserclass;
 @class MainNewsViewController;
 @class News;
+@class AppDelegate;
 
 @interface NewsArticleViewController : UIViewController{
     

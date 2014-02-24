@@ -12,6 +12,7 @@
 #import "News.h"
 #import "HtmlParserclass.h"
 #import "MainNewsViewController.h"
+#import "AppDelegate.h"
 
 
 @interface NewsArticleViewController ()
@@ -40,6 +41,23 @@
     textbuffer=[htmlparsing sethtml:linkstring];
     
     [doscrap setAction:@selector(doSaveNewsdetail)];
+    
+    //라벨 사이즈가 조정되도록
+    self.IbIMessage.adjustsFontSizeToFitWidth = YES;
+    [self.IbIMessage sizeToFit];
+    self.IbIMessage.numberOfLines = 0;
+    
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS+10]];
+    [self.Textscroll setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
+    
+    CGSize labelSize = [self.IbIMessage.text sizeWithFont:self.IbIMessage.font
+                                        constrainedToSize:self.IbIMessage.frame.size
+                                            lineBreakMode:self.IbIMessage.lineBreakMode];
+    self.IbIMessage.frame = CGRectMake(
+                                       self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y,
+                                       self.IbIMessage.frame.size.width, labelSize.height);
     
    // [htmlparsing sethtml:linkstring];
     //NSLog(@"linkstring:%@",linkstring);

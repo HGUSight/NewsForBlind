@@ -10,9 +10,12 @@
 
 @implementation AppDelegate
 
+@synthesize fontS;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    fontS = 20;
     return YES;
 }
 							
