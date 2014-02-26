@@ -14,7 +14,8 @@
 int count;
 
 @implementation HtmlParserclass
-@synthesize str,newstext;
+@synthesize str,newstext, str1, str2;
+@synthesize text, text1;
 
 -(NSString*) sethtml:(NSMutableString *)htmllink {
     
@@ -38,48 +39,47 @@ int count;
     
     for (HTMLNode *divNode in divNodes) {
         if ([[divNode getAttributeNamed:@"id"] isEqualToString:@"news_text"]) {
-            //NSLog(@"data:%@", [divNode  rawContents]); //Answer to second question
+           
             str =[NSMutableString stringWithString:[divNode rawContents]];
-            //count++;
+            
+        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"news_photo"]) {
+            
+            if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
+                
+                str2 =[NSMutableString stringWithString:[divNode rawContents]];
+            }
+            
+        }
+
+    }
+    
+    for(int i = 0; i < [str length]; i++) {
+       
+        
+        if(str2!=NULL) {
+            
+            text1= [str rangeOfString:str2];
+       
+        }
+        
+        if(text1.location != NSNotFound) {
+            
+            [str deleteCharactersInRange:text1];
+           
+            
+        }else {
+            
+            break;
         }
         
     }
     
     NSMutableString *newstext =[NSMutableString stringWithString:[fliter settext:str]];
-    //NSLog(@"newsdata:%@", newstext);
     
     return newstext;
 
- 
-   
-    /*
-    NSArray *inputNodes = [bodyNode findChildTags:@"input"];
-    
-    for (HTMLNode *inputNode in inputNodes) {
-        if ([[inputNode getAttributeNamed:@"name"] isEqualToString:@"input2"]) {
-            NSLog(@"%@", [inputNode getAttributeNamed:@"value"]); //Answer to first question
-        }
-    }
-    
-    NSArray *spanNodes = [bodyNode findChildTags:@"span"];
-    
-    for (HTMLNode *spanNode in spanNodes) {
-        if ([[spanNode getAttributeNamed:@"class"] isEqualToString:@"spantext"]) {
-            NSLog(@"%@", [spanNode rawContents]); //Answer to second question
-        }
-    }
-*/
-    
-    
 }
 
-
-/*
--(NSMutableString *)getNewsarticle {
-    
-
-}
-*/
 
 
 @end

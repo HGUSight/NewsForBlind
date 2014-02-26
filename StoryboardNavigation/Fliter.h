@@ -14,7 +14,8 @@
     NSRange r;
     NSRange hanja;
     NSRange emptyfield;
-    NSRange a;
+    NSRange misteg; //--> 지우기
+    NSRange equalchar;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;
