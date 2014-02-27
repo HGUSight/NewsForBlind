@@ -11,11 +11,13 @@
 @implementation AppDelegate
 
 @synthesize fontS;
+@synthesize imageHiding;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     fontS = 20;
+    imageHiding = true;
 
     return YES;
 }

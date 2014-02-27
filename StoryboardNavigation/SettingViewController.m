@@ -29,6 +29,8 @@
     [super viewDidLoad];
     self.mySlider.minimumValue = 6;
     self.mySlider.maximumValue = 30;
+    
+    [self.hideImage addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -43,9 +45,6 @@
     UISlider *slider = (UISlider *)sender;
     NSInteger val = lround(slider.value);
     
-    
-    
-    
     //테스트로 라벨에 크기를 찍어봄: self.myLabel.text = [NSString stringWithFormat:@"%d",val];
     [self.myLabel setFont:[UIFont systemFontOfSize:val]];
     
@@ -57,6 +56,20 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.fontS = val;
 }
+
+- (IBAction)flip:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    if (self.hideImage.on) {
+        NSLog(@"On");
+        appDelegate.imageHiding = true;
+    }
+    else {
+        NSLog(@"Off");
+        appDelegate.imageHiding = false;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
