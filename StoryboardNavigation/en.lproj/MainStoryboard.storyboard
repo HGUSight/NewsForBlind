@@ -94,7 +94,7 @@
         <scene sceneID="yJJ-rJ-WYi">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Srg-Kq-vE5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="카테고리 별 보기" id="L5q-yJ-UQx"/>
+                    <tabBarItem key="tabBarItem" title="카테고리 별 보기" image="category_normal.png" id="L5q-yJ-UQx"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3JZ-Ah-qTd">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -110,7 +110,7 @@
         <scene sceneID="p5T-Jy-54c">
             <objects>
                 <navigationController definesPresentationContext="YES" id="hRi-Qc-Bcc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="설정하기" id="04v-lb-UB8"/>
+                    <tabBarItem key="tabBarItem" title="설정하기" image="setting_normal.png" id="04v-lb-UB8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p26-j6-xtb">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -301,7 +301,7 @@
         <scene sceneID="Qcr-6L-i1k">
             <objects>
                 <navigationController definesPresentationContext="YES" id="ywE-oD-Qph" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="검색하기" id="XKZ-OI-I7Q"/>
+                    <tabBarItem key="tabBarItem" title="검색하기" image="search_normal.png" id="XKZ-OI-I7Q"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nmy-SQ-bTb">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -373,7 +373,7 @@
         <scene sceneID="J9C-D1-MZ7">
             <objects>
                 <navigationController id="eig-zB-mLS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="전체기사 보기" image="Default.png" id="azm-O9-H29" propertyAccessControl="none">
+                    <tabBarItem key="tabBarItem" title="전체기사 보기" image="newspaper_normal.png" id="azm-O9-H29" propertyAccessControl="none">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -397,6 +397,10 @@
     </scenes>
     <resources>
         <image name="Default.png" width="320" height="480"/>
+        <image name="category_normal.png" width="160" height="97"/>
+        <image name="newspaper_normal.png" width="160" height="97"/>
+        <image name="search_normal.png" width="160" height="97"/>
+        <image name="setting_normal.png" width="160" height="97"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

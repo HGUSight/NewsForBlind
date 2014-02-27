@@ -28,6 +28,11 @@
 		46A06F6C18A8EA69008A3777 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A06F6A18A8EA69008A3777 /* HTMLParser.m */; };
 		46A06F6E18A8EAA0008A3777 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A06F6D18A8EAA0008A3777 /* libxml2.dylib */; };
 		885D048518B8B56900000F5A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 885D048418B8B56900000F5A /* SettingViewController.m */; };
+		88DD456A18BEF19100375190 /* category_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DD456818BEF19100375190 /* category_normal.png */; };
+		88DD456B18BEF19100375190 /* search_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DD456918BEF19100375190 /* search_normal.png */; };
+		88DD456D18BEF1AB00375190 /* newspaper_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DD456C18BEF1AB00375190 /* newspaper_normal.png */; };
+		88DD456F18BEF1CC00375190 /* setting_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DD456E18BEF1CC00375190 /* setting_normal.png */; };
+		88DD457118BEF2CF00375190 /* Sunflower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88DD457018BEF2CF00375190 /* Sunflower.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +71,11 @@
 		46A06F6D18A8EAA0008A3777 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		885D048318B8B56900000F5A /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		885D048418B8B56900000F5A /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		88DD456818BEF19100375190 /* category_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = category_normal.png; path = "../../Dropbox/Capstone/GUI/검색/images/category_normal.png"; sourceTree = "<group>"; };
+		88DD456918BEF19100375190 /* search_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_normal.png; path = "../../Dropbox/Capstone/GUI/검색/images/search_normal.png"; sourceTree = "<group>"; };
+		88DD456C18BEF1AB00375190 /* newspaper_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newspaper_normal.png; path = "../../Dropbox/Capstone/GUI 복사본/신문사별보기/images/newspaper_normal.png"; sourceTree = "<group>"; };
+		88DD456E18BEF1CC00375190 /* setting_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting_normal.png; path = "../../Dropbox/Capstone/GUI/설정/images/setting_normal.png"; sourceTree = "<group>"; };
+		88DD457018BEF2CF00375190 /* Sunflower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Sunflower.gif; path = "../../../../Library/Application Support/Apple/iChat Icons/Flowers/Sunflower.gif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,11 @@
 		469317FF186D9A4C00005860 /* StoryboardNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				88DD457018BEF2CF00375190 /* Sunflower.gif */,
+				88DD456E18BEF1CC00375190 /* setting_normal.png */,
+				88DD456C18BEF1AB00375190 /* newspaper_normal.png */,
+				88DD456818BEF19100375190 /* category_normal.png */,
+				88DD456918BEF19100375190 /* search_normal.png */,
 				46A06F6618A8E8C7008A3777 /* Parser */,
 				46931808186D9A4C00005860 /* AppDelegate.h */,
 				46931809186D9A4C00005860 /* AppDelegate.m */,
@@ -224,10 +239,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DD457118BEF2CF00375190 /* Sunflower.gif in Resources */,
+				88DD456B18BEF19100375190 /* search_normal.png in Resources */,
+				88DD456A18BEF19100375190 /* category_normal.png in Resources */,
 				46931804186D9A4C00005860 /* InfoPlist.strings in Resources */,
 				4693180C186D9A4C00005860 /* Default.png in Resources */,
+				88DD456D18BEF1AB00375190 /* newspaper_normal.png in Resources */,
 				4693180E186D9A4C00005860 /* Default@2x.png in Resources */,
 				46931810186D9A4C00005860 /* Default-568h@2x.png in Resources */,
+				88DD456F18BEF1CC00375190 /* setting_normal.png in Resources */,
 				46931813186D9A4C00005860 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
