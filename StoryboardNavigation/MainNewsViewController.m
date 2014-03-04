@@ -128,7 +128,7 @@ BOOL moveBack;
     
 	if ([elementName isEqualToString:@"title"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-		aNews.title=[NSMutableString stringWithString:xmlValue];
+		aNews.title=[NSMutableString stringWithString:[fliter settext:xmlValue]];
         
 	} else if ([elementName isEqualToString:@"link"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
@@ -190,7 +190,7 @@ BOOL moveBack;
             
             viewController.passData=data;
             viewController.passData1=data1;
-        viewController.passData2=data2;
+            viewController.passData2=data2;
         
     }
     
@@ -220,9 +220,9 @@ BOOL moveBack;
          cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    
-        NSDictionary *dict = [xmlParseData objectAtIndex:indexPath.row];
-        [[cell textLabel] setText:[dict objectForKey:@"title"]];
+        News *buffer=[[News alloc]init];
+        buffer=[newsdata objectAtIndex:indexPath.row];
+        cell.textLabel.text=buffer.title;
     
     return cell;
 }

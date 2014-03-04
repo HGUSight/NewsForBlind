@@ -14,43 +14,46 @@
 - (NSMutableString *) settext:(NSMutableString *)s1 {
     
     for(int i = 0; i < [s1 length]; i++) {
-        //findout the range with "sub" string
+        
         teg = [s1 rangeOfString:@"<[^<]*>" options:NSRegularExpressionSearch];
         misteg= [s1 rangeOfString:@"<!--"];
-        equalchar=[s1 rangeOfString:@"="];
-        //r = [s1 rangeOfString:@"\n"];
-       // hanja=[s1 rangeOfString:@"^0x{2E80}-0x{2EFF}0x{31C0}-0x{31EF}0x{3200}-0x{32FF}0x{3400}-0x{4DBF}0x{4E00}-0x{9FBF}0x{F900}-0x{FAFF}0x{20000}-0x{2A6DF}//0x{2F800}-0x{2FA1F}" options:NSRegularExpressionSearch];
-        //emptyfield=[s1 rangeOfString:@"nbsp" options:NSRegularExpressionSearch];
-
+        equalchar=[s1 rangeOfString:@"= "];
+        wavesymbol=[s1 rangeOfString:@"∼"];
+        wavesymbol2=[s1 rangeOfString:@"~"];
+        centerdot=[s1 rangeOfString:@"·"];
+        corporationmark=[s1 rangeOfString:@"(주)"];
         
         if(teg.location != NSNotFound) {
-            //Delete the characters in that range
+           
             [s1 deleteCharactersInRange:teg];
            
         }else if(misteg.location != NSNotFound) {
             
             [s1 deleteCharactersInRange:misteg];
         
-        }else if(r.location!=NSNotFound){
-            
-            [s1 deleteCharactersInRange:r];
-        
         }else if(equalchar.location!=NSNotFound) {
-            
+           
             [s1 replaceCharactersInRange:equalchar withString:@"는"];
-    
+            
+        }else if(wavesymbol.location!=NSNotFound) {
+            
+            [s1 replaceCharactersInRange:wavesymbol withString:@"에서 "];
         
-       //}else if(hanja.location != NSNotFound) {
+        }else if(wavesymbol2.location!=NSNotFound) {
             
-       //     [s1 deleteCharactersInRange:hanja];
+            [s1 replaceCharactersInRange:wavesymbol2 withString:@"에서 "];
             
-       // }else if(emptyfield.location != NSNotFound) {
+        }else if(centerdot.location!=NSNotFound) {
             
-       //     [s1 deleteCharactersInRange:emptyfield];
+            [s1 replaceCharactersInRange:centerdot withString:@" "];
             
+        }else if(corporationmark.location!=NSNotFound) {
+            
+            [s1 replaceCharactersInRange:corporationmark withString:@"㈜"];
         }
+        
         else {
-            //break the loop if sub string not found as there is no more recurrence.
+           
             break;
         }
     

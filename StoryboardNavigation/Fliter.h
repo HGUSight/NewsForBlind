@@ -16,6 +16,10 @@
     NSRange emptyfield;
     NSRange misteg; //--> 지우기
     NSRange equalchar;
+    NSRange centerdot;
+    NSRange wavesymbol;
+    NSRange wavesymbol2;
+    NSRange corporationmark;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;

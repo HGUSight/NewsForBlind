@@ -33,13 +33,15 @@
     newscontroller=[[MainNewsViewController alloc]init];
     news=[[News alloc]init];
     
+    
     self.IbIMessage.text=[passData description];
-    NSMutableString *str=[NSMutableString stringWithString:[passData1 description]];
+
     NSMutableString *linkstring=[NSMutableString stringWithString:[passData2 description]];
     self.Textscroll.text=[htmlparsing sethtml:linkstring];
     self.Textscroll.editable = NO;
-    textbuffer=[htmlparsing sethtml:linkstring];
     
+    
+    textbuffer=[htmlparsing sethtml:linkstring];
     [doscrap setAction:@selector(doSaveNewsdetail)];
     
     //라벨 사이즈가 조정되도록
