@@ -18,15 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="second screen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdb-sY-ygy">
-                                <rect key="frame" x="29" y="63" width="230" height="37"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="second screen" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="pdb-sY-ygy">
+                                <rect key="frame" x="30" y="63" width="269" height="49"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="3cO-Ud-92P"/>
-                                    <constraint firstAttribute="height" constant="37" id="nE4-AZ-YeD"/>
+                                    <constraint firstAttribute="width" constant="269" id="3cO-Ud-92P"/>
+                                    <constraint firstAttribute="height" constant="49" id="nE4-AZ-YeD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="black" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wi-t6-byP">
                                 <rect key="frame" x="20" y="108" width="289" height="352"/>

@@ -22,6 +22,7 @@
         wavesymbol2=[s1 rangeOfString:@"~"];
         centerdot=[s1 rangeOfString:@"·"];
         corporationmark=[s1 rangeOfString:@"(주)"];
+        hanja=[s1 rangeOfString:@"[\u4E00-\u9FBF]" options:NSRegularExpressionSearch];
         
         if(teg.location != NSNotFound) {
            
@@ -50,9 +51,13 @@
         }else if(corporationmark.location!=NSNotFound) {
             
             [s1 replaceCharactersInRange:corporationmark withString:@"㈜"];
-        }
-        
-        else {
+            
+        }else if(hanja.location!= NSNotFound) {
+            
+            NSLog(@"index: %d",hanja.location);
+            NSLog(@"char: %u",[s1 characterAtIndex:hanja.location]);
+            
+        }else {
            
             break;
         }
