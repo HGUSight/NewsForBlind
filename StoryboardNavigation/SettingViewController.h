@@ -14,4 +14,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *myLabel;
 @property (retain, nonatomic) IBOutlet UISwitch *hideImage;
 
+- (IBAction)sliderChanged:(id)sender;
+
+
 @end

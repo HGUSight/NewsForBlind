@@ -44,23 +44,44 @@
     textbuffer=[htmlparsing sethtml:linkstring];
     [doscrap setAction:@selector(doSaveNewsdetail)];
     
+    
+    
+    
+    
+    
     //라벨 사이즈가 조정되도록
-    self.IbIMessage.adjustsFontSizeToFitWidth = YES;
-    [self.IbIMessage sizeToFit];
-    self.IbIMessage.numberOfLines = 0;
+    //self.IbIMessage.adjustsFontSizeToFitWidth = YES;
+    //[self.IbIMessage sizeToFit];
+    //self.IbIMessage.numberOfLines = 0;
     
+
     
+    //AppDelegate 사용하도록 설정
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS+10]];
+    
+    //기사 내용 폰트 조절
     [self.Textscroll setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     
+    //기사 제목 폰트 조절
+    [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS+10]];
+    [self.IbIMessage setLineBreakMode:UILineBreakModeClip];
+    [self.IbIMessage setNumberOfLines:0];
+    
+    CGSize constraintSize = CGSizeMake(320, 20);
+    CGSize newSize = [self.IbIMessage.text sizeWithFont:[UIFont systemFontOfSize:appDelegate.fontS+10] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeClip];
+    CGFloat labelHeight = MAX(newSize.height, 20);
+    [self.IbIMessage setFrame:CGRectMake(self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y, self.IbIMessage.frame.size.width, labelHeight)];
+    [self.IbIMessage setText:self.IbIMessage.text];
+
+    
+    /*
     CGSize labelSize = [self.IbIMessage.text sizeWithFont:self.IbIMessage.font
                                         constrainedToSize:self.IbIMessage.frame.size
                                             lineBreakMode:self.IbIMessage.lineBreakMode];
     self.IbIMessage.frame = CGRectMake(
                                        self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y,
                                        self.IbIMessage.frame.size.width, labelSize.height);
-    
+    */
    // [htmlparsing sethtml:linkstring];
     //NSLog(@"linkstring:%@",linkstring);
 
@@ -92,5 +113,7 @@
     
     
 }
+
+
 
 @end
