@@ -63,12 +63,12 @@
     [self.Textscroll setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     
     //기사 제목 폰트 조절
-    [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS+10]];
+    [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
     [self.IbIMessage setLineBreakMode:UILineBreakModeClip];
     [self.IbIMessage setNumberOfLines:0];
     
     CGSize constraintSize = CGSizeMake(320, 20);
-    CGSize newSize = [self.IbIMessage.text sizeWithFont:[UIFont systemFontOfSize:appDelegate.fontS+10] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeClip];
+    CGSize newSize = [self.IbIMessage.text sizeWithFont:[UIFont systemFontOfSize:appDelegate.fontS] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeClip];
     CGFloat labelHeight = MAX(newSize.height, 20);
     [self.IbIMessage setFrame:CGRectMake(self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y, self.IbIMessage.frame.size.width, labelHeight)];
     [self.IbIMessage setText:self.IbIMessage.text];
