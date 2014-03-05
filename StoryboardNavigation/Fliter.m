@@ -7,11 +7,14 @@
 //
 
 #import "Fliter.h"
+#import "HanjatoHangle.h"
 
 @implementation Fliter
 
 
 - (NSMutableString *) settext:(NSMutableString *)s1 {
+    
+    hanjatohangle= [[HanjatoHangle alloc]init];
     
     for(int i = 0; i < [s1 length]; i++) {
         
@@ -54,8 +57,9 @@
             
         }else if(hanja.location!= NSNotFound) {
             
-            NSLog(@"index: %d",hanja.location);
-            NSLog(@"char: %u",[s1 characterAtIndex:hanja.location]);
+            NSLog(@"char: %C",[s1 characterAtIndex:hanja.location]);
+            NSLog(@"char: %X",[s1 characterAtIndex:hanja.location]);
+            //[hanjatohangle gethanja:[s1 characterAtIndex:hanja.location]];
             
         }else {
            

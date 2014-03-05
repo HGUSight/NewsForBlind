@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4621F46D18BAF40B0017E92B /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4621F46C18BAF40B0017E92B /* SearchViewController.m */; };
+		4625887A18C6B5C7009884C8 /* HanjatoHangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4625887918C6B5C7009884C8 /* HanjatoHangle.m */; };
 		467F2AB4186EBF6B0074AFB3 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 467F2AB3186EBF6B0074AFB3 /* News.m */; };
 		4684981518952503001EE057 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4684981418952503001EE057 /* CategoryViewController.m */; };
 		468B41C218A340E10036E113 /* HtmlParserclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 468B41C118A340E10036E113 /* HtmlParserclass.m */; };
@@ -33,6 +34,8 @@
 /* Begin PBXFileReference section */
 		4621F46B18BAF40B0017E92B /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		4621F46C18BAF40B0017E92B /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		4625887818C6B5C7009884C8 /* HanjatoHangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanjatoHangle.h; sourceTree = "<group>"; };
+		4625887918C6B5C7009884C8 /* HanjatoHangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanjatoHangle.m; sourceTree = "<group>"; };
 		467F2AB2186EBF6B0074AFB3 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		467F2AB3186EBF6B0074AFB3 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		4684981318952503001EE057 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				4693181D186D9B5D00005860 /* MainNewsViewController.m */,
 				469D14AD18929F800011834B /* Fliter.h */,
 				469D14AE18929F800011834B /* Fliter.m */,
+				4625887818C6B5C7009884C8 /* HanjatoHangle.h */,
+				4625887918C6B5C7009884C8 /* HanjatoHangle.m */,
 				467F2AB2186EBF6B0074AFB3 /* News.h */,
 				467F2AB3186EBF6B0074AFB3 /* News.m */,
 				46931814186D9A4C00005860 /* NewsArticleViewController.h */,
@@ -249,6 +254,7 @@
 				468B41C218A340E10036E113 /* HtmlParserclass.m in Sources */,
 				4693181E186D9B5D00005860 /* MainNewsViewController.m in Sources */,
 				885D048518B8B56900000F5A /* SettingViewController.m in Sources */,
+				4625887A18C6B5C7009884C8 /* HanjatoHangle.m in Sources */,
 				4621F46D18BAF40B0017E92B /* SearchViewController.m in Sources */,
 				467F2AB4186EBF6B0074AFB3 /* News.m in Sources */,
 			);

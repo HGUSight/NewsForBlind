@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class  HanjatoHangle;
+
 @interface Fliter : NSObject {
     
     NSRange teg;
@@ -20,6 +22,7 @@
     NSRange wavesymbol;
     NSRange wavesymbol2;
     NSRange corporationmark;
+    HanjatoHangle * hanjatohangle;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;
