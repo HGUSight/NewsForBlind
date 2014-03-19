@@ -15,6 +15,7 @@
 
 @implementation CategoryViewController
 @synthesize itemlist;
+@synthesize categoryCell;
 
 
 - (void)viewDidLoad
@@ -111,5 +112,22 @@
     
 }
 
+-(void)viewDidLoad:(BOOL)animated{
+    [super viewDidAppear:animated];
+    /*
+     set focus 
+     */
+    NSInteger row = 1;
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    //coloring
+    [self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
+    
+    // focusing
+    UITableView *tableView = (UITableView *)[self view];
+    categoryCell = [tableView cellForRowAtIndexPath:indexPath];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.categoryCell);
+    
+}
 
 @end

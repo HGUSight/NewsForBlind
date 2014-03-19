@@ -11,12 +11,13 @@
 @interface CategoryViewController : UITableViewController {
     
     NSMutableArray *itemlist;
+    UITableViewCell *categoryCell;
     int num;
     
 }
 
 @property (nonatomic,retain) NSMutableArray *itemlist;
-
+@property (nonatomic, retain)UITableViewCell *categoryCell;
 
 
 @end

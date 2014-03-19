@@ -39,6 +39,7 @@
 @synthesize controlFlag;
 
 BOOL moveBack;
+BOOL rememberFocus = false;
 
 - (void)viewDidLoad {
     
@@ -173,7 +174,7 @@ BOOL moveBack;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     moveBack = false;
-    
+    rememberFocus = true;
     if([[segue identifier]isEqualToString:@"TableIdentifier"])
     {
         
@@ -255,23 +256,32 @@ BOOL moveBack;
     [super viewDidAppear:animated];
     
     checkString =[check description];
+  
+    /*
+     set focus
+    */
+    NSInteger row = 0;
+    //remember
+    if(rememberFocus == true)
+    row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
+    
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    //coloring
+    [self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
+    
+    // focusing
+     UITableView *tableView = (UITableView *)[self view];
+    cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.cell);
     
     if(![checkString  isEqual: @"category"]) {
         moveBack = false;
+        
     }else{
         moveBack = true;
-        
+        rememberFocus = false;
     }
-    
-    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    
-    //[self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
-    
-    UITableView *tableView = (UITableView *)[self view];
-    cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.cell);
     
 }
 
@@ -287,9 +297,7 @@ BOOL moveBack;
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
-    
 }
-
 
 
 @end
