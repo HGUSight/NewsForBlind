@@ -14,6 +14,6 @@
     
 }
 
--(void)gethanja:(unichar)hanja;
+-(void)gethanja:(char)hanja;
 
 @end

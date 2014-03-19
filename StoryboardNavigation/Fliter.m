@@ -57,9 +57,10 @@
             
         }else if(hanja.location!= NSNotFound) {
             
+            char hanjachar=[s1 characterAtIndex:hanja.location];
             NSLog(@"char: %C",[s1 characterAtIndex:hanja.location]);
             NSLog(@"char: %X",[s1 characterAtIndex:hanja.location]);
-            //[hanjatohangle gethanja:[s1 characterAtIndex:hanja.location]];
+            //[hanjatohangle gethanja:hanjachar];
             
         }else {
            
