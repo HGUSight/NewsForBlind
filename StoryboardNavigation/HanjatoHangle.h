@@ -10,7 +10,12 @@
 
 @interface HanjatoHangle : NSObject {
     
-    NSArray *hanjatohangle;
+    NSMutableArray *hanjatohangle;
+    NSMutableArray * hanjaarray;
+    NSMutableArray * hanglearray;
+    NSString * filePath;
+    NSMutableArray *list;
+    NSCharacterSet *character;
     
 }
 
