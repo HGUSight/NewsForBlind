@@ -12,8 +12,6 @@
 @class Fliter;
 @class HtmlParserclass;
 
-
-
 typedef enum {
 	etNone = 0,
 	etItem
@@ -36,7 +34,7 @@ typedef enum {
     HtmlParserclass *htmlparser;
     UITableViewCell *cell;
     int controlFlag;
-    
+       
 }
 
 @property (nonatomic, retain)NSURLConnection *xmlConnection;

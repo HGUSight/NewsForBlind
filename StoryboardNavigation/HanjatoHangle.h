@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class MakeHanjaHangleMap;
+
 @interface HanjatoHangle : NSObject {
     
-    NSMutableArray *hanjatohangle;
-    NSMutableArray * hanjaarray;
-    NSMutableArray * hanglearray;
-    NSString * filePath;
-    NSMutableArray *list;
-    NSCharacterSet *character;
+   
+    MakeHanjaHangleMap *makemap;
+    NSMutableString * hangletext;
+    
     
 }
 
--(void)gethanja:(char)hanja;
+-(unichar)gethanja:(int)hanja;
 
 @end

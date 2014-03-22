@@ -15,6 +15,9 @@
 - (NSMutableString *) settext:(NSMutableString *)s1 {
     
     hanjatohangle= [[HanjatoHangle alloc]init];
+   
+    
+    
     
     for(int i = 0; i < [s1 length]; i++) {
         
@@ -26,6 +29,7 @@
         centerdot=[s1 rangeOfString:@"·"];
         corporationmark=[s1 rangeOfString:@"(주)"];
         hanja=[s1 rangeOfString:@"[\u4E00-\u9FBF]" options:NSRegularExpressionSearch];
+        dday=[s1 rangeOfString:@"D-"];
         
         if(teg.location != NSNotFound) {
            
@@ -57,10 +61,16 @@
             
         }else if(hanja.location!= NSNotFound) {
             
-            char hanjachar=[s1 characterAtIndex:hanja.location];
-            NSLog(@"char: %C",[s1 characterAtIndex:hanja.location]);
+            int hanjachar=[s1 characterAtIndex:hanja.location];
+            NSLog(@"char: %d",[s1 characterAtIndex:hanja.location]);
             NSLog(@"char: %X",[s1 characterAtIndex:hanja.location]);
+            NSString * replace=[NSString stringWithFormat:@"%C", [hanjatohangle gethanja:hanjachar]];
+            [s1 replaceCharactersInRange:hanja withString:replace];
             //[hanjatohangle gethanja:hanjachar];
+            
+        }else if(dday.location!=NSNotFound) {
+            
+            [s1 replaceCharactersInRange:dday withString:@"디 데이"];
             
         }else {
            

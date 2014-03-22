@@ -45,6 +45,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jjr-9S-izW">
+                        <barButtonItem key="backBarButtonItem" title="뒤로가기" id="1pj-r9-4rE"/>
                         <barButtonItem key="rightBarButtonItem" title="스크랩" id="CWF-dQ-DSR"/>
                     </navigationItem>
                     <connections>
@@ -84,17 +85,19 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="qEF-k9-Gyc"/>
+                    <navigationItem key="navigationItem" id="qEF-k9-Gyc">
+                        <barButtonItem key="backBarButtonItem" title="뒤로가기" id="EnF-ac-GIF"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4K-BP-avt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2088" y="-695"/>
         </scene>
-        <!--Navigation Controller - 카테고리 별 보기-->
+        <!--Navigation Controller - 카테고리별 보기-->
         <scene sceneID="yJJ-rJ-WYi">
             <objects>
-                <navigationController definesPresentationContext="YES" id="Srg-Kq-vE5" sceneMemberID="viewController">
+                <navigationController title="카테고리별 보기" definesPresentationContext="YES" id="Srg-Kq-vE5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="카테고리 별 보기" image="category_normal.png" id="L5q-yJ-UQx"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3JZ-Ah-qTd">
                         <autoresizingMask key="autoresizingMask"/>
@@ -249,7 +252,7 @@
             </objects>
             <point key="canvasLocation" x="1956" y="1630"/>
         </scene>
-        <!--Search View Controller - Root View Controller-->
+        <!--Search View Controller - 검색하기-->
         <scene sceneID="3bp-ms-HV6">
             <objects>
                 <tableViewController id="vup-ej-b9Y" customClass="SearchViewController" sceneMemberID="viewController">
@@ -279,7 +282,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Kl3-nV-LO3"/>
+                    <navigationItem key="navigationItem" title="검색하기" id="Kl3-nV-LO3"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="E4R-Me-X7v" id="vUT-eg-elk"/>
                         <outlet property="searchbar" destination="4Lt-Ae-FIJ" id="OI1-oF-TnB"/>
@@ -301,7 +304,7 @@
         <!--Navigation Controller - 검색하기-->
         <scene sceneID="Qcr-6L-i1k">
             <objects>
-                <navigationController definesPresentationContext="YES" id="ywE-oD-Qph" sceneMemberID="viewController">
+                <navigationController title="검색하기" definesPresentationContext="YES" id="ywE-oD-Qph" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="검색하기" image="search_normal.png" id="XKZ-OI-I7Q"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nmy-SQ-bTb">
                         <autoresizingMask key="autoresizingMask"/>
@@ -341,7 +344,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="poL-As-6mo">
-                        <barButtonItem key="backBarButtonItem" title=" backicon.png" id="0zm-Na-pRU"/>
+                        <barButtonItem key="backBarButtonItem" title="뒤로가기" id="0zm-Na-pRU"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JpF-WL-4Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -370,10 +373,10 @@
             </objects>
             <point key="canvasLocation" x="-404" y="40"/>
         </scene>
-        <!--Navigation Controller - 전체기사 보기-->
+        <!--Navigation Controller - 전체기사보기-->
         <scene sceneID="J9C-D1-MZ7">
             <objects>
-                <navigationController id="eig-zB-mLS" sceneMemberID="viewController">
+                <navigationController title="전체기사보기" id="eig-zB-mLS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="전체기사 보기" image="newspaper_normal.png" id="azm-O9-H29" propertyAccessControl="none">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>

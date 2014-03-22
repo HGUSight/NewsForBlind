@@ -23,6 +23,8 @@
     [super viewDidLoad];
      itemlist=[[NSMutableArray alloc]initWithObjects:@"헤드라인",@"정치",@"자치행정",@"국제",@"사회",@"경제",@"문화",@"지역뉴스",@"스포츠,연예", nil];
      num=0;
+    
+   
 
 }
 
@@ -112,22 +114,22 @@
     
 }
 
--(void)viewDidLoad:(BOOL)animated{
-    [super viewDidAppear:animated];
+//-(void)viewDidAppear:(BOOL)animated{
+   // [super viewDidAppear:animated];
     /*
      set focus 
      */
-    NSInteger row = 1;
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    //NSInteger row = 1;
+	//NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     
     //coloring
-    [self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
+    //[self performSelector:@selector(selectTableViewCell:) withObject:indexPath afterDelay:0.1];
     
     // focusing
-    UITableView *tableView = (UITableView *)[self view];
-    categoryCell = [tableView cellForRowAtIndexPath:indexPath];
-    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.categoryCell);
+    //UITableView *tableView = (UITableView *)[self view];
+    //categoryCell = [tableView cellForRowAtIndexPath:indexPath];
+    //UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.categoryCell);
     
-}
+//}
 
 @end

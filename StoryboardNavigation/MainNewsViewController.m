@@ -16,6 +16,7 @@
 
 
 
+
 @interface MainNewsViewController ()
 
 @end
@@ -78,7 +79,7 @@ BOOL rememberFocus = false;
     fliter=[[Fliter alloc]init];
     textbuffer=[[NSMutableString alloc]init];
     htmlparser=[[HtmlParserclass alloc]init];
-   
+    
 }
 
 #pragma mark URLConnection delegate methods

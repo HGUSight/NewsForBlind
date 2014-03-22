@@ -23,6 +23,8 @@
     NSRange wavesymbol2;
     NSRange corporationmark;
     HanjatoHangle * hanjatohangle;
+    NSRange dday;
+    
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;
