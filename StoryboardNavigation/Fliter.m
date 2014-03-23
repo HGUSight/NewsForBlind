@@ -30,6 +30,8 @@
         corporationmark=[s1 rangeOfString:@"(주)"];
         hanja=[s1 rangeOfString:@"[\u4E00-\u9FBF]" options:NSRegularExpressionSearch];
         dday=[s1 rangeOfString:@"D-"];
+        it=[s1 rangeOfString:@"IT"];
+        led=[s1 rangeOfString:@"LED"];
         
         if(teg.location != NSNotFound) {
            
@@ -71,6 +73,14 @@
         }else if(dday.location!=NSNotFound) {
             
             [s1 replaceCharactersInRange:dday withString:@"디 데이"];
+            
+        }else if(it.location!=NSNotFound) {
+            
+            [s1 replaceCharactersInRange:it withString:@"아이티"];
+            
+        }else if(led.location!=NSNotFound) {
+            
+            [s1 replaceCharactersInRange:led withString:@"엘이디"]; 
             
         }else {
            

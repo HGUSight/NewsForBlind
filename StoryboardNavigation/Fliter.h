@@ -24,6 +24,8 @@
     NSRange corporationmark;
     HanjatoHangle * hanjatohangle;
     NSRange dday;
+    NSRange it;
+    NSRange led;
     
 }
 
