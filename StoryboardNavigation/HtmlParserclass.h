@@ -17,6 +17,7 @@
     NSMutableString *str2;
     NSRange text;
     NSRange text1;
+    NSMutableArray *stringobject;
     
     
 }
@@ -26,6 +27,7 @@
 @property (nonatomic)NSRange text;
 @property (nonatomic, retain)NSMutableString *str2;
 @property (nonatomic)NSRange text1;
+@property (nonatomic,retain)NSMutableArray *stringobject;
 
 
 -(NSString*)sethtml:(NSMutableString *)htmllink;

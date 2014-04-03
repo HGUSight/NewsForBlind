@@ -24,6 +24,8 @@
 @synthesize textbuffer;
 @synthesize saveNewArr;
 @synthesize doscrap;
+@synthesize newstext;
+@synthesize stringobject;
 
 - (void)viewDidLoad
 {
@@ -32,6 +34,9 @@
     htmlparsing=[[HtmlParserclass alloc]init];
     newscontroller=[[MainNewsViewController alloc]init];
     news=[[News alloc]init];
+    stringobject=[[NSMutableArray alloc]init];
+    newstext=[[NSMutableString alloc]init];
+
     
     
     self.IbIMessage.text=[passData description];
@@ -40,7 +45,24 @@
     self.Textscroll.text=[htmlparsing sethtml:linkstring];
     self.Textscroll.editable = NO;
     
+    /*
+    for(NSString *line in [newstext componentsSeparatedByString:@"."]) {
+        
+        [stringobject addObject:line];
+        
+    }
     
+    for(int i=0;i<stringobject.count;i++) {
+        CGRect textViewRect=CGRectMake(5.0f, 5.0f, 270.0f, 140.0f);
+        UITextView *textview=[[UITextView alloc]initWithFrame: textViewRect];
+        
+        [textview setFont:[UIFont systemFontOfSize:12.0f]];
+        [textview setText:stringobject[i]];
+        [self.view addSubview:textview];
+        
+    }
+
+    */
     textbuffer=[htmlparsing sethtml:linkstring];
     [doscrap setAction:@selector(doSaveNewsdetail)];
     
@@ -65,7 +87,7 @@
     //기사 제목 폰트 조절
     [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
     [self.IbIMessage setLineBreakMode:UILineBreakModeClip];
-    [self.IbIMessage setNumberOfLines:0];
+    [self.IbIMessage setNumberOfLines:3];
     
     CGSize constraintSize = CGSizeMake(320, 20);
     CGSize newSize = [self.IbIMessage.text sizeWithFont:[UIFont systemFontOfSize:appDelegate.fontS] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeClip];

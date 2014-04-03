@@ -16,11 +16,14 @@ int count;
 @implementation HtmlParserclass
 @synthesize str,newstext, str1, str2;
 @synthesize text, text1;
+@synthesize stringobject;
 
 -(NSString*) sethtml:(NSMutableString *)htmllink {
     
     count=0;
     fliter=[[Fliter alloc]init];
+    stringobject=[[NSMutableArray alloc]init];
+    newstext=[[NSMutableString alloc]init];
     
     NSError *error = nil;
    
@@ -74,7 +77,8 @@ int count;
         
     }
     
-    NSMutableString *newstext =[NSMutableString stringWithString:[fliter settext:str]];
+    newstext =[NSMutableString stringWithString:[fliter settext:str]];
+    
     
     return newstext;
 

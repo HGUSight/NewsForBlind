@@ -20,6 +20,8 @@
     MainNewsViewController *newscontroller;
     NSMutableArray * saveNewsArr;
     News *news;
+    NSMutableString *newstext;
+    NSMutableArray *stringobject;
     
    
 }
@@ -32,7 +34,8 @@
 @property (nonatomic, retain) NSString *textbuffer;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doscrap;
 @property (strong, nonatomic) NSMutableArray *saveNewArr;
-
+@property (strong, nonatomic) NSMutableString *newstext;
+@property (strong, nonatomic) NSMutableArray *stringobject;
 
 
 @end

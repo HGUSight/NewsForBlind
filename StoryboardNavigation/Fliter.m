@@ -64,8 +64,8 @@
         }else if(hanja.location!= NSNotFound) {
             
             int hanjachar=[s1 characterAtIndex:hanja.location];
-            NSLog(@"char: %d",[s1 characterAtIndex:hanja.location]);
-            NSLog(@"char: %X",[s1 characterAtIndex:hanja.location]);
+           // NSLog(@"char: %d",[s1 characterAtIndex:hanja.location]);
+            //NSLog(@"char: %X",[s1 characterAtIndex:hanja.location]);
             NSString * replace=[NSString stringWithFormat:@"%C", [hanjatohangle gethanja:hanjachar]];
             [s1 replaceCharactersInRange:hanja withString:replace];
             //[hanjatohangle gethanja:hanjachar];
