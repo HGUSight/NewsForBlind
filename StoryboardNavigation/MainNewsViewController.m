@@ -41,9 +41,13 @@
 
 BOOL moveBack;
 BOOL rememberFocus = false;
-
-- (void)viewDidLoad {
+-(void)viewWillAppear:(BOOL)animated{
+    if(![checkString  isEqual: @"category"]) {
+         rememberFocus = false;
+    }
     
+}
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     controlFlag = 0;
@@ -51,7 +55,6 @@ BOOL rememberFocus = false;
     
     if(![checkString  isEqual: @"category"]) {
          urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
-       
         moveBack = false;
         
     }else{
@@ -262,6 +265,7 @@ BOOL rememberFocus = false;
      set focus
     */
     NSInteger row = 0;
+    
     //remember
     if(rememberFocus == true)
     row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
@@ -292,6 +296,9 @@ BOOL rememberFocus = false;
     if(moveBack==true) {
         [self.navigationController popToRootViewControllerAnimated:animated];
         NSLog(@"move to root");
+    }
+    if(![checkString  isEqual: @"category"]){
+        rememberFocus = false;
     }
     
 }

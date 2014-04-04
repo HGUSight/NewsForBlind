@@ -58,7 +58,20 @@
     cell.textLabel.text=[itemlist objectAtIndex:indexPath.row];
     return cell;
 }
-
+- (void)selectTableViewCell:(NSIndexPath*)indexPath
+{
+	@try {
+		[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        NSManagedObjectModel *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+	}
+	@catch (NSException * e) {
+		
+	}
+	@finally {
+        
+	}
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -113,13 +126,13 @@
     }
     
 }
-/*
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
  
      //set focus 
  
-    NSInteger row = 1;
+    NSInteger row = 0;
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     
     //coloring
@@ -131,5 +144,5 @@
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.categoryCell);
     
 }
-*/
+
 @end
