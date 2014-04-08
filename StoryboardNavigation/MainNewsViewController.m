@@ -40,13 +40,16 @@
 @synthesize controlFlag;
 
 BOOL moveBack;
+int tabState;
 BOOL rememberFocus = false;
+/*
 -(void)viewWillAppear:(BOOL)animated{
-    if(![checkString  isEqual: @"category"]) {
-         rememberFocus = false;
-    }
+  //  if(![checkString  isEqual: @"category"]) {
+   //      rememberFocus = false;
+   // }
     
 }
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -256,10 +259,19 @@ BOOL rememberFocus = false;
         
 	}
 }
+-(void)viewWillAppear:(BOOL)animated{
+    checkString =[check description];
+    
+    if((tabState == 1 && [checkString  isEqual: @"category"] )|| (tabState == 2 && ![checkString  isEqual: @"category"] ))
+        rememberFocus =false;
+    
+    if([checkString  isEqual: @"category"]){
+        tabState = 2;
+    } else
+        tabState = 1;
+}
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-    checkString =[check description];
   
     /*
      set focus
@@ -297,9 +309,9 @@ BOOL rememberFocus = false;
         [self.navigationController popToRootViewControllerAnimated:animated];
         NSLog(@"move to root");
     }
-    if(![checkString  isEqual: @"category"]){
-        rememberFocus = false;
-    }
+   // if(![checkString  isEqual: @"category"]){
+   //    rememberFocus = false;
+   // }
     
 }
 -(void)viewDidDisappear:(BOOL)animated{
