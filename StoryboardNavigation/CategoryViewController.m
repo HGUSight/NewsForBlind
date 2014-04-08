@@ -58,6 +58,19 @@
     cell.textLabel.text=[itemlist objectAtIndex:indexPath.row];
     return cell;
 }
+//
+- (void)tableView:(UITableView *)TableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(self.searchDisplayController.isActive) {
+        [self performSegueWithIdentifier:@"TableIdentifier" sender:self];
+    }
+    
+	[[NSUserDefaults standardUserDefaults] setInteger:indexPath.row forKey:@"LastIndex"];
+	
+	[self selectTableViewCell:indexPath];
+	
+}
+//
 - (void)selectTableViewCell:(NSIndexPath*)indexPath
 {
 	@try {

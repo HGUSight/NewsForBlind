@@ -41,9 +41,9 @@
              // NSLog(@"한자를 한글로:%C",returnvalue);
               
               return returnvalue;
+              
           }
       }
       
 }
-
 @end
