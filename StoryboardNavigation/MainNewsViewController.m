@@ -42,14 +42,7 @@
 BOOL moveBack;
 int tabState;
 BOOL rememberFocus = false;
-/*
--(void)viewWillAppear:(BOOL)animated{
-  //  if(![checkString  isEqual: @"category"]) {
-   //      rememberFocus = false;
-   // }
-    
-}
- */
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -297,7 +290,6 @@ BOOL rememberFocus = false;
         
     }else{
         moveBack = true;
-        rememberFocus = false;
     }
     
 }
@@ -309,9 +301,6 @@ BOOL rememberFocus = false;
         [self.navigationController popToRootViewControllerAnimated:animated];
         NSLog(@"move to root");
     }
-   // if(![checkString  isEqual: @"category"]){
-   //    rememberFocus = false;
-   // }
     
 }
 -(void)viewDidDisappear:(BOOL)animated{
