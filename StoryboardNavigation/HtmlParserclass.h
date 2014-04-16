@@ -18,6 +18,11 @@
     NSRange text;
     NSRange text1;
     NSMutableArray *stringobject;
+    NSMutableString *newsdate;
+    NSMutableString *newswriter;
+    NSMutableString *photourl;
+    
+
     
     
 }
@@ -26,6 +31,9 @@
 @property (nonatomic, retain)NSMutableString *str1;
 @property (nonatomic)NSRange text;
 @property (nonatomic, retain)NSMutableString *str2;
+@property (nonatomic, retain)NSMutableString *newsdate;
+@property (nonatomic, retain)NSMutableString *newswriter;
+@property (nonatomic, retain)NSMutableString *photourl;
 @property (nonatomic)NSRange text1;
 @property (nonatomic,retain)NSMutableArray *stringobject;
 

@@ -37,6 +37,13 @@
     stringobject=[[NSMutableArray alloc]init];
     newstext=[[NSMutableString alloc]init];
 
+    /*
+    CGRect ViewRect=CGRectMake(10.0f, 10.0f, 270.0f, 140.0f);
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:ViewRect];
+    [self.view addSubview:webView];
+     */
+
+    
     
     
     self.IbIMessage.text=[passData description];

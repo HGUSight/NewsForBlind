@@ -14,7 +14,7 @@
 int count;
 
 @implementation HtmlParserclass
-@synthesize str,newstext, str1, str2;
+@synthesize str,newstext, str1, str2,newsdate,newswriter,photourl;
 @synthesize text, text1;
 @synthesize stringobject;
 
@@ -52,8 +52,19 @@ int count;
                 str2 =[NSMutableString stringWithString:[divNode rawContents]];
             }
             
-        }
+        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"title_days"]) {
+            
+                newsdate =[NSMutableString stringWithString:[divNode rawContents]];
+                newsdate =[NSMutableString stringWithString:[fliter settext:newsdate]];
 
+                 NSLog(@"newsdate=%@",newsdate);
+        
+        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"writer"]) {
+            
+            newswriter =[NSMutableString stringWithString:[divNode rawContents]];
+            newswriter =[NSMutableString stringWithString:[fliter settext:newswriter]];
+            NSLog(@"newswriter=%@",newswriter);
+        }
     }
     
     for(int i = 0; i < [str length]; i++) {
@@ -78,7 +89,11 @@ int count;
     }
     
     newstext =[NSMutableString stringWithString:[fliter settext:str]];
+    [newstext appendString:newsdate];
+    [newstext appendString:@"\n"];
+    [newstext appendString:newswriter];
     
+
     
     return newstext;
 
