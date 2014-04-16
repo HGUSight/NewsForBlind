@@ -2,7 +2,7 @@
 //  ViewController.m
 //  StoryboardNavigation
 //
-//  Created by 김사랑 on 13. 12. 27..
+//  Created by 김사랑 on 13. 12. 27.628.
 //  Copyright (c) 2013년 김사랑. All rights reserved.
 //
 
@@ -26,6 +26,7 @@
 @synthesize doscrap;
 @synthesize newstext;
 @synthesize stringobject;
+@synthesize newsdetail,photourl;
 
 - (void)viewDidLoad
 {
@@ -49,6 +50,8 @@
     self.IbIMessage.text=[passData description];
 
     NSMutableString *linkstring=[NSMutableString stringWithString:[passData2 description]];
+    //newsdetail =[htmlparsing sethtml:linkstring];
+    //newsdetail = [newsdetail substringFromIndex:64];
     self.Textscroll.text=[htmlparsing sethtml:linkstring];
     self.Textscroll.editable = NO;
     

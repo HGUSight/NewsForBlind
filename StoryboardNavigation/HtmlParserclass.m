@@ -14,6 +14,7 @@
 int count;
 
 @implementation HtmlParserclass
+@synthesize photo;
 @synthesize str,newstext, str1, str2,newsdate,newswriter,photourl;
 @synthesize text, text1;
 @synthesize stringobject;
@@ -64,6 +65,17 @@ int count;
             newswriter =[NSMutableString stringWithString:[divNode rawContents]];
             newswriter =[NSMutableString stringWithString:[fliter settext:newswriter]];
             NSLog(@"newswriter=%@",newswriter);
+            
+        }else if([[divNode getAttributeNamed:@"id"] isEqualToString:@"photoimg"]) {
+            
+            if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
+
+                photourl =[NSMutableString stringWithString:[divNode rawContents]];
+                photo = [photourl substringFromIndex:28];
+                photo = [photo substringToIndex:64];
+                NSLog(@"photo=%@",photo);
+            }
+            
         }
     }
     
@@ -92,7 +104,6 @@ int count;
     [newstext appendString:newsdate];
     [newstext appendString:@"\n"];
     [newstext appendString:newswriter];
-    
 
     
     return newstext;

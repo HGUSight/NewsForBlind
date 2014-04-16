@@ -22,7 +22,8 @@
     News *news;
     NSMutableString *newstext;
     NSMutableArray *stringobject;
-    
+    NSString * newsdetail;
+    NSString * photourl;
    
 }
 
@@ -36,6 +37,8 @@
 @property (strong, nonatomic) NSMutableArray *saveNewArr;
 @property (strong, nonatomic) NSMutableString *newstext;
 @property (strong, nonatomic) NSMutableArray *stringobject;
+@property (strong, nonatomic) NSString * newsdetail;
+@property (strong, nonatomic) NSString * photourl;
 
 
 @end

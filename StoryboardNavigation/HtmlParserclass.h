@@ -21,10 +21,8 @@
     NSMutableString *newsdate;
     NSMutableString *newswriter;
     NSMutableString *photourl;
-    
+    NSString * photo;
 
-    
-    
 }
 @property (nonatomic, retain)NSMutableString *str;
 @property (nonatomic, retain)NSMutableString *newstext;
@@ -36,6 +34,7 @@
 @property (nonatomic, retain)NSMutableString *photourl;
 @property (nonatomic)NSRange text1;
 @property (nonatomic,retain)NSMutableArray *stringobject;
+@property (nonatomic, retain)NSString *photo;
 
 
 -(NSString*)sethtml:(NSMutableString *)htmllink;
