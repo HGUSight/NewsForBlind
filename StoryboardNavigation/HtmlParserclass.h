@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class Fliter;
+@class NewsArticleViewController;
 
 @interface HtmlParserclass : NSObject{
     Fliter *fliter;
@@ -22,6 +23,7 @@
     NSMutableString *newswriter;
     NSMutableString *photourl;
     NSString * photo;
+    NewsArticleViewController *articleController;
 
 }
 @property (nonatomic, retain)NSMutableString *str;
@@ -38,6 +40,7 @@
 
 
 -(NSString*)sethtml:(NSMutableString *)htmllink;
+-(NSString*)getphotourl;
 //-(NSMutableString *)getNewsarticle;
 
 

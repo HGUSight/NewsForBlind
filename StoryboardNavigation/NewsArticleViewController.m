@@ -20,13 +20,14 @@
 @end
 
 @implementation NewsArticleViewController
-@synthesize passData,passData1,passData2;
+@synthesize passData,passData1,passData2,imagedelete,photourl;
 @synthesize textbuffer;
 @synthesize saveNewArr;
 @synthesize doscrap;
 @synthesize newstext;
 @synthesize stringobject;
-@synthesize newsdetail,photourl;
+@synthesize webview;
+@synthesize photostring;
 
 - (void)viewDidLoad
 {
@@ -38,12 +39,28 @@
     stringobject=[[NSMutableArray alloc]init];
     newstext=[[NSMutableString alloc]init];
 
-    /*
-    CGRect ViewRect=CGRectMake(10.0f, 10.0f, 270.0f, 140.0f);
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:ViewRect];
-    [self.view addSubview:webView];
-     */
-
+    
+    CGRect ViewRect=CGRectMake(50.0f, 30.0f, 200.0f, 100.0f);
+    webview = [[UIWebView alloc] initWithFrame:ViewRect];
+    [self.view addSubview:webview];
+    
+    UIScrollView *scrollView = nil;
+    if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
+        scrollView = webview.scrollView;
+    } else { //iOS 4-
+        for(UIView *view in webview.subviews){
+            if([view isKindOfClass:[UIScrollView class] ]){
+                scrollView = (UIScrollView *) view;
+                break;
+            }
+        }
+    }
+    scrollView.scrollEnabled = NO;
+    scrollView.bounces = NO;
+    scrollView.backgroundColor=[UIColor clearColor];
+    
+   
+   
     
     
     
@@ -52,8 +69,8 @@
     NSMutableString *linkstring=[NSMutableString stringWithString:[passData2 description]];
     //newsdetail =[htmlparsing sethtml:linkstring];
     //newsdetail = [newsdetail substringFromIndex:64];
-    self.Textscroll.text=[htmlparsing sethtml:linkstring];
-    self.Textscroll.editable = NO;
+    //self.Textscroll.text=[htmlparsing sethtml:linkstring];
+   // self.Textscroll.editable = NO;
     
     /*
     for(NSString *line in [newstext componentsSeparatedByString:@"."]) {
@@ -61,18 +78,20 @@
         [stringobject addObject:line];
         
     }
-    
-    for(int i=0;i<stringobject.count;i++) {
-        CGRect textViewRect=CGRectMake(5.0f, 5.0f, 270.0f, 140.0f);
+    */
+    //for(int i=0;i<stringobject.count;i++) {
+        CGRect textViewRect=CGRectMake(20.0f, 100.0f, 280.0f, 330.0f);
         UITextView *textview=[[UITextView alloc]initWithFrame: textViewRect];
         
         [textview setFont:[UIFont systemFontOfSize:12.0f]];
-        [textview setText:stringobject[i]];
+        [textview setText:[htmlparsing sethtml:linkstring]];
         [self.view addSubview:textview];
+        textview.editable = NO;
+    
         
-    }
+    //}
 
-    */
+    
     textbuffer=[htmlparsing sethtml:linkstring];
     [doscrap setAction:@selector(doSaveNewsdetail)];
     
@@ -119,6 +138,26 @@
 
    
 	// Do any additional setup after loading the view, typically from a nib.
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.querySelector('meta[name=viewport]').setAttribute('content', 'width=%d;', false); ", (int)webView.frame.size.width]];
+    NSLog(@"ghdkgshlghsaklghslghkghsdkl");
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+    
+    NSLog(@"[imagedelete description]=%@",[imagedelete description]);
+    
+    //if ([[imagedelete description] isEqual:@"On"]) {
+        photostring = [htmlparsing getphotourl];
+        NSURL *myURL = [NSURL URLWithString:photostring];
+        NSLog(@"[photourl description]=%@",photostring);
+        NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
+        [webview loadRequest:myURLReq];
+        
+    //}
+   
 }
 
 - (void)didReceiveMemoryWarning

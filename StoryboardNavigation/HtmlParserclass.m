@@ -10,6 +10,7 @@
 #import "HTMLNode.h"
 #import "HTMLParser.h"
 #import "Fliter.h"
+#import "NewsArticleViewController.h"
 
 int count;
 
@@ -25,6 +26,7 @@ int count;
     fliter=[[Fliter alloc]init];
     stringobject=[[NSMutableArray alloc]init];
     newstext=[[NSMutableString alloc]init];
+    articleController=[[NewsArticleViewController alloc]init];
     
     NSError *error = nil;
    
@@ -71,9 +73,12 @@ int count;
             if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
 
                 photourl =[NSMutableString stringWithString:[divNode rawContents]];
-                photo = [photourl substringFromIndex:28];
-                photo = [photo substringToIndex:64];
+                photo = [photourl substringFromIndex:29];
+                photo = [photo substringToIndex:62];
                 NSLog(@"photo=%@",photo);
+                articleController.photourl=photo;
+                NSLog(@"photo=%@",[articleController.photourl description]);
+                
             }
             
         }
@@ -109,7 +114,11 @@ int count;
     return newstext;
 
 }
-
+-(NSString*)getphotourl {
+    
+    return photo;
+    
+}
 
 
 @end

@@ -22,8 +22,8 @@
     News *news;
     NSMutableString *newstext;
     NSMutableArray *stringobject;
-    NSString * newsdetail;
-    NSString * photourl;
+    UIWebView *webview;
+    NSString *potostring;
    
 }
 
@@ -37,8 +37,12 @@
 @property (strong, nonatomic) NSMutableArray *saveNewArr;
 @property (strong, nonatomic) NSMutableString *newstext;
 @property (strong, nonatomic) NSMutableArray *stringobject;
-@property (strong, nonatomic) NSString * newsdetail;
-@property (strong, nonatomic) NSString * photourl;
+@property (strong, nonatomic )id imagedelete;
+@property (strong, nonatomic )id photourl;
+@property (strong, nonatomic )UIWebView *webview;
+@property (strong, nonatomic) NSString * photostring;
+
+
 
 
 @end

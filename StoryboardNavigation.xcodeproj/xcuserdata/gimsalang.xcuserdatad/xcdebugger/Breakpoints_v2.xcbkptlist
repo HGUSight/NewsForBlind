@@ -82,11 +82,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StoryboardNavigation/HtmlParserclass.m"
-            timestampString = "414572152.062334"
+            timestampString = "419522244.182388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "@implementation HtmlParserclass"
             landmarkType = "3">
          </BreakpointContent>
