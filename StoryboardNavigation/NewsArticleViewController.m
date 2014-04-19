@@ -38,80 +38,73 @@
     news=[[News alloc]init];
     stringobject=[[NSMutableArray alloc]init];
     newstext=[[NSMutableString alloc]init];
+    
+    linkstring=[NSMutableString stringWithString:[passData2 description]];
+    self.IbIMessage.text=[passData description];
+    
+    
+    newsdetail=[htmlparsing sethtml:linkstring];
+    photostring = [htmlparsing getphotourl];
 
+}
+-(void)viewWillAppear:(BOOL)animated{
     
-    CGRect ViewRect=CGRectMake(50.0f, 30.0f, 200.0f, 100.0f);
-    webview = [[UIWebView alloc] initWithFrame:ViewRect];
-    [self.view addSubview:webview];
     
-    UIScrollView *scrollView = nil;
-    if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
-        scrollView = webview.scrollView;
-    } else { //iOS 4-
-        for(UIView *view in webview.subviews){
-            if([view isKindOfClass:[UIScrollView class] ]){
-                scrollView = (UIScrollView *) view;
-                break;
+       NSLog(@"[photourl description]=%@",photostring);
+    
+    if (photostring!=NULL) {
+        
+        CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 300.0f);
+        webview = [[UIWebView alloc] initWithFrame:ViewRect];
+        [self.view addSubview:webview];
+        
+        UIScrollView *scrollView = nil;
+        if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
+            scrollView = webview.scrollView;
+        } else { //iOS 4-
+            for(UIView *view in webview.subviews){
+                if([view isKindOfClass:[UIScrollView class] ]){
+                    scrollView = (UIScrollView *) view;
+                    break;
+                }
             }
         }
-    }
-    scrollView.scrollEnabled = NO;
-    scrollView.bounces = NO;
-    scrollView.backgroundColor=[UIColor clearColor];
-    
-   
-   
-    
-    
-    
-    self.IbIMessage.text=[passData description];
+        scrollView.scrollEnabled = NO;
+        scrollView.bounces = NO;
+        scrollView.backgroundColor=[UIColor clearColor];
+        
+        NSURL *myURL = [NSURL URLWithString:photostring];
+        NSLog(@"[photourl description]=%@",photostring);
+        NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
+        [webview loadRequest:myURLReq];
+        
+        
+        CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 280.0f);
+        imagetextview=[[UITextView alloc]initWithFrame: textViewRect];
+        
+        [imagetextview setFont:[UIFont systemFontOfSize:12.0f]];
+        [imagetextview setText:newsdetail];
+        [self.view addSubview:imagetextview];
+        imagetextview.editable = NO;
 
-    NSMutableString *linkstring=[NSMutableString stringWithString:[passData2 description]];
-    //newsdetail =[htmlparsing sethtml:linkstring];
-    //newsdetail = [newsdetail substringFromIndex:64];
-    //self.Textscroll.text=[htmlparsing sethtml:linkstring];
-   // self.Textscroll.editable = NO;
-    
-    /*
-    for(NSString *line in [newstext componentsSeparatedByString:@"."]) {
+       
+    }else {
         
-        [stringobject addObject:line];
-        
-    }
-    */
-    //for(int i=0;i<stringobject.count;i++) {
-        CGRect textViewRect=CGRectMake(20.0f, 100.0f, 280.0f, 330.0f);
-        UITextView *textview=[[UITextView alloc]initWithFrame: textViewRect];
+        CGRect textViewRect=CGRectMake(20.0f, 120.0f, 280.0f, 370.0f);
+        textview=[[UITextView alloc]initWithFrame: textViewRect];
         
         [textview setFont:[UIFont systemFontOfSize:12.0f]];
-        [textview setText:[htmlparsing sethtml:linkstring]];
+        [textview setText:newsdetail];
         [self.view addSubview:textview];
         textview.editable = NO;
-    
         
-    //}
-
+    }
     
-    textbuffer=[htmlparsing sethtml:linkstring];
-    [doscrap setAction:@selector(doSaveNewsdetail)];
-    
-    
-    
-    
-    
-    
-    //라벨 사이즈가 조정되도록
-    //self.IbIMessage.adjustsFontSizeToFitWidth = YES;
-    //[self.IbIMessage sizeToFit];
-    //self.IbIMessage.numberOfLines = 0;
-    
-
-    
-    //AppDelegate 사용하도록 설정
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //기사 내용 폰트 조절
-    [self.Textscroll setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
+    [textview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
+    [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     
     //기사 제목 폰트 조절
     [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
@@ -123,40 +116,7 @@
     CGFloat labelHeight = MAX(newSize.height, 20);
     [self.IbIMessage setFrame:CGRectMake(self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y, self.IbIMessage.frame.size.width, labelHeight)];
     [self.IbIMessage setText:self.IbIMessage.text];
-
     
-    /*
-    CGSize labelSize = [self.IbIMessage.text sizeWithFont:self.IbIMessage.font
-                                        constrainedToSize:self.IbIMessage.frame.size
-                                            lineBreakMode:self.IbIMessage.lineBreakMode];
-    self.IbIMessage.frame = CGRectMake(
-                                       self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y,
-                                       self.IbIMessage.frame.size.width, labelSize.height);
-    */
-   // [htmlparsing sethtml:linkstring];
-    //NSLog(@"linkstring:%@",linkstring);
-
-   
-	// Do any additional setup after loading the view, typically from a nib.
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.querySelector('meta[name=viewport]').setAttribute('content', 'width=%d;', false); ", (int)webView.frame.size.width]];
-    NSLog(@"ghdkgshlghsaklghslghkghsdkl");
-    
-}
--(void)viewWillAppear:(BOOL)animated{
-    
-    NSLog(@"[imagedelete description]=%@",[imagedelete description]);
-    
-    //if ([[imagedelete description] isEqual:@"On"]) {
-        photostring = [htmlparsing getphotourl];
-        NSURL *myURL = [NSURL URLWithString:photostring];
-        NSLog(@"[photourl description]=%@",photostring);
-        NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
-        [webview loadRequest:myURLReq];
-        
-    //}
    
 }
 

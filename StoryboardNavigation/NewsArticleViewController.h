@@ -24,7 +24,11 @@
     NSMutableArray *stringobject;
     UIWebView *webview;
     NSString *potostring;
-   
+    UITextView *imagetextview;
+    UITextView *textview;
+    NSMutableString * linkstring;
+    NSString *newsdetail;
+
 }
 
 @property (retain, nonatomic) IBOutlet UITextView *Textscroll;
