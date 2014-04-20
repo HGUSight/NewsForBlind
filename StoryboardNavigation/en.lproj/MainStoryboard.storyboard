@@ -32,6 +32,10 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jsE-6g-Qwp">
+                                <rect key="frame" x="20" y="105" width="287" height="318"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -45,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="IbIMessage" destination="pdb-sY-ygy" id="GTo-tJ-kcc"/>
+                        <outlet property="Mainscrollview" destination="jsE-6g-Qwp" id="gxh-g1-e7g"/>
                         <outlet property="doscrap" destination="CWF-dQ-DSR" id="FGV-O7-oEa"/>
                     </connections>
                 </viewController>

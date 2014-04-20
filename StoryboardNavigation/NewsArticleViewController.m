@@ -54,9 +54,8 @@
     
     if (photostring!=NULL) {
         
-        CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 300.0f);
+        CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 400.0f);
         webview = [[UIWebView alloc] initWithFrame:ViewRect];
-        [self.view addSubview:webview];
         
         UIScrollView *scrollView = nil;
         if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
@@ -77,6 +76,9 @@
         NSLog(@"[photourl description]=%@",photostring);
         NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
         [webview loadRequest:myURLReq];
+        webview.scalesPageToFit = YES;
+        [self.view addSubview:webview];
+
         
         
         CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 280.0f);

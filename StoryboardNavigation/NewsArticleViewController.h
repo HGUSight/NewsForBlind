@@ -31,7 +31,8 @@
 
 }
 
-@property (retain, nonatomic) IBOutlet UITextView *Textscroll;
+@property (retain, nonatomic) IBOutlet UIScrollView *Mainscrollview;
+
 @property (strong, nonatomic) IBOutlet UILabel *IbIMessage;
 @property (strong, nonatomic)id passData;
 @property (strong, nonatomic)id passData1;
