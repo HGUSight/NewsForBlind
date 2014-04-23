@@ -44,6 +44,8 @@
 @property (strong, nonatomic) NSMutableArray *stringobject;
 @property (strong, nonatomic )id imagedelete;
 @property (strong, nonatomic )id photourl;
+
+@property (strong, nonatomic )UIScrollView *mainScrollView;
 @property (strong, nonatomic )UIWebView *webview;
 @property (strong, nonatomic) NSString * photostring;
 

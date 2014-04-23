@@ -28,6 +28,7 @@
 @synthesize stringobject;
 @synthesize webview;
 @synthesize photostring;
+@synthesize mainScrollView;
 
 - (void)viewDidLoad
 {
@@ -54,10 +55,13 @@
     
     if (photostring!=NULL) {
         
-        CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 400.0f);
+        CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 100.0f);
         webview = [[UIWebView alloc] initWithFrame:ViewRect];
+        webview.scrollView.scrollEnabled = NO;
+        webview.scrollView.bounces = NO;
         
-        UIScrollView *scrollView = nil;
+        
+        /*UIScrollView *scrollView = nil;
         if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
             scrollView = webview.scrollView;
         } else { //iOS 4-
@@ -71,23 +75,42 @@
         scrollView.scrollEnabled = NO;
         scrollView.bounces = NO;
         scrollView.backgroundColor=[UIColor clearColor];
+        */
         
         NSURL *myURL = [NSURL URLWithString:photostring];
         NSLog(@"[photourl description]=%@",photostring);
         NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
         [webview loadRequest:myURLReq];
-        webview.scalesPageToFit = YES;
-        [self.view addSubview:webview];
+        [webview setScalesPageToFit:YES];
+        //[self.view addSubview:webview];
 
         
         
-        CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 280.0f);
+        CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 200.0f);
         imagetextview=[[UITextView alloc]initWithFrame: textViewRect];
         
         [imagetextview setFont:[UIFont systemFontOfSize:12.0f]];
         [imagetextview setText:newsdetail];
-        [self.view addSubview:imagetextview];
+        //[self.view addSubview:imagetextview];
         imagetextview.editable = NO;
+        imagetextview.scrollEnabled = NO;
+        
+        UIScrollView *mainScrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(20.0f,20.0f,400.0f,400.0f)];
+        [mainScrollView setBackgroundColor:[UIColor blueColor]];
+        [mainScrollView setCanCancelContentTouches:NO];
+        mainScrollView.clipsToBounds = NO;
+        //mainScrollView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
+        
+        [mainScrollView addSubview:webview];
+        [mainScrollView addSubview:imagetextview];
+        
+        [mainScrollView setScrollEnabled:YES];
+        
+        
+        
+        [self.view addSubview:mainScrollView];
+
+        
 
        
     }else {
@@ -141,12 +164,25 @@
     [saveNewArr addObject:news];
     news = [[News alloc]init];
     NSLog(@"SAVE TITLE:%@",news.title);
-
-    
-    
     
 }
 
+
+ - (void)webViewDidFinishLoad:(UIWebView *)aWebView
+{
+    NSString *webHeight = [webview stringByEvaluatingJavaScriptFromString:@"document.height;"];
+    NSLog(@"WebView Height %@", webHeight);
+    
+    CGRect frame = webview.frame;
+    frame.size.height = 1;
+    webview.frame = frame;
+    CGSize fittingSize = [webview sizeThatFits:CGSizeZero];
+    frame.size = fittingSize;
+    webview.frame = frame;
+ 
+    NSLog(@"size: %f, %f", fittingSize.width, fittingSize.height);
+    mainScrollView.contentSize = webview.bounds.size;
+}
 
 
 @end
