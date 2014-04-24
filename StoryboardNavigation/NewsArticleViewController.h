@@ -28,6 +28,7 @@
     UITextView *textview;
     NSMutableString * linkstring;
     NSString *newsdetail;
+    UIScrollView *mainScrollView;
 
 }
 

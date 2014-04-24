@@ -11,6 +11,7 @@
 @class News;
 @class Fliter;
 @class HtmlParserclass;
+@class SetWrittingTime;
 
 typedef enum {
 	etNone = 0,
@@ -34,6 +35,7 @@ typedef enum {
     HtmlParserclass *htmlparser;
     UITableViewCell *cell;
     int controlFlag;
+    SetWrittingTime * writetimeclass;
        
 }
 

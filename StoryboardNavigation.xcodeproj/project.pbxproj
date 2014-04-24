@@ -32,6 +32,7 @@
 		46A06F6B18A8EA69008A3777 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A06F6818A8EA69008A3777 /* HTMLNode.m */; };
 		46A06F6C18A8EA69008A3777 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A06F6A18A8EA69008A3777 /* HTMLParser.m */; };
 		46A06F6E18A8EAA0008A3777 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A06F6D18A8EAA0008A3777 /* libxml2.dylib */; };
+		46D9830419092A60008995FE /* SetWrittingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D9830319092A60008995FE /* SetWrittingTime.m */; };
 		885D048518B8B56900000F5A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 885D048418B8B56900000F5A /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		46A06F6918A8EA69008A3777 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		46A06F6A18A8EA69008A3777 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		46A06F6D18A8EAA0008A3777 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		46D9830219092A60008995FE /* SetWrittingTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetWrittingTime.h; sourceTree = "<group>"; };
+		46D9830319092A60008995FE /* SetWrittingTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetWrittingTime.m; sourceTree = "<group>"; };
 		885D048318B8B56900000F5A /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		885D048418B8B56900000F5A /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +164,8 @@
 				467F2AB3186EBF6B0074AFB3 /* News.m */,
 				46931814186D9A4C00005860 /* NewsArticleViewController.h */,
 				46931815186D9A4C00005860 /* NewsArticleViewController.m */,
+				46D9830219092A60008995FE /* SetWrittingTime.h */,
+				46D9830319092A60008995FE /* SetWrittingTime.m */,
 				468B41C018A340E10036E113 /* HtmlParserclass.h */,
 				468B41C118A340E10036E113 /* HtmlParserclass.m */,
 				885D048318B8B56900000F5A /* SettingViewController.h */,
@@ -267,6 +272,7 @@
 				46A06F6C18A8EA69008A3777 /* HTMLParser.m in Sources */,
 				468589A618DD53A400E1418B /* MakeHanjaHangleMap.m in Sources */,
 				46931806186D9A4C00005860 /* main.m in Sources */,
+				46D9830419092A60008995FE /* SetWrittingTime.m in Sources */,
 				4693180A186D9A4C00005860 /* AppDelegate.m in Sources */,
 				4684981518952503001EE057 /* CategoryViewController.m in Sources */,
 				462CA22618ECFA8B00289DD2 /* SearchListViewController.m in Sources */,

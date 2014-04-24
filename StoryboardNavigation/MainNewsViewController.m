@@ -13,9 +13,7 @@
 #import "News.h"
 #import "Fliter.h"
 #import "HtmlParserclass.h"
-
-
-
+#import "SetWrittingTime.h"
 
 @interface MainNewsViewController ()
 
@@ -78,6 +76,7 @@ BOOL rememberFocus = false;
     fliter=[[Fliter alloc]init];
     textbuffer=[[NSMutableString alloc]init];
     htmlparser=[[HtmlParserclass alloc]init];
+    writetimeclass=[[SetWrittingTime alloc]init];
     
 }
 
@@ -145,7 +144,10 @@ BOOL rememberFocus = false;
         
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-        aNews.pubData=[NSMutableString stringWithString:xmlValue];
+        NSLog(@"datastring=%@",[NSMutableString stringWithString:xmlValue]);
+        NSMutableString *temp=[NSMutableString stringWithString:xmlValue];
+        NSString * temp1=[NSString stringWithString:temp];
+        aNews.pubData=[NSMutableString stringWithString:[writetimeclass setTime:temp1]];
         
 	} else if ([elementName isEqualToString:@"item"]) {
 		[xmlParseData addObject:[NSDictionary dictionaryWithDictionary:currectItem]];

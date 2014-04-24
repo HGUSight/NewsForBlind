@@ -12,6 +12,9 @@
     
     NSString *searchtext;
 }
+- (IBAction) textFieldDoneEditing:(id) sender;
+- (IBAction) Keyboardhidding:(id) sender;
+@property (retain, nonatomic) IBOutlet UIButton *cancel;
 
 @property (retain, nonatomic) IBOutlet UITextField *textfield;
 
