@@ -28,11 +28,11 @@
     UITextView *textview;
     NSMutableString * linkstring;
     NSString *newsdetail;
-    UIScrollView *mainScrollView;
+    UIScrollView * mainScrollView;
 
 }
 
-@property (retain, nonatomic) IBOutlet UIScrollView *Mainscrollview;
+
 
 @property (strong, nonatomic) IBOutlet UILabel *IbIMessage;
 @property (strong, nonatomic)id passData;
@@ -45,7 +45,6 @@
 @property (strong, nonatomic) NSMutableArray *stringobject;
 @property (strong, nonatomic )id imagedelete;
 @property (strong, nonatomic )id photourl;
-
 @property (strong, nonatomic )UIScrollView *mainScrollView;
 @property (strong, nonatomic )UIWebView *webview;
 @property (strong, nonatomic) NSString * photostring;

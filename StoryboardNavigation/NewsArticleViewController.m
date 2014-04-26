@@ -47,14 +47,13 @@
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
     
+    mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,540)];
+    mainScrollView.showsVerticalScrollIndicator=YES;
+    mainScrollView.scrollEnabled=YES;
+    mainScrollView.userInteractionEnabled=YES;
+    [self.view addSubview:mainScrollView];
+    mainScrollView.contentSize=CGSizeMake(320,1100);
     
-    CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 200.0f);
-    imagetextview=[[UITextView alloc]initWithFrame: textViewRect];
-    imagetextview.editable = NO;
-   
-    [imagetextview setIsAccessibilityElement:YES];
-    [imagetextview setFont:[UIFont systemFontOfSize:12.0f]];
-
 
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -66,7 +65,6 @@
         
         CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 100.0f);
         webview = [[UIWebView alloc] initWithFrame:ViewRect];
-        
         
         UIScrollView *scrollView = nil;
         if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
@@ -89,16 +87,20 @@
         NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
         [webview loadRequest:myURLReq];
         [webview setScalesPageToFit:YES];
-        [self.view addSubview:webview];
+       
+        CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 1000.0f);
+        imagetextview=[[UITextView alloc]initWithFrame: textViewRect];
+        imagetextview.editable = NO;
+        imagetextview.scrollEnabled = NO;
+        
+        [imagetextview setIsAccessibilityElement:YES];
+        [imagetextview setFont:[UIFont systemFontOfSize:12.0f]];
 
         [imagetextview setText:newsdetail];
-        [self.view addSubview:imagetextview];
         
+        [mainScrollView addSubview:webview];
+        [mainScrollView addSubview:imagetextview];
         
-        
-     
-        
-
        
     }else {
         
@@ -113,8 +115,6 @@
         
         [textview setText:newsdetail];
         [self.view addSubview:textview];
-
-
         
     }
     
@@ -145,6 +145,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    CGFloat fixedWidth = textView.frame.size.width;
+    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = textView.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    textView.frame = newFrame;
+}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self.navigationController popToRootViewControllerAnimated:animated];
