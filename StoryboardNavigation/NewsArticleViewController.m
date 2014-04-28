@@ -43,7 +43,6 @@
     linkstring=[NSMutableString stringWithString:[passData2 description]];
     self.IbIMessage.text=[passData description];
     
-    
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
     
@@ -87,11 +86,14 @@
         NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
         [webview loadRequest:myURLReq];
         [webview setScalesPageToFit:YES];
+        
        
         CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 1000.0f);
         imagetextview=[[UITextView alloc]initWithFrame: textViewRect];
         imagetextview.editable = NO;
         imagetextview.scrollEnabled = NO;
+        imagetextview.selectable= YES;
+
         
         [imagetextview setIsAccessibilityElement:YES];
         [imagetextview setFont:[UIFont systemFontOfSize:12.0f]];
@@ -100,7 +102,7 @@
         
         [mainScrollView addSubview:webview];
         [mainScrollView addSubview:imagetextview];
-        
+        [mainScrollView setIsAccessibilityElement:YES];
        
     }else {
         
@@ -109,9 +111,9 @@
         
         [textview setFont:[UIFont systemFontOfSize:12.0f]];
         textview.editable = NO;
-        //textview.selectable= NO;
-        //textview.isAccessibilityElement=YES;
-        //textview.userInteractionEnabled=YES;
+        textview.selectable= YES;
+        textview.isAccessibilityElement=YES;
+        textview.userInteractionEnabled=YES;
         
         [textview setText:newsdetail];
         [self.view addSubview:textview];
