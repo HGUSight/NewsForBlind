@@ -60,6 +60,29 @@
     
        NSLog(@"[photourl description]=%@",photostring);
     
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //기사 제목 폰트 조절
+    CGRect textViewRect=CGRectMake(20.0f, 120.0f, 280.0f, 60.0f);
+    
+    titleview =[[UITextView alloc]initWithFrame: textViewRect];
+    [titleview setFont:[UIFont systemFontOfSize:appDelegate.fontS+5]];
+    titleview.editable = NO;
+    titleview.selectable= YES;
+    titleview.isAccessibilityElement=YES;
+    titleview.userInteractionEnabled=YES;
+    [titleview setText:self.IbIMessage.text];
+    titleview.scrollEnabled = NO;
+    titleview.bounces = NO;
+    
+    [self.view addSubview:titleview];
+    
+    ////////////
+    
+    
+    
+    ////////////
+    
     if (photostring!=NULL) {
         
         CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 100.0f);
@@ -102,6 +125,7 @@
         
         [mainScrollView addSubview:webview];
         [mainScrollView addSubview:imagetextview];
+        //[mainScrollView addSubview:titleview];
         [mainScrollView setIsAccessibilityElement:YES];
        
     }else {
@@ -117,16 +141,21 @@
         
         [textview setText:newsdetail];
         [self.view addSubview:textview];
+        //[self.view addSubview:titleview];
         
     }
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     
     //기사 내용 폰트 조절
     [textview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     
-    //기사 제목 폰트 조절
+    
+    
+    
+    
+    /*
     [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
     [self.IbIMessage setLineBreakMode:UILineBreakModeClip];
     [self.IbIMessage setNumberOfLines:3];
@@ -135,7 +164,7 @@
     CGSize newSize = [self.IbIMessage.text sizeWithFont:[UIFont systemFontOfSize:appDelegate.fontS] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeClip];
     CGFloat labelHeight = MAX(newSize.height, 20);
     [self.IbIMessage setFrame:CGRectMake(self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y, self.IbIMessage.frame.size.width, labelHeight)];
-    [self.IbIMessage setText:self.IbIMessage.text];
+    [self.IbIMessage setText:self.IbIMessage.text];*/
     
    
 }
@@ -188,5 +217,55 @@
     mainScrollView.contentSize = webview.bounds.size;
 }
 
-
+- (CGFloat)measureHeightOfUITextView:(UITextView *)textView
+{
+    if ([textView respondsToSelector:@selector(snapshotViewAfterScreenUpdates:)])
+    {
+        // This is the code for iOS 7. contentSize no longer returns the correct value, so
+        // we have to calculate it.
+        //
+        // This is partly borrowed from HPGrowingTextView, but I've replaced the
+        // magic fudge factors with the calculated values (having worked out where
+        // they came from)
+        
+        CGRect frame = textView.bounds;
+        
+        // Take account of the padding added around the text.
+        
+        UIEdgeInsets textContainerInsets = textView.textContainerInset;
+        UIEdgeInsets contentInsets = textView.contentInset;
+        
+        CGFloat leftRightPadding = textContainerInsets.left + textContainerInsets.right + textView.textContainer.lineFragmentPadding * 2 + contentInsets.left + contentInsets.right;
+        CGFloat topBottomPadding = textContainerInsets.top + textContainerInsets.bottom + contentInsets.top + contentInsets.bottom;
+        
+        frame.size.width -= leftRightPadding;
+        frame.size.height -= topBottomPadding;
+        
+        NSString *textToMeasure = textView.text;
+        if ([textToMeasure hasSuffix:@"\n"])
+        {
+            textToMeasure = [NSString stringWithFormat:@"%@-", textView.text];
+        }
+        
+        // NSString class method: boundingRectWithSize:options:attributes:context is
+        // available only on ios7.0 sdk.
+        
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+        
+        NSDictionary *attributes = @{ NSFontAttributeName: textView.font, NSParagraphStyleAttributeName : paragraphStyle };
+        
+        CGRect size = [textToMeasure boundingRectWithSize:CGSizeMake(CGRectGetWidth(frame), MAXFLOAT)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:attributes
+                                                  context:nil];
+        
+        CGFloat measuredHeight = ceilf(CGRectGetHeight(size) + topBottomPadding);
+        return measuredHeight;
+    }
+    else
+    {
+        return textView.contentSize.height;
+    }
+}
 @end

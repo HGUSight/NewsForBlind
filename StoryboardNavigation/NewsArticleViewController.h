@@ -29,6 +29,7 @@
     NSMutableString * linkstring;
     NSString *newsdetail;
     UIScrollView * mainScrollView;
+    UITextView *titleview;
 
 }
 
