@@ -60,13 +60,16 @@ int count;
                 newsdate =[NSMutableString stringWithString:[divNode rawContents]];
                 newsdate =[NSMutableString stringWithString:[fliter settext:newsdate]];
 
-                 NSLog(@"newsdate=%@",newsdate);
+            
         
         }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"writer"]) {
             
-            newswriter =[NSMutableString stringWithString:[divNode rawContents]];
-            newswriter =[NSMutableString stringWithString:[fliter settext:newswriter]];
-            NSLog(@"newswriter=%@",newswriter);
+            if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
+            
+                newswriter =[NSMutableString stringWithString:[divNode rawContents]];
+                newswriter =[NSMutableString stringWithString:[fliter settext:newswriter]];
+                
+            }
             
         }else if([[divNode getAttributeNamed:@"id"] isEqualToString:@"photoimg"]) {
             
@@ -75,9 +78,7 @@ int count;
                 photourl =[NSMutableString stringWithString:[divNode rawContents]];
                 photo = [photourl substringFromIndex:29];
                 photo = [photo substringToIndex:62];
-                NSLog(@"photo=%@",photo);
                 articleController.photourl=photo;
-                NSLog(@"photo=%@",[articleController.photourl description]);
                 
             }
             
@@ -108,7 +109,10 @@ int count;
     newstext =[NSMutableString stringWithString:[fliter settext:str]];
     [newstext appendString:newsdate];
     [newstext appendString:@"\n"];
-    [newstext appendString:newswriter];
+    if (newswriter!=NULL) {
+        [newstext appendString:newswriter];
+    }
+    
 
     
     return newstext;

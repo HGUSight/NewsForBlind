@@ -219,7 +219,7 @@ BOOL rememberFocus = false;
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
          cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         
@@ -231,9 +231,7 @@ BOOL rememberFocus = false;
         buffer=[newsdata objectAtIndex:indexPath.row];
         cell.textLabel.text=buffer.title;
         cell.detailTextLabel.text =buffer.pubData;
-        NSLog(@"data=%@",buffer.pubData);
-        //cell.detailTextLabel.text = [[items objectAtIndex:indexPath.row] valueForKey:@"description"];
-
+    
     return cell;
     
 }

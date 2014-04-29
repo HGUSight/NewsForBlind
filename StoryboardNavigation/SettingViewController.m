@@ -20,13 +20,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.mySlider.minimumValue = 6;
+    articleController=[[NewsArticleViewController alloc]init];
+    imagecheck=[[NSString alloc]initWithString:@"true"];
+    self.mySlider.minimumValue = 15;
     self.mySlider.maximumValue = 30;
     
     [self.hideImage addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
 
-    articleController=[[NewsArticleViewController alloc]init];
-    
 }
 
 - (IBAction)sliderChanged:(id)sender
@@ -53,16 +53,21 @@
     if (self.hideImage.on) {
         
         appDelegate.imageHiding = true;
-        articleController.imagedelete=@"On";
-        NSLog(@"hideimage=%@",[articleController.imagedelete description]);
+        imagecheck=[[NSString alloc]initWithString:@"true"];
+        articleController.imagecheckstr=imagecheck;
+        NSLog(@"dfsfdfdg=%@",articleController.imagecheckstr);
     }
     else {
         
         appDelegate.imageHiding = false;
-        articleController.imagedelete=@"Off";
-        NSLog(@"hideimage=%@",[articleController.imagedelete description]);
+        imagecheck=[[NSString alloc]initWithString:@"false"];
+        articleController.imagecheckstr=imagecheck;
+        NSLog(@"dfsfdfdg=%@",articleController.imagecheckstr);
+
     }
+    
 }
+
 
 
 - (void)didReceiveMemoryWarning

@@ -17,40 +17,19 @@
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="left" misplaced="YES" text="second screen" lineBreakMode="clip" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="1" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="pdb-sY-ygy">
-                                <rect key="frame" x="30" y="63" width="269" height="49"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="269" id="3cO-Ud-92P"/>
-                                    <constraint firstAttribute="height" constant="49" id="nE4-AZ-YeD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="pdb-sY-ygy" firstAttribute="top" secondItem="3" secondAttribute="top" constant="63" id="9IS-XM-u0C"/>
-                            <constraint firstItem="pdb-sY-ygy" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="29" id="Wqp-4Q-j8I"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jjr-9S-izW">
                         <barButtonItem key="backBarButtonItem" title="뒤로가기" id="1pj-r9-4rE"/>
                         <barButtonItem key="rightBarButtonItem" title="스크랩" id="CWF-dQ-DSR"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="IbIMessage" destination="pdb-sY-ygy" id="GTo-tJ-kcc"/>
                         <outlet property="doscrap" destination="CWF-dQ-DSR" id="FGV-O7-oEa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2947" y="-695"/>
+            <point key="canvasLocation" x="3683" y="-703"/>
         </scene>
         <!--Main News View Controller-->
         <scene sceneID="Nfg-6G-LaB">
@@ -163,13 +142,32 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-2s-gKW">
-                                                    <rect key="frame" x="18" y="40" width="284" height="34"/>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-2" minValue="-2" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-2s-gKW">
+                                                    <rect key="frame" x="51" y="40" width="209" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="sliderChanged:" destination="wkL-uH-Eou" eventType="valueChanged" id="N5f-u2-rh4"/>
                                                     </connections>
                                                 </slider>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZu-Y3-Glb">
+                                                    <rect key="frame" x="13" y="38" width="32" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" label="글자크기 감소버튼"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="-">
+                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLH-ge-PMR">
+                                                    <rect key="frame" x="271" y="40" width="39" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" label="글자크기 증가 버튼"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <state key="normal" title="+">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -187,7 +185,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="koy-A8-Gl5">
-                                                    <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="261" y="6" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="flip:" destination="wkL-uH-Eou" eventType="valueChanged" id="Rqt-eV-ixL"/>
@@ -237,7 +235,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9U-5r-gyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191" y="1638"/>
+            <point key="canvasLocation" x="1203" y="1630"/>
         </scene>
         <!--Table View Controller - 스크랩-->
         <scene sceneID="KOt-gc-NIx">
@@ -372,7 +370,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovS-b3-aCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2088" y="244"/>
+            <point key="canvasLocation" x="2118" y="229"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="4qB-By-pUE">
@@ -469,7 +467,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="jxG-BX-QBm"/>
         <segue reference="uK5-hF-OEf"/>
-        <segue reference="LaR-2y-xzW"/>
     </inferredMetricsTieBreakers>
 </document>

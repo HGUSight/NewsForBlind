@@ -20,7 +20,7 @@
 @end
 
 @implementation NewsArticleViewController
-@synthesize passData,passData1,passData2,imagedelete,photourl;
+@synthesize passData,passData1,passData2,imagecheckstr,photourl;
 @synthesize textbuffer;
 @synthesize saveNewArr;
 @synthesize doscrap;
@@ -41,8 +41,7 @@
     newstext=[[NSMutableString alloc]init];
     
     linkstring=[NSMutableString stringWithString:[passData2 description]];
-    self.IbIMessage.text=[passData description];
-    
+   
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
     
@@ -50,43 +49,28 @@
     mainScrollView.showsVerticalScrollIndicator=YES;
     mainScrollView.scrollEnabled=YES;
     mainScrollView.userInteractionEnabled=YES;
-    [self.view addSubview:mainScrollView];
+    mainScrollView.isAccessibilityElement=NO;
     mainScrollView.contentSize=CGSizeMake(320,1100);
     
 
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    
-       NSLog(@"[photourl description]=%@",photostring);
-    
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //기사 제목 폰트 조절
-    CGRect textViewRect=CGRectMake(20.0f, 120.0f, 280.0f, 60.0f);
     
-    titleview =[[UITextView alloc]initWithFrame: textViewRect];
-    [titleview setFont:[UIFont systemFontOfSize:appDelegate.fontS+5]];
+    titleview =[[UITextView alloc]initWithFrame:CGRectMake(10.0f, 60.0f, 280.0f, 60.0f)];
+    [titleview setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
     titleview.editable = NO;
     titleview.selectable= YES;
     titleview.isAccessibilityElement=YES;
     titleview.userInteractionEnabled=YES;
-    [titleview setText:self.IbIMessage.text];
+    [titleview setText:[passData description]];
     titleview.scrollEnabled = NO;
     titleview.bounces = NO;
     
-    [self.view addSubview:titleview];
-    
-    ////////////
-    
-    
-    
-    ////////////
-    
     if (photostring!=NULL) {
-        
-        CGRect ViewRect=CGRectMake(40.0f, 120.0f, 240.0f, 100.0f);
-        webview = [[UIWebView alloc] initWithFrame:ViewRect];
+
+        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, 120.0f, 250.0f, 180.0f)];
         
         UIScrollView *scrollView = nil;
         if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
@@ -105,43 +89,38 @@
         
         
         NSURL *myURL = [NSURL URLWithString:photostring];
-        NSLog(@"[photourl description]=%@",photostring);
         NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
         [webview loadRequest:myURLReq];
         [webview setScalesPageToFit:YES];
         
-       
-        CGRect textViewRect=CGRectMake(20.0f, 260.0f, 280.0f, 1000.0f);
-        imagetextview=[[UITextView alloc]initWithFrame: textViewRect];
+        imagetextview=[[UITextView alloc]initWithFrame:CGRectMake(20.0f, 260.0f, 280.0f, 1000.0f)];
         imagetextview.editable = NO;
         imagetextview.scrollEnabled = NO;
         imagetextview.selectable= YES;
-
-        
         [imagetextview setIsAccessibilityElement:YES];
-        [imagetextview setFont:[UIFont systemFontOfSize:12.0f]];
-
-        [imagetextview setText:newsdetail];
+        [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
+        [imagetextview setText:[newsdetail substringFromIndex:6]];
         
         [mainScrollView addSubview:webview];
         [mainScrollView addSubview:imagetextview];
-        //[mainScrollView addSubview:titleview];
-        [mainScrollView setIsAccessibilityElement:YES];
+        [mainScrollView addSubview:titleview];
+        [self.view addSubview:mainScrollView];
+        
        
     }else {
         
-        CGRect textViewRect=CGRectMake(20.0f, 120.0f, 280.0f, 370.0f);
-        textview=[[UITextView alloc]initWithFrame: textViewRect];
+        textview=[[UITextView alloc]initWithFrame:CGRectMake(20.0f, 120.0f, 280.0f, 370.0f)];
         
-        [textview setFont:[UIFont systemFontOfSize:12.0f]];
+        [textview setFont:[UIFont systemFontOfSize:15.0f]];
         textview.editable = NO;
         textview.selectable= YES;
         textview.isAccessibilityElement=YES;
         textview.userInteractionEnabled=YES;
         
         [textview setText:newsdetail];
+        
         [self.view addSubview:textview];
-        //[self.view addSubview:titleview];
+        [self.view addSubview:titleview];
         
     }
     

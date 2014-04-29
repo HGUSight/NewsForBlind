@@ -13,6 +13,7 @@
 @interface SettingViewController : UITableViewController {
     
     NewsArticleViewController * articleController;
+    NSString * imagecheck;
 }
 @property (retain, nonatomic) IBOutlet UISlider *mySlider;
 @property (retain, nonatomic) IBOutlet UILabel *myLabel;

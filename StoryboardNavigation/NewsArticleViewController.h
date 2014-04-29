@@ -12,6 +12,7 @@
 @class MainNewsViewController;
 @class News;
 @class AppDelegate;
+@class SettingViewController;
 
 @interface NewsArticleViewController : UIViewController{
     
@@ -30,12 +31,12 @@
     NSString *newsdetail;
     UIScrollView * mainScrollView;
     UITextView *titleview;
+    SettingViewController *setting;
+    
 
 }
 
 
-
-@property (strong, nonatomic) IBOutlet UILabel *IbIMessage;
 @property (strong, nonatomic)id passData;
 @property (strong, nonatomic)id passData1;
 @property (strong, nonatomic)id passData2;
@@ -44,7 +45,7 @@
 @property (strong, nonatomic) NSMutableArray *saveNewArr;
 @property (strong, nonatomic) NSMutableString *newstext;
 @property (strong, nonatomic) NSMutableArray *stringobject;
-@property (strong, nonatomic )id imagedelete;
+@property (strong, nonatomic )id imagecheckstr;
 @property (strong, nonatomic )id photourl;
 @property (strong, nonatomic )UIScrollView *mainScrollView;
 @property (strong, nonatomic )UIWebView *webview;
