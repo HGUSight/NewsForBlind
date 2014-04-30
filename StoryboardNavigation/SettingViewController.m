@@ -22,7 +22,7 @@
     [super viewDidLoad];
     articleController=[[NewsArticleViewController alloc]init];
     imagecheck=[[NSString alloc]initWithString:@"true"];
-    self.mySlider.minimumValue = 15;
+    self.mySlider.minimumValue = 20;
     self.mySlider.maximumValue = 30;
     
     [self.hideImage addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];

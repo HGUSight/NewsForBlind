@@ -22,7 +22,7 @@
 @implementation NewsArticleViewController
 @synthesize passData,passData1,passData2,imagecheckstr,photourl;
 @synthesize textbuffer;
-@synthesize saveNewArr;
+@synthesize saveNewsArr,newsdetailarr;
 @synthesize doscrap;
 @synthesize newstext;
 @synthesize stringobject;
@@ -39,40 +39,53 @@
     news=[[News alloc]init];
     stringobject=[[NSMutableArray alloc]init];
     newstext=[[NSMutableString alloc]init];
+    newsdetailarr=[[NSMutableArray alloc]init];
+    saveNewsArr=[[NSMutableArray alloc]init];
     
     linkstring=[NSMutableString stringWithString:[passData2 description]];
    
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
     
+}
+-(void)viewWillAppear:(BOOL)animated{
+    
+    //타이틀 설정 및 텍스트 삽입
     titleview =[[UITextView alloc]initWithFrame:CGRectMake(10.0f, 60.0f, 280.0f, 60.0f)];
     titleview.editable = NO;
-    titleview.selectable= YES;
-    titleview.isAccessibilityElement=YES;
-    titleview.userInteractionEnabled=NO;
+    titleview.selectable= NO;
+    titleview.userInteractionEnabled=YES;
     titleview.scrollEnabled = NO;
-    titleview.bounces = NO;
-    titleview.opaque = NO;
-    titleview.clearsContextBeforeDrawing=NO;
+    titleview.accessibilityTraits=UIAccessibilityTraitNone;
     [titleview setText:[passData description]];
     
-    mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,540)];
+
+    
+    mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,520)];
     mainScrollView.showsVerticalScrollIndicator=YES;
     mainScrollView.scrollEnabled=YES;
     mainScrollView.userInteractionEnabled=YES;
     mainScrollView.isAccessibilityElement=NO;
-    mainScrollView.contentSize=CGSizeMake(320,1100);
-    
+    mainScrollView.contentSize=CGSizeMake(320,2000);
+    [mainScrollView sizeToFit];
 
-}
--(void)viewWillAppear:(BOOL)animated{
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     [titleview setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
     
     
     if (photostring!=NULL) {
+        
+        int i_height=0;
+        int i_width=0;
+        
+        for (NSString *line in [[newsdetail substringFromIndex:6] componentsSeparatedByString:@"\n"]) {
+            if (![line isEqualToString:@"\n"]) {
+                [newsdetailarr addObject:line];
+            }
+            
+        }
+
 
         webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, 120.0f, 250.0f, 180.0f)];
         
@@ -97,33 +110,100 @@
         [webview loadRequest:myURLReq];
         [webview setScalesPageToFit:YES];
         
-        imagetextview=[[UITextView alloc]initWithFrame:CGRectMake(20.0f, 260.0f, 280.0f, 1000.0f)];
-        imagetextview.editable = NO;
-        imagetextview.scrollEnabled = NO;
-        imagetextview.selectable= YES;
-        [imagetextview setIsAccessibilityElement:YES];
-        [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
-        [imagetextview setText:[newsdetail substringFromIndex:6]];
+        
+        for (int i=0; i<[newsdetailarr count]; i++) {
+            
+            NSLog(@"height=%d,width=%d",i_height,i_width);
+            
+            imagetextview=[[UITextView alloc]initWithFrame:CGRectMake(20, 260+i_height, 280, 1000+i_height)];
+            [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
+            [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
+            imagetextview.editable = NO;
+            imagetextview.selectable= NO;
+            imagetextview.userInteractionEnabled=YES;
+            imagetextview.accessibilityTraits=UIAccessibilityTraitNone;
+            imagetextview.multipleTouchEnabled=NO;
+            imagetextview.opaque=NO;
+            //textview.
+            
+            [imagetextview setScrollEnabled:YES];
+            [imagetextview setText:newsdetailarr[i]];
+            [imagetextview sizeToFit];
+            [imagetextview setScrollEnabled:NO];
+            
+            CGSize textViewSize = [imagetextview sizeThatFits:CGSizeMake(imagetextview.frame.size.width, FLT_MAX)];
+            i_height+=textViewSize.height;
+            i_width+=textViewSize.width;
+            
+            if (textViewSize.width==10) {
+                imagetextview.isAccessibilityElement=NO;
+            }
+            
+            
+            [mainScrollView addSubview:imagetextview];
+            
+        }
+
         
         [mainScrollView addSubview:webview];
-        [mainScrollView addSubview:imagetextview];
+        
+       
+        [titleview setUserInteractionEnabled:YES];
+        [titleview setSelectable:NO];
         [mainScrollView addSubview:titleview];
+        
+       
         [self.view addSubview:mainScrollView];
         
        
     }else {
         
-        textview=[[UITextView alloc]initWithFrame:CGRectMake(20.0f, 120.0f, 280.0f, 370.0f)];
+        int height=0;
+        int width=0;
         
-        [textview setFont:[UIFont systemFontOfSize:15.0f]];
-        textview.editable = NO;
-        textview.selectable= YES;
-        textview.isAccessibilityElement=YES;
-        textview.userInteractionEnabled=YES;
+        for (NSString *line in [newsdetail componentsSeparatedByString:@"\n"]) {
+            if (![line isEqualToString:@"\n"]) {
+                [newsdetailarr addObject:line];
+            }
         
-        [textview setText:newsdetail];
+        }
         
-        [self.view addSubview:textview];
+        for (int i=0; i<[newsdetailarr count]; i++) {
+            
+            NSLog(@"height=%d,width=%d",height,width);
+            
+            textview=[[UITextView alloc]initWithFrame:CGRectMake(20, 120+height, 280, 370+height)];
+            [textview setFont:[UIFont systemFontOfSize:15.0f]];
+            [textview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
+            textview.editable = NO;
+            textview.selectable= NO;
+            textview.accessibilityTraits=UIAccessibilityTraitStaticText;
+            //textview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
+            textview.multipleTouchEnabled=NO;
+            
+            //textview.
+            
+            [textview setScrollEnabled:YES];
+            [textview setText:newsdetailarr[i]];
+            [textview sizeToFit];
+            [textview setScrollEnabled:NO];
+           
+            
+             CGSize textViewSize = [textview sizeThatFits:CGSizeMake(textview.frame.size.width, FLT_MAX)];
+             height+=textViewSize.height;
+             width+=textViewSize.width;
+            
+            if (textViewSize.width==10) {
+                textview.isAccessibilityElement=NO;
+            }
+            
+           
+            [self.view addSubview:textview];
+            
+            
+        }
+        
+        
         [self.view addSubview:titleview];
         
     }
@@ -131,25 +211,9 @@
     
     
     //기사 내용 폰트 조절
-    [textview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
-    [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     
+    //[imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     
-    
-    
-    
-    /*
-    [self.IbIMessage setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
-    [self.IbIMessage setLineBreakMode:UILineBreakModeClip];
-    [self.IbIMessage setNumberOfLines:3];
-    
-    CGSize constraintSize = CGSizeMake(320, 20);
-    CGSize newSize = [self.IbIMessage.text sizeWithFont:[UIFont systemFontOfSize:appDelegate.fontS] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeClip];
-    CGFloat labelHeight = MAX(newSize.height, 20);
-    [self.IbIMessage setFrame:CGRectMake(self.IbIMessage.frame.origin.x, self.IbIMessage.frame.origin.y, self.IbIMessage.frame.size.width, labelHeight)];
-    [self.IbIMessage setText:self.IbIMessage.text];*/
-    
-   
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,95 +224,24 @@
 }
 
 
-- (void)textViewDidChange:(UITextView *)textView
-{
-    CGFloat fixedWidth = textView.frame.size.width;
-    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = textView.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    textView.frame = newFrame;
-}
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self.navigationController popToRootViewControllerAnimated:animated];
+    [imagetextview release];
+    [textview release];
+    [mainScrollView release];
+   
 }
 
--(void)doSaveNewsdetail
+-(IBAction)doSaveNewsdetail:(id)sender
 {
     news.title=[NSMutableString stringWithString:[passData description]];
-    news.description=[NSMutableString stringWithString:textbuffer];
-    [saveNewArr addObject:news];
-    news = [[News alloc]init];
+    news.description=[NSMutableString stringWithString:newsdetail];
+    [saveNewsArr addObject:news];
     NSLog(@"SAVE TITLE:%@",news.title);
+    news = [[News alloc]init];
+    
     
 }
 
-
- - (void)webViewDidFinishLoad:(UIWebView *)aWebView
-{
-    NSString *webHeight = [webview stringByEvaluatingJavaScriptFromString:@"document.height;"];
-    NSLog(@"WebView Height %@", webHeight);
-    
-    CGRect frame = webview.frame;
-    frame.size.height = 1;
-    webview.frame = frame;
-    CGSize fittingSize = [webview sizeThatFits:CGSizeZero];
-    frame.size = fittingSize;
-    webview.frame = frame;
- 
-    NSLog(@"size: %f, %f", fittingSize.width, fittingSize.height);
-    mainScrollView.contentSize = webview.bounds.size;
-}
-
-- (CGFloat)measureHeightOfUITextView:(UITextView *)textView
-{
-    if ([textView respondsToSelector:@selector(snapshotViewAfterScreenUpdates:)])
-    {
-        // This is the code for iOS 7. contentSize no longer returns the correct value, so
-        // we have to calculate it.
-        //
-        // This is partly borrowed from HPGrowingTextView, but I've replaced the
-        // magic fudge factors with the calculated values (having worked out where
-        // they came from)
-        
-        CGRect frame = textView.bounds;
-        
-        // Take account of the padding added around the text.
-        
-        UIEdgeInsets textContainerInsets = textView.textContainerInset;
-        UIEdgeInsets contentInsets = textView.contentInset;
-        
-        CGFloat leftRightPadding = textContainerInsets.left + textContainerInsets.right + textView.textContainer.lineFragmentPadding * 2 + contentInsets.left + contentInsets.right;
-        CGFloat topBottomPadding = textContainerInsets.top + textContainerInsets.bottom + contentInsets.top + contentInsets.bottom;
-        
-        frame.size.width -= leftRightPadding;
-        frame.size.height -= topBottomPadding;
-        
-        NSString *textToMeasure = textView.text;
-        if ([textToMeasure hasSuffix:@"\n"])
-        {
-            textToMeasure = [NSString stringWithFormat:@"%@-", textView.text];
-        }
-        
-        // NSString class method: boundingRectWithSize:options:attributes:context is
-        // available only on ios7.0 sdk.
-        
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
-        
-        NSDictionary *attributes = @{ NSFontAttributeName: textView.font, NSParagraphStyleAttributeName : paragraphStyle };
-        
-        CGRect size = [textToMeasure boundingRectWithSize:CGSizeMake(CGRectGetWidth(frame), MAXFLOAT)
-                                                  options:NSStringDrawingUsesLineFragmentOrigin
-                                               attributes:attributes
-                                                  context:nil];
-        
-        CGFloat measuredHeight = ceilf(CGRectGetHeight(size) + topBottomPadding);
-        return measuredHeight;
-    }
-    else
-    {
-        return textView.contentSize.height;
-    }
-}
 @end

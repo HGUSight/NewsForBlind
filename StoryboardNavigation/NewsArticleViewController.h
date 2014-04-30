@@ -32,6 +32,7 @@
     UIScrollView * mainScrollView;
     UITextView *titleview;
     SettingViewController *setting;
+    NSMutableArray * newsdetailarr;
     
 
 }
@@ -42,7 +43,7 @@
 @property (strong, nonatomic)id passData2;
 @property (nonatomic, retain) NSString *textbuffer;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doscrap;
-@property (strong, nonatomic) NSMutableArray *saveNewArr;
+@property (strong, nonatomic) NSMutableArray *saveNewsArr;
 @property (strong, nonatomic) NSMutableString *newstext;
 @property (strong, nonatomic) NSMutableArray *stringobject;
 @property (strong, nonatomic )id imagecheckstr;
@@ -50,6 +51,9 @@
 @property (strong, nonatomic )UIScrollView *mainScrollView;
 @property (strong, nonatomic )UIWebView *webview;
 @property (strong, nonatomic) NSString * photostring;
+@property (strong, nonatomic) NSMutableArray *newsdetailarr;
+
+-(IBAction)doSaveNewsdetail:(id)sender;
 
 
 

@@ -144,7 +144,7 @@ BOOL rememberFocus = false;
         
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		[currectItem setValue:[NSString stringWithString:xmlValue] forKey:elementName];
-        NSLog(@"datastring=%@",[NSMutableString stringWithString:xmlValue]);
+        
         NSMutableString *temp=[NSMutableString stringWithString:xmlValue];
         NSString * temp1=[NSString stringWithString:temp];
         aNews.pubData=[NSMutableString stringWithString:[writetimeclass setTime:temp1]];

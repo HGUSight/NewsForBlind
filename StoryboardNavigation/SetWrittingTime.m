@@ -28,9 +28,7 @@
         day=@"토요일";
     }else ;
     
-    NSLog(@"1에서 3:%@",[getTime substringWithRange:NSMakeRange(10,11)]);
-    
-    
+     
     if ( [[[getTime substringWithRange:NSMakeRange(6,6)] substringFromIndex:2] isEqualToString:@"Jan "]) {
         month=@"1월";
     }else if( [[[getTime substringWithRange:NSMakeRange(6,6)] substringFromIndex:2] isEqualToString:@"Feb "]) {
