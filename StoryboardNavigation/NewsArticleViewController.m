@@ -45,6 +45,17 @@
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
     
+    titleview =[[UITextView alloc]initWithFrame:CGRectMake(10.0f, 60.0f, 280.0f, 60.0f)];
+    titleview.editable = NO;
+    titleview.selectable= YES;
+    titleview.isAccessibilityElement=YES;
+    titleview.userInteractionEnabled=NO;
+    titleview.scrollEnabled = NO;
+    titleview.bounces = NO;
+    titleview.opaque = NO;
+    titleview.clearsContextBeforeDrawing=NO;
+    [titleview setText:[passData description]];
+    
     mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,540)];
     mainScrollView.showsVerticalScrollIndicator=YES;
     mainScrollView.scrollEnabled=YES;
@@ -58,15 +69,8 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    titleview =[[UITextView alloc]initWithFrame:CGRectMake(10.0f, 60.0f, 280.0f, 60.0f)];
     [titleview setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
-    titleview.editable = NO;
-    titleview.selectable= YES;
-    titleview.isAccessibilityElement=YES;
-    titleview.userInteractionEnabled=YES;
-    [titleview setText:[passData description]];
-    titleview.scrollEnabled = NO;
-    titleview.bounces = NO;
+    
     
     if (photostring!=NULL) {
 
