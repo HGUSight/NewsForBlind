@@ -51,7 +51,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     //타이틀 설정 및 텍스트 삽입
-    titleview =[[UITextView alloc]initWithFrame:CGRectMake(10.0f, 60.0f, 280.0f, 60.0f)];
+    titleview =[[UITextView alloc]initWithFrame:CGRectMake(10.0f, 60.0f, 280.0f, 90.0f)];
     titleview.editable = NO;
     titleview.selectable= NO;
     titleview.userInteractionEnabled=YES;
@@ -66,7 +66,7 @@
     mainScrollView.scrollEnabled=YES;
     mainScrollView.userInteractionEnabled=YES;
     mainScrollView.isAccessibilityElement=NO;
-    mainScrollView.contentSize=CGSizeMake(320,2000);
+    //mainScrollView.contentSize=CGSizeMake(320,2000);
     [mainScrollView sizeToFit];
 
     
@@ -74,20 +74,23 @@
     [titleview setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
     
     
-    if (photostring!=NULL) {
+    
         
         int i_height=0;
         int i_width=0;
-        
+        int text_top_margin = 150;
+    
         for (NSString *line in [[newsdetail substringFromIndex:6] componentsSeparatedByString:@"\n"]) {
             if (![line isEqualToString:@"\n"]) {
                 [newsdetailarr addObject:line];
             }
             
         }
+    
+    if (photostring!=NULL) {
 
-
-        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, 120.0f, 250.0f, 180.0f)];
+        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, 150.0f, 250.0f, 150.0f)];
+        text_top_margin = 260;
         
         UIScrollView *scrollView = nil;
         if ([webview respondsToSelector:@selector(scrollView)]) { //iOS 5+
@@ -103,19 +106,18 @@
         scrollView.scrollEnabled = NO;
         scrollView.bounces = NO;
         scrollView.backgroundColor=[UIColor clearColor];
-        
-        
+    
         NSURL *myURL = [NSURL URLWithString:photostring];
         NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
         [webview loadRequest:myURLReq];
         [webview setScalesPageToFit:YES];
-        
+        }
         
         for (int i=0; i<[newsdetailarr count]; i++) {
             
-            NSLog(@"height=%d,width=%d",i_height,i_width);
+            //NSLog(@"height=%d,width=%d",i_height,i_width);
             
-            imagetextview=[[UITextView alloc]initWithFrame:CGRectMake(20, 260+i_height, 280, 1000+i_height)];
+            imagetextview=[[UITextView alloc]initWithFrame:CGRectMake(20, text_top_margin+i_height, 280, 1000+i_height)];
             [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
             [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
             imagetextview.editable = NO;
@@ -143,7 +145,8 @@
             [mainScrollView addSubview:imagetextview];
             
         }
-
+    
+        mainScrollView.contentSize=CGSizeMake(320,i_height+310);
         
         [mainScrollView addSubview:webview];
         
@@ -154,60 +157,6 @@
         
        
         [self.view addSubview:mainScrollView];
-        
-       
-    }else {
-        
-        int height=0;
-        int width=0;
-        
-        for (NSString *line in [newsdetail componentsSeparatedByString:@"\n"]) {
-            if (![line isEqualToString:@"\n"]) {
-                [newsdetailarr addObject:line];
-            }
-        
-        }
-        
-        for (int i=0; i<[newsdetailarr count]; i++) {
-            
-            NSLog(@"height=%d,width=%d",height,width);
-            
-            textview=[[UITextView alloc]initWithFrame:CGRectMake(20, 120+height, 280, 370+height)];
-            [textview setFont:[UIFont systemFontOfSize:15.0f]];
-            [textview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
-            textview.editable = NO;
-            textview.selectable= NO;
-            textview.accessibilityTraits=UIAccessibilityTraitStaticText;
-            //textview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
-            textview.multipleTouchEnabled=NO;
-            
-            //textview.
-            
-            [textview setScrollEnabled:YES];
-            [textview setText:newsdetailarr[i]];
-            [textview sizeToFit];
-            [textview setScrollEnabled:NO];
-           
-            
-             CGSize textViewSize = [textview sizeThatFits:CGSizeMake(textview.frame.size.width, FLT_MAX)];
-             height+=textViewSize.height;
-             width+=textViewSize.width;
-            
-            if (textViewSize.width==10) {
-                textview.isAccessibilityElement=NO;
-            }
-            
-           
-            [self.view addSubview:textview];
-            
-            
-        }
-        
-        
-        [self.view addSubview:titleview];
-        
-    }
-    
     
     
     //기사 내용 폰트 조절
