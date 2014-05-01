@@ -121,12 +121,11 @@
             [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
             [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
             imagetextview.editable = NO;
-            imagetextview.selectable= NO;
+            imagetextview.selectable= YES;
             imagetextview.userInteractionEnabled=YES;
-            imagetextview.accessibilityTraits=UIAccessibilityTraitNone;
-            imagetextview.multipleTouchEnabled=NO;
+            imagetextview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
+            imagetextview.multipleTouchEnabled=YES;
             imagetextview.opaque=NO;
-            //textview.
             
             [imagetextview setScrollEnabled:YES];
             [imagetextview setText:newsdetailarr[i]];
