@@ -16,9 +16,6 @@
     
     hanjatohangle= [[HanjatoHangle alloc]init];
    
-    
-    
-    
     for(int i = 0; i < [s1 length]; i++) {
         
         teg = [s1 rangeOfString:@"<[^<]*>" options:NSRegularExpressionSearch];

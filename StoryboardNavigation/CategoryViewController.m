@@ -58,7 +58,7 @@
     cell.textLabel.text=[itemlist objectAtIndex:indexPath.row];
     return cell;
 }
-//
+
 - (void)tableView:(UITableView *)TableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(self.searchDisplayController.isActive) {
@@ -70,7 +70,7 @@
 	[self selectTableViewCell:indexPath];
 	
 }
-//
+
 - (void)selectTableViewCell:(NSIndexPath*)indexPath
 {
 	@try {

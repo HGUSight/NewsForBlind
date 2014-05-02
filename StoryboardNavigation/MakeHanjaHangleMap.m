@@ -46,9 +46,6 @@
     
     for (i=0;i<[hanjatohangle count];i++) {
         
-            //[ hanjamap setObject:((char)0x4E00+index++) forKey:[hanjatohangle[i] cStringUsingEncoding:NSUTF8StringEncoding]];
-       
-            
           NSNumber *hanjaint=[NSNumber numberWithInt:(0x4E00+index++)];
           [hanjaarray addObject:hanjaint];
           [hanglearray addObject:hanjatohangle[i]];

@@ -182,9 +182,7 @@ BOOL rememberFocus = false;
         
         NewsArticleViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
-        NSIndexPath *indexPath=nil;
-
-        
+              
             News *buf=[[News alloc]init];
             buf=[newsdata objectAtIndex:currentIndexPath.row];
             NSString *data=buf.title;

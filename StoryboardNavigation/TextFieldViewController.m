@@ -37,9 +37,6 @@
         
         viewController.searchtext=searchtext;
         
-        NSLog(@"textfield:%@",searchtext);
-        
-        
     }
     
 }
@@ -65,9 +62,4 @@
 }
 
 
-
-- (void)dealloc {
-    [_cancel release];
-    [super dealloc];
-}
 @end

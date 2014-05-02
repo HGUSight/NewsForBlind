@@ -42,9 +42,6 @@
 
     resultcheck=0;
     
-    //[self searchnews];
-
-    
     linkarr=[[NSMutableArray alloc]init];
     
     
@@ -284,14 +281,8 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//[self searchnews];
-    
 }
--(void)viewWillAppear:(BOOL)animated{
 
-}
--(void)viewDidDisappear:(BOOL)animated{
-}
 
 
 @end

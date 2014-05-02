@@ -25,12 +25,12 @@
     NSMutableArray *stringobject;
     UIWebView *webview;
     NSString *potostring;
-    UITextView *imagetextview;
-    UITextView *textview;
+    UILabel *imagetextview;
+    UILabel *textview;
     NSMutableString * linkstring;
     NSString *newsdetail;
     UIScrollView * mainScrollView;
-    UITextView *titleview;
+    UILabel *titleview;
     SettingViewController *setting;
     NSMutableArray * newsdetailarr;
     

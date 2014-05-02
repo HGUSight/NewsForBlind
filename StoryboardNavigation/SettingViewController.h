@@ -15,6 +15,8 @@
     NewsArticleViewController * articleController;
     NSString * imagecheck;
 }
+- (IBAction)buttonSub:(UIButton *)sender;
+- (IBAction)buttonAdd:(UIButton *)sender;
 @property (retain, nonatomic) IBOutlet UISlider *mySlider;
 @property (retain, nonatomic) IBOutlet UILabel *myLabel;
 @property (retain, nonatomic) IBOutlet UISwitch *hideImage;

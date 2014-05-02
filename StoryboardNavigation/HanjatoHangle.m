@@ -33,12 +33,9 @@
                   
               }
             
-              //NSLog(@"한자를 한글로:%@",hangletext);
               cString= [hangletext cStringUsingEncoding:[NSString defaultCStringEncoding]];
               int hexValue = (int)strtol(cString, NULL, 16);
-              //NSLog(@"한자를 한글로:%C",hexValue);
               returnvalue=(unichar)hexValue;
-             // NSLog(@"한자를 한글로:%C",returnvalue);
               
               return returnvalue;
               

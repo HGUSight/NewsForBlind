@@ -15,7 +15,7 @@
 @end
 
 @implementation SettingViewController
-
+@synthesize mySlider;
 
 - (void)viewDidLoad
 {
@@ -28,7 +28,19 @@
     [self.hideImage addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
 
 }
+- (void)viewWillAppear:(BOOL)animated
 
+{
+    //self.myLabel.font=[self.myLabel.font fontWithSize:25];
+    [self.myLabel setFont:[UIFont systemFontOfSize:mySlider.value]];
+    [self.myLabel setText:[NSString stringWithFormat:@"글자 크기 증가"]];
+    //¶óº§ »çÀÌÁî°¡ Á¶Á¤µÇµµ·Ï
+    self.myLabel.adjustsFontSizeToFitWidth = YES;
+    [self.myLabel sizeToFit];
+    
+    NSLog(@"in viewdidload : %f",mySlider.value);
+    
+}
 - (IBAction)sliderChanged:(id)sender
 {
     //슬라이더에서 값을 가지고 옴
@@ -84,5 +96,26 @@
 }
 
 
+- (IBAction)buttonSub:(UIButton *)sender {
+    mySlider.value = mySlider.value-1;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.fontS = mySlider.value - 1;
+    [self.myLabel setFont:[UIFont systemFontOfSize:mySlider.value]];
+    
+    //¶óº§ »çÀÌÁî°¡ Á¶Á¤µÇµµ·Ï
+    self.myLabel.adjustsFontSizeToFitWidth = YES;
+    [self.myLabel sizeToFit];
+}
+
+- (IBAction)buttonAdd:(UIButton *)sender {
+    mySlider.value = mySlider.value+1;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.fontS = mySlider.value + 1;
+    [self.myLabel setFont:[UIFont systemFontOfSize:mySlider.value]];
+    
+    //¶óº§ »çÀÌÁî°¡ Á¶Á¤µÇµµ·Ï
+    self.myLabel.adjustsFontSizeToFitWidth = YES;
+    [self.myLabel sizeToFit];
+}
 @end
 

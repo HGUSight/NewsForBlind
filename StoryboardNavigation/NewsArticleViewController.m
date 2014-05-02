@@ -51,14 +51,17 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     //타이틀 설정 및 텍스트 삽입
-    titleview =[[UITextView alloc]initWithFrame:CGRectMake(10.0f, 60.0f, 280.0f, 90.0f)];
-    titleview.editable = NO;
-    titleview.selectable= NO;
-    titleview.userInteractionEnabled=YES;
-    titleview.scrollEnabled = NO;
-    titleview.accessibilityTraits=UIAccessibilityTraitNone;
+    titleview =[[UILabel alloc]initWithFrame:CGRectMake(10.0f, 65.0f, 290.0f, 150.0f)];
     [titleview setText:[passData description]];
-    
+    titleview.lineBreakMode = YES;
+    titleview.userInteractionEnabled=YES;
+    titleview.accessibilityTraits=UIAccessibilityTraitNone;
+    titleview.tag = 10;
+    titleview.numberOfLines = 0;
+    titleview.lineBreakMode = YES;
+    titleview.adjustsFontSizeToFitWidth = YES;
+
+    //[titleview sizeToFit];
 
     
     mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,520)];
@@ -89,7 +92,7 @@
     
     if (photostring!=NULL) {
 
-        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, 150.0f, 250.0f, 150.0f)];
+        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, 190.0f, 250.0f, 190.0f)];
         text_top_margin = 260;
         
         UIScrollView *scrollView = nil;
@@ -117,20 +120,28 @@
             
             //NSLog(@"height=%d,width=%d",i_height,i_width);
             
-            imagetextview=[[UITextView alloc]initWithFrame:CGRectMake(20, text_top_margin+i_height, 280, 1000+i_height)];
+            imagetextview=[[UILabel alloc]initWithFrame:CGRectMake(20, text_top_margin+i_height+40, 280, i_height)];
             [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
             [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
-            imagetextview.editable = NO;
-            imagetextview.selectable= YES;
+            //imagetextview.editable = NO;
+            //imagetextview.selectable= YES;
             imagetextview.userInteractionEnabled=YES;
             imagetextview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
             imagetextview.multipleTouchEnabled=YES;
             imagetextview.opaque=NO;
+            imagetextview.tag = 10;
+            imagetextview.numberOfLines = 0;
             
-            [imagetextview setScrollEnabled:YES];
-            [imagetextview setText:newsdetailarr[i]];
+            
+            //[imagetextview setScrollEnabled:YES];
+            NSMutableString * buffer =[NSMutableString stringWithString:newsdetailarr[i]];
+            [buffer appendString:@"\n"];
+
+            [imagetextview setText:buffer];
+            imagetextview.lineBreakMode = YES;
+
             [imagetextview sizeToFit];
-            [imagetextview setScrollEnabled:NO];
+                        //[imagetextview setScrollEnabled:NO];
             
             CGSize textViewSize = [imagetextview sizeThatFits:CGSizeMake(imagetextview.frame.size.width, FLT_MAX)];
             i_height+=textViewSize.height;
@@ -151,7 +162,7 @@
         
        
         [titleview setUserInteractionEnabled:YES];
-        [titleview setSelectable:NO];
+        //[titleview setSelectable:NO];
         [mainScrollView addSubview:titleview];
         
        

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4621F46D18BAF40B0017E92B /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4621F46C18BAF40B0017E92B /* SearchViewController.m */; };
 		4625887A18C6B5C7009884C8 /* HanjatoHangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4625887918C6B5C7009884C8 /* HanjatoHangle.m */; };
 		462CA22318ECE96A00289DD2 /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22218ECE96A00289DD2 /* TextFieldViewController.m */; };
 		462CA22618ECFA8B00289DD2 /* SearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22518ECFA8B00289DD2 /* SearchListViewController.m */; };
@@ -37,8 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4621F46B18BAF40B0017E92B /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		4621F46C18BAF40B0017E92B /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		4625887818C6B5C7009884C8 /* HanjatoHangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanjatoHangle.h; sourceTree = "<group>"; };
 		4625887918C6B5C7009884C8 /* HanjatoHangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanjatoHangle.m; sourceTree = "<group>"; };
 		462CA22118ECE96A00289DD2 /* TextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldViewController.h; sourceTree = "<group>"; };
@@ -146,8 +143,6 @@
 				46931811186D9A4C00005860 /* MainStoryboard.storyboard */,
 				462CA22118ECE96A00289DD2 /* TextFieldViewController.h */,
 				462CA22218ECE96A00289DD2 /* TextFieldViewController.m */,
-				4621F46B18BAF40B0017E92B /* SearchViewController.h */,
-				4621F46C18BAF40B0017E92B /* SearchViewController.m */,
 				4684981318952503001EE057 /* CategoryViewController.h */,
 				4684981418952503001EE057 /* CategoryViewController.m */,
 				4693181C186D9B5D00005860 /* MainNewsViewController.h */,
@@ -283,7 +278,6 @@
 				4693181E186D9B5D00005860 /* MainNewsViewController.m in Sources */,
 				885D048518B8B56900000F5A /* SettingViewController.m in Sources */,
 				4625887A18C6B5C7009884C8 /* HanjatoHangle.m in Sources */,
-				4621F46D18BAF40B0017E92B /* SearchViewController.m in Sources */,
 				467F2AB4186EBF6B0074AFB3 /* News.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
