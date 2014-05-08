@@ -33,6 +33,10 @@
     UILabel *titleview;
     SettingViewController *setting;
     NSMutableArray * newsdetailarr;
+    int i_height;
+    int i_width;
+    int text_top_margin;
+    AppDelegate *appDelegate;
     
 
 }

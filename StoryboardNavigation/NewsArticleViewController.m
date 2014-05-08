@@ -41,11 +41,17 @@
     newstext=[[NSMutableString alloc]init];
     newsdetailarr=[[NSMutableArray alloc]init];
     saveNewsArr=[[NSMutableArray alloc]init];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     linkstring=[NSMutableString stringWithString:[passData2 description]];
    
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
+    
+    
+    i_height=0;
+    i_width=0;
+    text_top_margin = 150;
     
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -61,7 +67,7 @@
     titleview.lineBreakMode = YES;
     titleview.adjustsFontSizeToFitWidth = YES;
 
-    //[titleview sizeToFit];
+    
 
     
     mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,520)];
@@ -73,15 +79,12 @@
     [mainScrollView sizeToFit];
 
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     [titleview setFont:[UIFont systemFontOfSize:appDelegate.fontS]];
     
     
     
-        
-        int i_height=0;
-        int i_width=0;
-        int text_top_margin = 150;
+    
     
         for (NSString *line in [[newsdetail substringFromIndex:6] componentsSeparatedByString:@"\n"]) {
             if (![line isEqualToString:@"\n"]) {
@@ -160,18 +163,12 @@
         
         [mainScrollView addSubview:webview];
         
-       
-        [titleview setUserInteractionEnabled:YES];
-        //[titleview setSelectable:NO];
+   
+        [titleview sizeToFit];
         [mainScrollView addSubview:titleview];
         
        
         [self.view addSubview:mainScrollView];
-    
-    
-    //기사 내용 폰트 조절
-    
-    //[imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
     
 }
 
