@@ -58,14 +58,19 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    for (NSString *line in [[newsdetail substringFromIndex:4] componentsSeparatedByString:@"\n"]) {
-        if (![line isEqualToString:@"\n"]) {
+    //사진이 있을 때만, 인뎃스 4에서부터 접근 한다. 빈줄을 제거하기 위해서 사진이 없을 때는 빈줄이 1줄 이므로 인덱스 1에서 부터 시작
+    if (photostring!=NULL) {
+        for (NSString *line in [[newsdetail substringFromIndex:5] componentsSeparatedByString:@"\n"]) {
+                [newsdetailarr addObject:line];
+        }
+    }else{
+        for (NSString *line in [[newsdetail substringFromIndex:1] componentsSeparatedByString:@"\n"]) {
             [newsdetailarr addObject:line];
         }
         
     }
     
-    
+    //메인 스크롤뷰 얼로케이션
     mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,520)];
     mainScrollView.showsVerticalScrollIndicator=YES;
     mainScrollView.scrollEnabled=YES;
@@ -73,7 +78,8 @@
     mainScrollView.isAccessibilityElement=NO;
     [mainScrollView sizeToFit];
 
-    titleview =[[UILabel alloc]initWithFrame:CGRectMake(10.0f, 65.0f, 290.0f, 150.0f)];
+    //타이틀 얼로케이션
+    titleview =[[UILabel alloc]initWithFrame:CGRectMake(10.0f, 75.0f, 290.0f, 150.0f)];
     [titleview setText:[passData description]];
     titleview.lineBreakMode = YES;
     titleview.userInteractionEnabled=YES;
@@ -86,10 +92,11 @@
     [titleview sizeToFit];
     [mainScrollView addSubview:titleview];
     
+    //사진이 있을 때, 사진 웹뷰에 로드
     if (photostring!=NULL) {
         
         NSLog(@"titleview.frame.size.height=%f",titleview.frame.size.height);
-        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, titleview.frame.size.height+75.0f, 250.0f, 190.0f)];
+        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, titleview.frame.size.height+90.0f, 250.0f, 150.0f)];
         NSURL *myURL = [NSURL URLWithString:photostring];
         NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
         [webview loadRequest:myURLReq];
@@ -97,89 +104,42 @@
         
     }
 
-    /*
-        for (int i=0; i<[newsdetailarr count]; i++) {
-            
-            //NSLog(@"height=%d,width=%d",i_height,i_width);
-            
-            imagetextview=[[UILabel alloc]initWithFrame:CGRectMake(20, text_top_margin+i_height+40, 280, i_height)];
-            [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
-            [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
-            //imagetextview.editable = NO;
-            //imagetextview.selectable= YES;
-            imagetextview.userInteractionEnabled=YES;
-            imagetextview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
-            imagetextview.multipleTouchEnabled=YES;
-            imagetextview.opaque=NO;
-            imagetextview.tag = 10;
-            imagetextview.numberOfLines = 0;
-            
-            
-            //[imagetextview setScrollEnabled:YES];
-            NSMutableString * buffer =[NSMutableString stringWithString:newsdetailarr[i]];
-            [buffer appendString:@"\n"];
-
-            [imagetextview setText:buffer];
-            imagetextview.lineBreakMode = YES;
-
-            [imagetextview sizeToFit];
-                        //[imagetextview setScrollEnabled:NO];
-            
-            CGSize textViewSize = [imagetextview sizeThatFits:CGSizeMake(imagetextview.frame.size.width, FLT_MAX)];
-            i_height+=textViewSize.height;
-            i_width+=textViewSize.width;
-            
-            if (textViewSize.width==10) {
-                imagetextview.isAccessibilityElement=NO;
-            }
-            
-            
-            [mainScrollView addSubview:imagetextview];
-            
-        }
-    
-        mainScrollView.contentSize=CGSizeMake(320,i_height+310);
-        */
     [webview sizeToFit];
     [mainScrollView addSubview:webview];
     [self.view addSubview:mainScrollView];
     
 }
-
-
 -(void) viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
     
-    if ([webview sizeThatFits:CGSizeMake(webview.frame.size.width, FLT_MAX)].height > webview.frame.size.height) {
-        
-        CGRect frame = webview.frame;
-        frame.size.height = 1;
-        webview.frame = frame;
-        CGSize fittingSize = [webview sizeThatFits:CGSizeMake(webview.frame.size.width, FLT_MAX)];
-        frame.size = fittingSize;
-        webview.frame = frame;
-        
-    }
-    
     if ([htmlparsing getphotourl]==NULL) {
-         text_top_margin=titleview.frame.size.height+60;
+         text_top_margin=titleview.frame.size.height+60; //사진이 없을 경우 텍스트 마진
     }else {
-        text_top_margin=webview.frame.size.height+40;
+    
+        if ([webview sizeThatFits:CGSizeMake(webview.frame.size.width, FLT_MAX)].height > webview.frame.size.height) { // 사진이 있을 경우, 웹뷰 사이즈보다 큰 사진 받아올때,
+        
+            CGRect frame = webview.frame;
+            frame.size.height = 1;
+            webview.frame = frame;
+            CGSize fittingSize = [webview sizeThatFits:CGSizeMake(webview.frame.size.width, FLT_MAX)];
+            frame.size = fittingSize;
+            webview.frame = frame;
+            
+            text_top_margin=webview.frame.size.height+80; // 그때의 텍스트 마진
+            
+        }else {
+            
+              text_top_margin=webview.frame.size.height+40; // 웹뷰와 같거나 작은 사이즈 받아올때 마진
+        }
+        
     }
-    //text_top_margin=webview.frame.size.height+150;
-    NSLog(@"text_top_margin=%d",text_top_margin);
-    NSLog(@"webview.frame.size.height=%f",webview.frame.size.height);
 
     for (int i=0; i<[newsdetailarr count]; i++) {
-        
-        //NSLog(@"height=%d,width=%d",i_height,i_width);
         
         imagetextview=[[UILabel alloc]initWithFrame:CGRectMake(20, text_top_margin+i_height+40, 280, i_height)];
         [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
         [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
-        //imagetextview.editable = NO;
-        //imagetextview.selectable= YES;
         imagetextview.userInteractionEnabled=YES;
         imagetextview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
         imagetextview.multipleTouchEnabled=YES;
@@ -187,23 +147,19 @@
         imagetextview.tag = 10;
         imagetextview.numberOfLines = 0;
         
-        
-        //[imagetextview setScrollEnabled:YES];
         NSMutableString * buffer =[NSMutableString stringWithString:newsdetailarr[i]];
         [buffer appendString:@"\n"];
         
         [imagetextview setText:buffer];
         imagetextview.lineBreakMode = YES;
-        
         [imagetextview sizeToFit];
-        //[imagetextview setScrollEnabled:NO];
         
         CGSize textViewSize = [imagetextview sizeThatFits:CGSizeMake(imagetextview.frame.size.width, FLT_MAX)];
         i_height+=textViewSize.height;
         i_width+=textViewSize.width;
         
-        if (textViewSize.width==10) {
-            imagetextview.isAccessibilityElement=NO;
+        if (textViewSize.width < 150) {
+            imagetextview.isAccessibilityElement=NO;   //빈줄인 라벨 접근 안하기 위함
         }
         
         
@@ -212,10 +168,6 @@
     }
     
     mainScrollView.contentSize=CGSizeMake(320,i_height+310);
-    
-    
-   
-
     
 }
 
