@@ -68,6 +68,8 @@
     searchResult=[[NSMutableArray alloc]init];
     searchResultdetail=[[NSMutableArray alloc]init];
     
+    searchvalue=[searchtext description];
+    
     
     for(int i=0;i<8;i++) {
         
@@ -159,11 +161,16 @@
 	} else if ([elementName isEqualToString:@"item"]) {
 		[xmlParseData addObject:[NSDictionary dictionaryWithDictionary:currectItem]];
         [newsdata addObject:aNews];
+         searchrange=[aNews.title rangeOfString:searchvalue];
+         if(searchrange.location!= NSNotFound) {
+              NSLog(@"FOUND");
+             [searchResult addObject:aNews];
+         }
         aNews = [[News alloc]init];
-        
-	}
+    }
     
-
+    NSLog(@"NEWSDATACOUNT=%lu",(unsigned long)newsdata.count);
+   
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSMutableString *)string {
@@ -204,7 +211,7 @@
     
 }
 
-
+/*
 -(void)searchnews {
     
     searchvalue=[searchtext description];
@@ -219,7 +226,6 @@
             NSLog(@"FOUND");
             [searchResult addObject:buffer];
             
-            
         }
         
     }
@@ -227,14 +233,11 @@
     
 }
 
+ */
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [self searchnews];
-    newsdata = [[NSMutableArray alloc] init];
-    resultcheck++;
-    
     return 1;
 }
 

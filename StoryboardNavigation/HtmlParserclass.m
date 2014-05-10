@@ -57,10 +57,12 @@ int count;
             
         }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"title_days"]) {
             
+            if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
+                
                 newsdate =[NSMutableString stringWithString:[divNode rawContents]];
                 newsdate =[NSMutableString stringWithString:[fliter settext:newsdate]];
-
-            
+                
+            }
         
         }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"writer"]) {
             
@@ -107,7 +109,9 @@ int count;
     }
     
     newstext =[NSMutableString stringWithString:[fliter settext:str]];
-    [newstext appendString:newsdate];
+    if (newsdate!=NULL) {
+        [newstext appendString:newsdate];
+    }
     [newstext appendString:@"\n"];
     if (newswriter!=NULL) {
         [newstext appendString:newswriter];

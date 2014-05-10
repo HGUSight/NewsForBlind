@@ -46,7 +46,7 @@ typedef enum {
     
 }
 
--(void)searchnews;
+//-(void)searchnews;
 
 @property (strong, nonatomic)id searchtext;
 @property (nonatomic, retain)NSURLConnection *xmlConnection;
