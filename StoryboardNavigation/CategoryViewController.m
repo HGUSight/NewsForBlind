@@ -95,6 +95,7 @@
         
         num=currentIndexPath.row;
         viewController.check = @"category";
+        viewController.checkString =@"category";
         switch (num) {
             case 0:
                 viewController.urldata=@"http://www.kyongbuk.co.kr/rss/headline.xml";

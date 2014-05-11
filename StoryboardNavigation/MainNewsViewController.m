@@ -45,7 +45,7 @@ BOOL rememberFocus = false;
     [super viewDidLoad];
     
     controlFlag = 0;
-    checkString =[check description];
+    //checkString =[check description];
     
     if(![checkString  isEqual: @"category"]) {
          urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
@@ -177,6 +177,7 @@ BOOL rememberFocus = false;
 {
     moveBack = false;
     rememberFocus = true;
+    checkString = @"notCategory";
     if([[segue identifier]isEqualToString:@"TableIdentifier"])
     {
         
@@ -252,7 +253,7 @@ BOOL rememberFocus = false;
 	}
 }
 -(void)viewWillAppear:(BOOL)animated{
-    checkString =[check description];
+    //checkString =[check description];
    
     if((tabState == 1 && [checkString  isEqual: @"category"] )|| (tabState == 2 && ![checkString  isEqual: @"category"] ))
         rememberFocus =false;
@@ -268,17 +269,21 @@ BOOL rememberFocus = false;
      set focus
     */
     NSInteger row = 0;
-    
+
     if(![checkString  isEqual: @"category"]) {
         moveBack = false;
+       // rememberFocus =true;
     }else{
+        // if from category
         moveBack = true;
         rememberFocus = false;
     }
+    if([checkString  isEqual: @"notCategory"])rememberFocus =true;
     
     //remember
-    if(rememberFocus == true)
+    if(rememberFocus == true){
         row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
+    }
     
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     
@@ -296,7 +301,6 @@ BOOL rememberFocus = false;
     
     if(moveBack==true) {
         [self.navigationController popToRootViewControllerAnimated:animated];
-        NSLog(@"move to root");
     }
 }
 -(void)viewDidDisappear:(BOOL)animated{
