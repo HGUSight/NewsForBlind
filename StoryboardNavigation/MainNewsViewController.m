@@ -14,6 +14,7 @@
 #import "Fliter.h"
 #import "HtmlParserclass.h"
 #import "SetWrittingTime.h"
+#import "SettingViewController.h"
 
 @interface MainNewsViewController ()
 
@@ -77,7 +78,8 @@ BOOL rememberFocus = false;
     textbuffer=[[NSMutableString alloc]init];
     htmlparser=[[HtmlParserclass alloc]init];
     writetimeclass=[[SetWrittingTime alloc]init];
-    
+
+    imagecheck=true;
 }
 
 #pragma mark URLConnection delegate methods

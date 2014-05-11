@@ -7,19 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+BOOL imagecheck;
+
 @class AppDelegate;
 @class NewsArticleViewController;
 
 @interface SettingViewController : UITableViewController {
     
     NewsArticleViewController * articleController;
-    NSString * imagecheck;
+   
 }
 - (IBAction)buttonSub:(UIButton *)sender;
 - (IBAction)buttonAdd:(UIButton *)sender;
 @property (retain, nonatomic) IBOutlet UISlider *mySlider;
 @property (retain, nonatomic) IBOutlet UILabel *myLabel;
 @property (retain, nonatomic) IBOutlet UISwitch *hideImage;
+
 
 
 - (IBAction)sliderChanged:(id)sender;

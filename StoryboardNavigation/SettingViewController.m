@@ -17,11 +17,11 @@
 @implementation SettingViewController
 @synthesize mySlider;
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     articleController=[[NewsArticleViewController alloc]init];
-    imagecheck=[[NSString alloc]initWithString:@"true"];
     self.mySlider.minimumValue = 20;
     self.mySlider.maximumValue = 30;
     
@@ -65,17 +65,14 @@
     if (self.hideImage.on) {
         
         appDelegate.imageHiding = true;
-        imagecheck=[[NSString alloc]initWithString:@"true"];
-        articleController.imagecheckstr=imagecheck;
-        NSLog(@"dfsfdfdg=%@",articleController.imagecheckstr);
+        imagecheck=true;
+        
     }
     else {
         
         appDelegate.imageHiding = false;
-        imagecheck=[[NSString alloc]initWithString:@"false"];
-        articleController.imagecheckstr=imagecheck;
-        NSLog(@"dfsfdfdg=%@",articleController.imagecheckstr);
-
+        imagecheck=false;
+       
     }
     
 }

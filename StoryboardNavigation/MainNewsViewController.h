@@ -12,6 +12,7 @@
 @class Fliter;
 @class HtmlParserclass;
 @class SetWrittingTime;
+@class SettingViewController;
 
 typedef enum {
 	etNone = 0,

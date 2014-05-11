@@ -45,13 +45,13 @@
     linkarr=[[NSMutableArray alloc]init];
     
     
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/headline.xml"];
+    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/headline.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/politics.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/self-government.xml"];
+    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/self-government.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/international.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/national.xml"];
+    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/national.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/economy.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/culture.xml"];
+    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/culture.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/regionnews.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml"];
     
@@ -71,7 +71,7 @@
     searchvalue=[searchtext description];
     
     
-    for(int i=0;i<8;i++) {
+    for(int i=0;i<5;i++) {
         
         urlstring = linkarr[i];
         
@@ -93,7 +93,7 @@
 
 #pragma mark URLConnection delegate methods
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	NSLog(@"Receive: %@, %@, %d",
+	NSLog(@"Receive: %@, %@, %lld",
 		  [response URL],
 		  [response MIMEType],
 		  [response expectedContentLength]);
@@ -104,19 +104,32 @@
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receiveData appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
+    int num=0;
+    
     NSString *str = [[NSString alloc] initWithData:receiveData encoding:-2147481280];
+    
+    if (str!=NULL) {
+        num++;
+    }
+    NSLog(@"num=%d", num);
+    //NSLog(@"str=%@", @"/n");
+
+    
     str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
-    receiveData=[str dataUsingEncoding:NSUTF8StringEncoding];
+    receiveData=[[NSMutableData alloc]initWithData:[str dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //NSLog(@"str=%@", str);
     
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:receiveData];
 	
-    [parser setDelegate:self];
+    parser.delegate=(id)self;
 	[parser parse];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	UITableView *tableView = (UITableView *)[self view];
@@ -169,7 +182,7 @@
         aNews = [[News alloc]init];
     }
     
-    NSLog(@"NEWSDATACOUNT=%lu",(unsigned long)newsdata.count);
+   // NSLog(@"NEWSDATACOUNT=%lu",(unsigned long)newsdata.count);
    
 }
 

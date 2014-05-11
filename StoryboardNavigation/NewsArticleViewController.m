@@ -13,6 +13,7 @@
 #import "HtmlParserclass.h"
 #import "MainNewsViewController.h"
 #import "AppDelegate.h"
+#import "SettingViewController.h"
 
 
 @interface NewsArticleViewController ()
@@ -44,9 +45,7 @@
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     linkstring=[NSMutableString stringWithString:[passData2 description]];
-    //
     newsdetail=[htmlparsing sethtml:linkstring];
-    //
     photostring = [htmlparsing getphotourl];
     i_height=0;
     i_width=0;
@@ -54,6 +53,13 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
+    
+    
+    if (imagecheck) {
+        NSLog(@"imagecheck=%@",@"ok");
+    }
+   
+    
     for (NSString *line in [[newsdetail substringFromIndex:1] componentsSeparatedByString:@"\n"])
         [newsdetailarr addObject:line];
     
@@ -79,21 +85,27 @@
     [titleview sizeToFit];
     [mainScrollView addSubview:titleview];
     
-    //사진이 있을 때, 사진 웹뷰에 로드
-    if (photostring!=NULL) {
+    if (!imagecheck) {
         
-        NSLog(@"titleview.frame.size.height=%f",titleview.frame.size.height);
-        webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, titleview.frame.size.height+90.0f, 250.0f, 150.0f)];
-        NSURL *myURL = [NSURL URLWithString:photostring];
-        NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
-        [webview loadRequest:myURLReq];
-        [webview setScalesPageToFit:YES];
+        //사진이 있을 때, 사진 웹뷰에 로드
+        if (photostring!=NULL) {
+        
+            NSLog(@"titleview.frame.size.height=%f",titleview.frame.size.height);
+            webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, titleview.frame.size.height+90.0f, 250.0f, 150.0f)];
+            NSURL *myURL = [NSURL URLWithString:photostring];
+            NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
+            [webview loadRequest:myURLReq];
+            [webview setScalesPageToFit:YES];
+        
+        }
+
+        [webview sizeToFit];
+        [mainScrollView addSubview:webview];
         
     }
-
-    [webview sizeToFit];
-    [mainScrollView addSubview:webview];
+    
     [self.view addSubview:mainScrollView];
+    
 }
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
