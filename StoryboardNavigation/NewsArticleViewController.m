@@ -114,7 +114,7 @@
             
         }else {
             
-              text_top_margin=webview.frame.size.height+40; // 웹뷰와 같거나 작은 사이즈 받아올때 마진
+              text_top_margin=webview.frame.size.height+80; // 웹뷰와 같거나 작은 사이즈 받아올때 마진
         }
     }
     CGSize textViewSize;
