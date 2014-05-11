@@ -88,27 +88,33 @@ int count;
     }
     
     for(int i = 0; i < [str length]; i++) {
-       
-        
         if(str2!=NULL) {
-            
             text1= [str rangeOfString:str2];
-       
         }
-        
         if(text1.location != NSNotFound) {
-            
             [str deleteCharactersInRange:text1];
-           
-            
         }else {
-            
             break;
         }
-        
     }
-    
     newstext =[NSMutableString stringWithString:[fliter settext:str]];
+    NSString *stringWithBalnk =[newstext substringFromIndex:(0)];
+    int position = 0;
+   
+    NSRange blankRange;
+    blankRange.length = position+1;
+    blankRange.location = position;
+
+    unichar charAtPos;
+    
+    // delete empty lines
+    do {
+        charAtPos = [stringWithBalnk characterAtIndex:position];
+        stringWithBalnk = [stringWithBalnk substringFromIndex:(position+1)];
+    }while(charAtPos == '\n' || charAtPos =='\r');
+    [newstext setString:stringWithBalnk];
+    
+    // add data, writer
     if (newsdate!=NULL) {
         [newstext appendString:newsdate];
     }
@@ -116,11 +122,8 @@ int count;
     if (newswriter!=NULL) {
         [newstext appendString:newswriter];
     }
-    
-
-    
+    NSLog(newstext);
     return newstext;
-
 }
 -(NSString*)getphotourl {
     

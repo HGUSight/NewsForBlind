@@ -47,6 +47,7 @@
     linkstring=[NSMutableString stringWithString:[passData2 description]];
    
     newsdetail=[htmlparsing sethtml:linkstring];
+  //  NSLog(newsdetail);
     photostring = [htmlparsing getphotourl];
     
    
@@ -58,17 +59,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    //사진이 있을 때만, 인뎃스 4에서부터 접근 한다. 빈줄을 제거하기 위해서 사진이 없을 때는 빈줄이 1줄 이므로 인덱스 1에서 부터 시작
-    if (photostring!=NULL) {
-        for (NSString *line in [[newsdetail substringFromIndex:5] componentsSeparatedByString:@"\n"]) {
-                [newsdetailarr addObject:line];
-        }
-    }else{
-        for (NSString *line in [[newsdetail substringFromIndex:1] componentsSeparatedByString:@"\n"]) {
-            [newsdetailarr addObject:line];
-        }
-        
-    }
+    for (NSString *line in [[newsdetail substringFromIndex:1] componentsSeparatedByString:@"\n"])
+        [newsdetailarr addObject:line];
     
     //메인 스크롤뷰 얼로케이션
     mainScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,320,520)];
@@ -132,9 +124,9 @@
             
               text_top_margin=webview.frame.size.height+40; // 웹뷰와 같거나 작은 사이즈 받아올때 마진
         }
-        
     }
-
+    printf("\n%d\n",text_top_margin);
+    CGSize textViewSize;
     for (int i=0; i<[newsdetailarr count]; i++) {
         
         imagetextview=[[UILabel alloc]initWithFrame:CGRectMake(20, text_top_margin+i_height+40, 280, i_height)];
@@ -154,7 +146,7 @@
         imagetextview.lineBreakMode = YES;
         [imagetextview sizeToFit];
         
-        CGSize textViewSize = [imagetextview sizeThatFits:CGSizeMake(imagetextview.frame.size.width, FLT_MAX)];
+        textViewSize = [imagetextview sizeThatFits:CGSizeMake(imagetextview.frame.size.width, FLT_MAX)];
         i_height+=textViewSize.height;
         i_width+=textViewSize.width;
         
@@ -167,7 +159,7 @@
         
     }
     
-    mainScrollView.contentSize=CGSizeMake(320,i_height+310);
+    mainScrollView.contentSize=CGSizeMake(320,i_height+text_top_margin+textViewSize.height+120);
     
 }
 
