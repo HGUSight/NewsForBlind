@@ -122,7 +122,7 @@ int count;
     if (newswriter!=NULL) {
         [newstext appendString:newswriter];
     }
-    NSLog(newstext);
+   // NSLog(newstext);
     return newstext;
 }
 -(NSString*)getphotourl {
