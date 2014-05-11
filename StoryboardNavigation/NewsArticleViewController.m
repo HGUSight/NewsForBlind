@@ -153,14 +153,9 @@
         if (textViewSize.width < 150) {
             imagetextview.isAccessibilityElement=NO;   //빈줄인 라벨 접근 안하기 위함
         }
-        
-        
         [mainScrollView addSubview:imagetextview];
-        
     }
-    
     mainScrollView.contentSize=CGSizeMake(320,i_height+text_top_margin+textViewSize.height+120);
-    
 }
 
 - (void)didReceiveMemoryWarning
