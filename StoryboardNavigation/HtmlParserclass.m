@@ -29,10 +29,10 @@ int count;
     articleController=[[NewsArticleViewController alloc]init];
     
     NSError *error = nil;
-   
+    // here can be bottle neck
     NSString *htmlWillInsert =[NSString stringWithContentsOfURL:
                                [NSURL URLWithString:htmllink] encoding:-2147481280 error:nil];
-    
+    //
     HTMLParser *parser = [[HTMLParser alloc] initWithString:htmlWillInsert error:&error];
     
     if (nil) {
@@ -42,7 +42,6 @@ int count;
     HTMLNode *bodyNode = [parser body];
     
     NSArray *divNodes = [bodyNode findChildTags:@"div"];
-    
     for (HTMLNode *divNode in divNodes) {
         if ([[divNode getAttributeNamed:@"id"] isEqualToString:@"news_text"]) {
            
@@ -86,7 +85,6 @@ int count;
             
         }
     }
-    
     for(int i = 0; i < [str length]; i++) {
         if(str2!=NULL) {
             text1= [str rangeOfString:str2];
@@ -106,7 +104,6 @@ int count;
     blankRange.location = position;
 
     unichar charAtPos;
-    
     // delete empty lines
     do {
         charAtPos = [stringWithBalnk characterAtIndex:position];

@@ -206,9 +206,7 @@ BOOL rememberFocus = false;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        
         return newsdata.count;
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -217,14 +215,9 @@ BOOL rememberFocus = false;
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        
          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
          cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        
-        
-        
     }
-    
         News *buffer=[[News alloc]init];
         buffer=[newsdata objectAtIndex:indexPath.row];
         cell.textLabel.text=buffer.title;
@@ -260,7 +253,7 @@ BOOL rememberFocus = false;
 }
 -(void)viewWillAppear:(BOOL)animated{
     checkString =[check description];
-    
+   
     if((tabState == 1 && [checkString  isEqual: @"category"] )|| (tabState == 2 && ![checkString  isEqual: @"category"] ))
         rememberFocus =false;
     
@@ -271,15 +264,21 @@ BOOL rememberFocus = false;
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-  
     /*
      set focus
     */
     NSInteger row = 0;
     
+    if(![checkString  isEqual: @"category"]) {
+        moveBack = false;
+    }else{
+        moveBack = true;
+        rememberFocus = false;
+    }
+    
     //remember
     if(rememberFocus == true)
-    row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
+        row = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastIndex"];
     
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     
@@ -290,14 +289,6 @@ BOOL rememberFocus = false;
      UITableView *tableView = (UITableView *)[self view];
     cell = [tableView cellForRowAtIndexPath:indexPath];
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.cell);
-    
-    if(![checkString  isEqual: @"category"]) {
-        moveBack = false;
-        
-    }else{
-        moveBack = true;
-    }
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -307,12 +298,10 @@ BOOL rememberFocus = false;
         [self.navigationController popToRootViewControllerAnimated:animated];
         NSLog(@"move to root");
     }
-    
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     
 }
-
 
 @end

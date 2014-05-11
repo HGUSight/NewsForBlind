@@ -43,22 +43,17 @@
     saveNewsArr=[[NSMutableArray alloc]init];
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    
     linkstring=[NSMutableString stringWithString:[passData2 description]];
-   
+    //
     newsdetail=[htmlparsing sethtml:linkstring];
-  //  NSLog(newsdetail);
+    //
     photostring = [htmlparsing getphotourl];
-    
-   
-    
     i_height=0;
     i_width=0;
     text_top_margin = 0;
     
 }
 -(void)viewWillAppear:(BOOL)animated{
-    
     for (NSString *line in [[newsdetail substringFromIndex:1] componentsSeparatedByString:@"\n"])
         [newsdetailarr addObject:line];
     
@@ -99,12 +94,9 @@
     [webview sizeToFit];
     [mainScrollView addSubview:webview];
     [self.view addSubview:mainScrollView];
-    
 }
 -(void) viewDidAppear:(BOOL)animated {
-    
     [super viewDidAppear:animated];
-    
     if ([htmlparsing getphotourl]==NULL) {
          text_top_margin=titleview.frame.size.height+60; //사진이 없을 경우 텍스트 마진
     }else {
@@ -125,7 +117,6 @@
               text_top_margin=webview.frame.size.height+40; // 웹뷰와 같거나 작은 사이즈 받아올때 마진
         }
     }
-    printf("\n%d\n",text_top_margin);
     CGSize textViewSize;
     for (int i=0; i<[newsdetailarr count]; i++) {
         
