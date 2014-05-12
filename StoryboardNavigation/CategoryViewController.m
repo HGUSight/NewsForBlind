@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     itemlist=[[NSMutableArray alloc]initWithObjects:@"헤드라인",@"정치",@"자치행정",@"국제",@"사회",@"경제",@"문화",@"지역뉴스",@"스포츠,연예", nil];
+     itemlist=[[NSMutableArray alloc]initWithObjects:@"전체기사",@"헤드라인",@"정치",@"자치행정",@"국제",@"사회",@"경제",@"문화",@"지역뉴스",@"스포츠,연예",@"사설,칼럼",@"특집",@"사람들", nil];
      num=0;
     
    
@@ -97,42 +97,59 @@
         viewController.check = @"category";
         viewController.checkString =@"category";
         switch (num) {
+                
             case 0:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/headline.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/total.xml";
                 break;
                 
             case 1:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/politics.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/headline.xml";
                 break;
                 
             case 2:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/self-government.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/politics.xml";
                 break;
                 
             case 3:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/international.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/self-government.xml";
                 break;
                 
             case 4:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/national.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/international.xml";
                 break;
                 
             case 5:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/economy.xml";
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/national.xml";
                 break;
                 
             case 6:
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/economy.xml";
+                break;
+                
+            case 7:
                 viewController.urldata=@"http://www.kyongbuk.co.kr/rss/culture.xml";
                 break;
 
-            case 7:
+            case 8:
                 viewController.urldata=@"http://www.kyongbuk.co.kr/rss/regionnews.xml";
                 break;
 
-            case 8:
+            case 9:
                 viewController.urldata=@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml";
                 break;
-               
+            
+            case 10:
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/editorials.xml";
+                break;
+                
+            case 11:
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/special.xml";
+                break;
+                
+            case 12:
+                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/people.xml";
+                break;
+                
             default:
                 break;
         }

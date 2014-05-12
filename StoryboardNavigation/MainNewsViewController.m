@@ -46,10 +46,9 @@ BOOL rememberFocus = false;
     [super viewDidLoad];
     
     controlFlag = 0;
-    //checkString =[check description];
     
     if(![checkString  isEqual: @"category"]) {
-         urlstring = @"http://www.kyongbuk.co.kr/rss/total.xml";
+         urlstring = @"http://www.kyongbuk.co.kr/rss/headline.xml";
         moveBack = false;
         
     }else{
@@ -84,7 +83,7 @@ BOOL rememberFocus = false;
 
 #pragma mark URLConnection delegate methods
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	NSLog(@"Receive: %@, %@, %d",
+	NSLog(@"Receive: %@, %@, %lld",
 		  [response URL],
 		  [response MIMEType],
 		  [response expectedContentLength]);
@@ -103,8 +102,7 @@ BOOL rememberFocus = false;
     
     NSString *str = [[NSString alloc] initWithData:receiveData encoding:-2147481280];
     str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
-    receiveData=[str dataUsingEncoding:NSUTF8StringEncoding];
-    
+    receiveData=[[NSMutableData alloc]initWithData:[str dataUsingEncoding:NSUTF8StringEncoding]];
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:receiveData];
 	
     [parser setDelegate:self];
@@ -255,8 +253,7 @@ BOOL rememberFocus = false;
 	}
 }
 -(void)viewWillAppear:(BOOL)animated{
-    //checkString =[check description];
-   
+    
     if((tabState == 1 && [checkString  isEqual: @"category"] )|| (tabState == 2 && ![checkString  isEqual: @"category"] ))
         rememberFocus =false;
     
@@ -274,7 +271,7 @@ BOOL rememberFocus = false;
 
     if(![checkString  isEqual: @"category"]) {
         moveBack = false;
-       // rememberFocus =true;
+      
     }else{
         // if from category
         moveBack = true;
