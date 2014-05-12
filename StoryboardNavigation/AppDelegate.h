@@ -20,5 +20,8 @@
 @property (assign, nonatomic) BOOL imageHiding;
 
 @property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) UINavigationController *uiNavigationController;
+@property (nonatomic, strong) UINavigationBar *uiNavigationBar;
+@property (nonatomic, strong) UINavigationItem *uiNavigationItem;
 
 @end

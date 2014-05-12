@@ -12,6 +12,9 @@
 
 @synthesize fontS;
 @synthesize imageHiding;
+@synthesize uiNavigationBar;
+@synthesize uiNavigationController;
+@synthesize uiNavigationItem;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -43,6 +46,21 @@
     
     UITabBarItem *item4 = [items objectAtIndex:3];
     [item4 setFinishedSelectedImage:image4_a withFinishedUnselectedImage:image4_b];
+    
+    
+    UIColor *navy = [UIColor colorWithRed:47.0f/255.0f green:52.0f/255.0f blue:72.0f/255.0f alpha:1.0f];
+    //[[UINavigationBar appearance] setBackgroundColor:navy];
+    //UINavigationBar *navBar = uiNavigationController.navigationBar;
+    //[navBar setBackgroundColor:navy];
+    //[navBar setBackgroundImage:image1_a];
+    
+    //uiNavigationItem.titleView = [[UIImageView alloc] initWithImage:image1_a];
+    
+    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIImageView *image = [[UIImageView alloc] initWithImage:image1_a];
+    [image setFrame:CGRectMake(0, 0, 44, 44)];
+    [myView addSubview:image];
+    [self.uiNavigationController.navigationBar addSubview:myView];
 
     return YES;
 }
