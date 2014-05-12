@@ -18,6 +18,31 @@
     // Override point for customization after application launch.
     fontS = 20;
     imageHiding = true;
+    
+    self.tabBarController = (UITabBarController*) self.window.rootViewController;
+    NSArray* items = [self.tabBarController.tabBar items];
+    
+    UIImage *image1_a = [UIImage imageNamed:@"newspaper_normal.png"];
+    UIImage *image1_b = [UIImage imageNamed:@"newspaper_click.png"];
+    UIImage *image2_a = [UIImage imageNamed:@"category_normal.png"];
+    UIImage *image2_b = [UIImage imageNamed:@"category_click.png"];
+    UIImage *image3_a = [UIImage imageNamed:@"search_normal.png"];
+    UIImage *image3_b = [UIImage imageNamed:@"search_click.png"];
+    UIImage *image4_a = [UIImage imageNamed:@"setting_normal.png"];
+    UIImage *image4_b = [UIImage imageNamed:@"setting_click.png"];
+    
+    
+    UITabBarItem *item1 = [items objectAtIndex:0];
+    [item1 setFinishedSelectedImage:image1_a withFinishedUnselectedImage:image1_b];
+    
+    UITabBarItem *item2 = [items objectAtIndex:1];
+    [item2 setFinishedSelectedImage:image2_a withFinishedUnselectedImage:image2_b];
+    
+    UITabBarItem *item3 = [items objectAtIndex:2];
+    [item3 setFinishedSelectedImage:image3_a withFinishedUnselectedImage:image3_b];
+    
+    UITabBarItem *item4 = [items objectAtIndex:3];
+    [item4 setFinishedSelectedImage:image4_a withFinishedUnselectedImage:image4_b];
 
     return YES;
 }

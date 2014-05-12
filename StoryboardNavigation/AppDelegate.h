@@ -19,4 +19,6 @@
 @property (assign, nonatomic) NSInteger fontS;
 @property (assign, nonatomic) BOOL imageHiding;
 
+@property (nonatomic, strong) UITabBarController *tabBarController;
+
 @end
