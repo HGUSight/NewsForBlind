@@ -45,13 +45,13 @@
     linkarr=[[NSMutableArray alloc]init];
     
     
-    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/headline.xml"];
+    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/headline.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/politics.xml"];
-    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/self-government.xml"];
+    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/self-government.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/international.xml"];
-    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/national.xml"];
+    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/national.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/economy.xml"];
-    //[linkarr addObject:@"http://www.kyongbuk.co.kr/rss/culture.xml"];
+    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/culture.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/regionnews.xml"];
     [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml"];
     
