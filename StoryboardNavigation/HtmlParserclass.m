@@ -105,12 +105,14 @@ int count;
 
     unichar charAtPos;
     // delete empty lines
-    do {
-        charAtPos = [stringWithBalnk characterAtIndex:position];
-        stringWithBalnk = [stringWithBalnk substringFromIndex:(position+1)];
-    }while(charAtPos == '\n' || charAtPos =='\r');
+   
+    charAtPos = [stringWithBalnk characterAtIndex:position];
+    while(charAtPos == '\n' || charAtPos =='\r'){
+        stringWithBalnk = [stringWithBalnk substringFromIndex:(position+1)]; //+1 뺌
+        charAtPos = [stringWithBalnk characterAtIndex:position]; //-1 수정함
+    }
     [newstext setString:stringWithBalnk];
-    NSLog(@"%@",newstext);
+    
     // add data, writer
     if (newsdate!=NULL) {
         [newstext appendString:newsdate];

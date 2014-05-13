@@ -35,7 +35,7 @@
         }else if(misteg.location != NSNotFound) {
             [s1 deleteCharactersInRange:misteg];
         }else if(equalchar.location!=NSNotFound) {
-            [s1 replaceCharactersInRange:equalchar withString:@"는"];
+            [s1 replaceCharactersInRange:equalchar withString:@"는 "];
         }else if(wavesymbol.location!=NSNotFound) {
             [s1 replaceCharactersInRange:wavesymbol withString:@"에서 "];
         }else if(wavesymbol2.location!=NSNotFound) {
