@@ -8,6 +8,7 @@
 
 #import "TextFieldViewController.h"
 #import "SearchListViewController.h"
+#import "GetDataClass.h"
 
 @interface TextFieldViewController ()
 
@@ -19,6 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    getdataclass=[[GetDataClass alloc]init];
+    [getdataclass getdataclass];
+
 	
 }
 

@@ -60,7 +60,7 @@
     }
    
     
-    for (NSString *line in [[newsdetail substringFromIndex:1] componentsSeparatedByString:@"\n"])
+    for (NSString *line in [[newsdetail substringFromIndex:0] componentsSeparatedByString:@"\n"])
         [newsdetailarr addObject:line];
     
     //메인 스크롤뷰 얼로케이션

@@ -10,6 +10,7 @@
 		4625887A18C6B5C7009884C8 /* HanjatoHangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4625887918C6B5C7009884C8 /* HanjatoHangle.m */; };
 		462CA22318ECE96A00289DD2 /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22218ECE96A00289DD2 /* TextFieldViewController.m */; };
 		462CA22618ECFA8B00289DD2 /* SearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22518ECFA8B00289DD2 /* SearchListViewController.m */; };
+		462D3D7B1921C76B001883DF /* GetDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D3D7A1921C76B001883DF /* GetDataClass.m */; };
 		467F2AB4186EBF6B0074AFB3 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 467F2AB3186EBF6B0074AFB3 /* News.m */; };
 		4684981518952503001EE057 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4684981418952503001EE057 /* CategoryViewController.m */; };
 		468589A618DD53A400E1418B /* MakeHanjaHangleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 468589A518DD53A400E1418B /* MakeHanjaHangleMap.m */; };
@@ -50,6 +51,8 @@
 		462CA22218ECE96A00289DD2 /* TextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldViewController.m; sourceTree = "<group>"; };
 		462CA22418ECFA8B00289DD2 /* SearchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchListViewController.h; sourceTree = "<group>"; };
 		462CA22518ECFA8B00289DD2 /* SearchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListViewController.m; sourceTree = "<group>"; };
+		462D3D791921C76B001883DF /* GetDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDataClass.h; sourceTree = "<group>"; };
+		462D3D7A1921C76B001883DF /* GetDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDataClass.m; sourceTree = "<group>"; };
 		467F2AB2186EBF6B0074AFB3 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		467F2AB3186EBF6B0074AFB3 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		4684981318952503001EE057 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				462CA22218ECE96A00289DD2 /* TextFieldViewController.m */,
 				4684981318952503001EE057 /* CategoryViewController.h */,
 				4684981418952503001EE057 /* CategoryViewController.m */,
+				462D3D791921C76B001883DF /* GetDataClass.h */,
+				462D3D7A1921C76B001883DF /* GetDataClass.m */,
 				4693181C186D9B5D00005860 /* MainNewsViewController.h */,
 				4693181D186D9B5D00005860 /* MainNewsViewController.m */,
 				462CA22418ECFA8B00289DD2 /* SearchListViewController.h */,
@@ -299,6 +304,7 @@
 				46A06F6C18A8EA69008A3777 /* HTMLParser.m in Sources */,
 				468589A618DD53A400E1418B /* MakeHanjaHangleMap.m in Sources */,
 				46931806186D9A4C00005860 /* main.m in Sources */,
+				462D3D7B1921C76B001883DF /* GetDataClass.m in Sources */,
 				46D9830419092A60008995FE /* SetWrittingTime.m in Sources */,
 				4693180A186D9A4C00005860 /* AppDelegate.m in Sources */,
 				4684981518952503001EE057 /* CategoryViewController.m in Sources */,

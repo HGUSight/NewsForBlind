@@ -11,9 +11,7 @@
 @class News;
 @class Fliter;
 @class HtmlParserclass;
-
-
-
+@class GetDataClass;
 
 typedef enum {
 	etNone = 0,
@@ -24,7 +22,6 @@ typedef enum {
 @interface SearchListViewController : UITableViewController {
     
     NSString *searchvalue;
-    NSURLConnection *xmlConnection;
 	eElementType elementType;
 	NSMutableString *xmlValue;
 	NSMutableData *receiveData;
@@ -33,39 +30,28 @@ typedef enum {
     NSMutableArray *newsdata;
     News *aNews;
     NSIndexPath *currentindex;
-    NSMutableString *textbuffer;
     Fliter *fliter;
-    NSString *urlstring;
-    HtmlParserclass *htmlparser;
     NSMutableArray *searchResult;
     UITableViewCell *cell;
-    NSMutableArray *searchResultdetail;
-    NSMutableArray *linkarr;
     NSRange searchrange;
     int resultcheck;
+    GetDataClass *getdata;
+    
     
 }
 
-//-(void)searchnews;
-
 @property (strong, nonatomic)id searchtext;
-@property (nonatomic, retain)NSURLConnection *xmlConnection;
 @property (nonatomic)eElementType elementType;
 @property (nonatomic, retain)NSMutableString *xmlValue;
 @property (nonatomic, retain)NSMutableData *receiveData;
 @property (nonatomic, retain)NSMutableArray *xmlParseData;
 @property (nonatomic, retain)NSMutableDictionary *currectItem;
 @property (nonatomic, retain)NSMutableArray *newsdata;
-@property (nonatomic) NSIndexPath *currentindex;
-@property (nonatomic, retain) NSMutableString *textbuffer;
-@property (nonatomic,retain) NSString *urlstring;
+@property (nonatomic,retain) NSIndexPath *currentindex;
 @property (strong, nonatomic)id urldata;
 @property (strong, nonatomic)id check;
 @property (strong, nonatomic)NSMutableArray *searchResult;
 @property (nonatomic, retain)UITableViewCell *cell;
-@property (nonatomic, strong)NSMutableArray *titlelist;
-@property (nonatomic, strong)NSMutableArray *searchResultdetail;
-@property (nonatomic, strong)NSMutableArray *linkarr;
 
 
 

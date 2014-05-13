@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class GetDataClass;
+
 @interface TextFieldViewController : UIViewController {
     
     NSString *searchtext;
+    GetDataClass *getdataclass;
 }
 - (IBAction) textFieldDoneEditing:(id) sender;
 - (IBAction) Keyboardhidding:(id) sender;

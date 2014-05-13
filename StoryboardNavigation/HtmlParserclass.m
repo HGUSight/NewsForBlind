@@ -110,7 +110,7 @@ int count;
         stringWithBalnk = [stringWithBalnk substringFromIndex:(position+1)];
     }while(charAtPos == '\n' || charAtPos =='\r');
     [newstext setString:stringWithBalnk];
-    
+    NSLog(@"%@",newstext);
     // add data, writer
     if (newsdate!=NULL) {
         [newstext appendString:newsdate];
