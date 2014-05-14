@@ -61,6 +61,8 @@
     [image setFrame:CGRectMake(0, 0, 44, 44)];
     [myView addSubview:image];
     [self.uiNavigationController.navigationBar addSubview:myView];
+    
+    [self.uiNavigationController.navigationBar setIsAccessibilityElement:YES];
 
     return YES;
 }

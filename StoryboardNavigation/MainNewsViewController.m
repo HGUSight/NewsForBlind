@@ -79,6 +79,23 @@ BOOL rememberFocus = false;
     writetimeclass=[[SetWrittingTime alloc]init];
 
     imagecheck=true;
+    
+    
+    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
+    [myImageView setIsAccessibilityElement:YES];
+    [myImageView setAccessibilityLabel:@"경북일보"];
+    [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
+    myImageView.frame=CGRectMake(0, 0, 10, 30);
+    
+    [self.navigationItem setTitleView:myImageView];
+    [self.navigationItem setIsAccessibilityElement:YES];
+    
+    
+
+    [myImageView release];
+    
+    
 }
 
 #pragma mark URLConnection delegate methods
@@ -204,7 +221,13 @@ BOOL rememberFocus = false;
 {
     return 1;
 }
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    sectionName = @"헤드라인보기";
+    return sectionName;
+    
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
         return newsdata.count;

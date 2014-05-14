@@ -11,6 +11,8 @@
 		462CA22318ECE96A00289DD2 /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22218ECE96A00289DD2 /* TextFieldViewController.m */; };
 		462CA22618ECFA8B00289DD2 /* SearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22518ECFA8B00289DD2 /* SearchListViewController.m */; };
 		462D3D7B1921C76B001883DF /* GetDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D3D7A1921C76B001883DF /* GetDataClass.m */; };
+		462D3D811923776F001883DF /* kyoungbooklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 462D3D801923776F001883DF /* kyoungbooklogo.png */; };
+		462D3D861923AAC9001883DF /* nonclickedimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 462D3D851923AAC9001883DF /* nonclickedimage.png */; };
 		467F2AB4186EBF6B0074AFB3 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 467F2AB3186EBF6B0074AFB3 /* News.m */; };
 		4684981518952503001EE057 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4684981418952503001EE057 /* CategoryViewController.m */; };
 		468589A618DD53A400E1418B /* MakeHanjaHangleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 468589A518DD53A400E1418B /* MakeHanjaHangleMap.m */; };
@@ -53,6 +55,8 @@
 		462CA22518ECFA8B00289DD2 /* SearchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListViewController.m; sourceTree = "<group>"; };
 		462D3D791921C76B001883DF /* GetDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDataClass.h; sourceTree = "<group>"; };
 		462D3D7A1921C76B001883DF /* GetDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDataClass.m; sourceTree = "<group>"; };
+		462D3D801923776F001883DF /* kyoungbooklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kyoungbooklogo.png; sourceTree = "<group>"; };
+		462D3D851923AAC9001883DF /* nonclickedimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nonclickedimage.png; sourceTree = "<group>"; };
 		467F2AB2186EBF6B0074AFB3 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		467F2AB3186EBF6B0074AFB3 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		4684981318952503001EE057 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		4626B85818A4C4D800EDFB62 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				462D3D851923AAC9001883DF /* nonclickedimage.png */,
+				462D3D801923776F001883DF /* kyoungbooklogo.png */,
 				888B498A192087BE005D4364 /* category_click.png */,
 				888B498B192087BF005D4364 /* category_normal.png */,
 				888B498C192087BF005D4364 /* newspaper_click.png */,
@@ -278,6 +284,8 @@
 			files = (
 				46931804186D9A4C00005860 /* InfoPlist.strings in Resources */,
 				4693180C186D9A4C00005860 /* Default.png in Resources */,
+				462D3D811923776F001883DF /* kyoungbooklogo.png in Resources */,
+				462D3D861923AAC9001883DF /* nonclickedimage.png in Resources */,
 				4693180E186D9A4C00005860 /* Default@2x.png in Resources */,
 				888B4996192087BF005D4364 /* search_click.png in Resources */,
 				888B4992192087BF005D4364 /* category_click.png in Resources */,

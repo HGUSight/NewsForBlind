@@ -72,7 +72,7 @@
     [mainScrollView sizeToFit];
 
     //타이틀 얼로케이션
-    titleview =[[UILabel alloc]initWithFrame:CGRectMake(10.0f, 75.0f, 290.0f, 150.0f)];
+    titleview =[[UILabel alloc]initWithFrame:CGRectMake(10.0f, 25.0f, 290.0f, 150.0f)];
     [titleview setText:[passData description]];
     titleview.lineBreakMode = YES;
     titleview.userInteractionEnabled=YES;
@@ -91,7 +91,7 @@
         if (photostring!=NULL) {
         
             NSLog(@"titleview.frame.size.height=%f",titleview.frame.size.height);
-            webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, titleview.frame.size.height+90.0f, 250.0f, 150.0f)];
+            webview = [[UIWebView alloc] initWithFrame:CGRectMake(30.0f, titleview.frame.size.height+40.0f, 250.0f, 150.0f)];
             NSURL *myURL = [NSURL URLWithString:photostring];
             NSURLRequest *myURLReq = [NSURLRequest requestWithURL:myURL];
             [webview loadRequest:myURLReq];
@@ -110,7 +110,7 @@
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if ([htmlparsing getphotourl]==NULL) {
-         text_top_margin=titleview.frame.size.height+60; //사진이 없을 경우 텍스트 마진
+         text_top_margin=titleview.frame.size.height+20; //사진이 없을 경우 텍스트 마진
     }else {
     
         if ([webview sizeThatFits:CGSizeMake(webview.frame.size.width, FLT_MAX)].height > webview.frame.size.height) { // 사진이 있을 경우, 웹뷰 사이즈보다 큰 사진 받아올때,
@@ -126,7 +126,7 @@
             
         }else {
             
-              text_top_margin=webview.frame.size.height+80; // 웹뷰와 같거나 작은 사이즈 받아올때 마진
+              text_top_margin=webview.frame.size.height+40; // 웹뷰와 같거나 작은 사이즈 받아올때 마진
         }
     }
     CGSize textViewSize;

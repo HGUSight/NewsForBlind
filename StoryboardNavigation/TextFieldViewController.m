@@ -24,9 +24,23 @@
     getdataclass=[[GetDataClass alloc]init];
     [getdataclass getdataclass];
 
-	
+    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
+    [myImageView setIsAccessibilityElement:YES];
+    [myImageView setAccessibilityLabel:@"경북일보"];
+    [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
+    myImageView.frame=CGRectMake(0, 0, 10, 30);
+    
+    [self.navigationItem setTitleView:myImageView];
+    [self.navigationItem setIsAccessibilityElement:YES];
+    
 }
-
+-(void)viewDidAppear:(BOOL)animated {
+     [super viewDidAppear:animated];
+    
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.textfield);
+    
+}
 
 #pragma mark - Table view delegate
 
@@ -60,7 +74,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
    

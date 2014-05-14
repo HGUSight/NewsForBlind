@@ -51,6 +51,16 @@
     
     searchvalue=[searchtext description];
     
+    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
+    [myImageView setIsAccessibilityElement:YES];
+    [myImageView setAccessibilityLabel:@"경북일보"];
+    [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
+    myImageView.frame=CGRectMake(0, 0, 10, 30);
+    
+    [self.navigationItem setTitleView:myImageView];
+    [self.navigationItem setIsAccessibilityElement:YES];
+    
 }
 -(void)viewWillAppear:(BOOL)animated {
     
@@ -197,7 +207,13 @@
     
     
 }
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    sectionName = @"검색결과리스트";
+    return sectionName;
+    
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     

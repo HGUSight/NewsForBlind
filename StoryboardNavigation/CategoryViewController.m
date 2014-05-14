@@ -24,6 +24,15 @@
      itemlist=[[NSMutableArray alloc]initWithObjects:@"전체기사",@"헤드라인",@"정치",@"자치행정",@"국제",@"사회",@"경제",@"문화",@"지역뉴스",@"스포츠,연예",@"사설,칼럼",@"특집",@"사람들", nil];
      num=0;
     
+    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
+    [myImageView setIsAccessibilityElement:YES];
+    [myImageView setAccessibilityLabel:@"경북일보"];
+    [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
+    myImageView.frame=CGRectMake(0, 0, 10, 30);
+    
+    [self.navigationItem setTitleView:myImageView];
+    [self.navigationItem setIsAccessibilityElement:YES];
    
 
 }
@@ -40,7 +49,13 @@
 {
     return 1;
 }
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    sectionName = @"카테고리별보기";
+    return sectionName;
+    
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [itemlist count];
