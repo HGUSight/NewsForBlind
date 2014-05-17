@@ -46,13 +46,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VC3-ne-Ohk">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResuableCellWithIdentifier" id="VC3-ne-Ohk">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VC3-ne-Ohk" id="Vl3-Ul-Q9a">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="2" kind="push" identifier="TableIdentifier" id="75R-95-pC6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -68,7 +71,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4K-BP-avt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080" y="-675"/>
+            <point key="canvasLocation" x="2168" y="-695"/>
         </scene>
         <!--Navigation Controller - 카테고리별 보기-->
         <scene sceneID="yJJ-rJ-WYi">
@@ -287,7 +290,6 @@
         <!--Text Field View Controller - 검색하기-->
         <scene sceneID="L9o-3c-RgD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JuM-Hf-dA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="k4F-1Z-emv" customClass="TextFieldViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G85-nJ-F4d"/>
@@ -345,6 +347,7 @@
                         <outlet property="textfield" destination="gWT-30-Sx9" id="azC-1A-Rng"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JuM-Hf-dA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1217" y="806"/>
         </scene>
@@ -380,7 +383,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovS-b3-aCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2118" y="229"/>
+            <point key="canvasLocation" x="2140" y="265"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="4qB-By-pUE">
@@ -391,13 +394,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="F1a-99-W7C">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="F1a-99-W7C">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F1a-99-W7C" id="nwW-Sa-VqU">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Iji-Im-xk5" kind="push" identifier="SecondeTableIdentifier" id="foy-Gg-Qh1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -411,7 +417,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JpF-WL-4Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191" y="34"/>
+            <point key="canvasLocation" x="1193" y="40"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8A1-9g-KW1">
@@ -419,7 +425,7 @@
                 <tabBarController definesPresentationContext="YES" id="u12-oM-pcw" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <tabBar key="tabBar" contentMode="bottom" selectionIndicatorImage="nonclickedimage.png" itemPositioning="fill" id="s0P-iV-g24">
+                    <tabBar key="tabBar" contentMode="bottom" itemPositioning="fill" id="s0P-iV-g24">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.37965219257646382" green="0.38561639138190912" blue="0.57304288903061229" alpha="1" colorSpace="calibratedRGB"/>
@@ -427,8 +433,8 @@
                         <color key="selectedImageTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Srg-Kq-vE5" kind="relationship" relationship="viewControllers" id="JSv-wE-9yR"/>
                         <segue destination="eig-zB-mLS" kind="relationship" relationship="viewControllers" id="yUF-jD-VEF"/>
+                        <segue destination="Srg-Kq-vE5" kind="relationship" relationship="viewControllers" id="JSv-wE-9yR"/>
                         <segue destination="hRi-Qc-Bcc" kind="relationship" relationship="viewControllers" id="Maa-5J-nh0"/>
                         <segue destination="ywE-oD-Qph" kind="relationship" relationship="viewControllers" id="51h-LC-iyq"/>
                     </connections>
@@ -470,7 +476,6 @@
     </scenes>
     <resources>
         <image name="newspaper_normal.png" width="81" height="49"/>
-        <image name="nonclickedimage.png" width="569" height="167"/>
         <image name="search_normal.png" width="81" height="49"/>
         <image name="setting_normal.png" width="81" height="49"/>
     </resources>
@@ -479,4 +484,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="foy-Gg-Qh1"/>
+        <segue reference="75R-95-pC6"/>
+    </inferredMetricsTieBreakers>
 </document>

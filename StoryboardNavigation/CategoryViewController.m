@@ -108,7 +108,7 @@
         MainNewsViewController *viewController=[segue destinationViewController];
         NSIndexPath *currentIndexPath=[self.tableView indexPathForSelectedRow];
         
-        num=currentIndexPath.row;
+        num=(int)currentIndexPath.row;
         viewController.check = @"category";
         viewController.checkString =@"category";
         switch (num) {
