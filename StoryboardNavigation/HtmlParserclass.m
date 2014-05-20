@@ -96,6 +96,8 @@ int count;
         }
     }
     newstext =[NSMutableString stringWithString:[fliter settext:str]];
+    NSLog(@"string=%@",newstext);
+
     NSString *stringWithBalnk =[newstext substringFromIndex:(0)];
     int position = 0;
    

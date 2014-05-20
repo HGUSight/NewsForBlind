@@ -26,7 +26,7 @@
     NSRange dday;
     NSRange it;
     NSRange led;
-    
+    NSRange strangetag;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;

@@ -29,6 +29,8 @@
         dday=[s1 rangeOfString:@"D-"];
         it=[s1 rangeOfString:@"IT"];
         led=[s1 rangeOfString:@"LED"];
+        strangetag=[s1 rangeOfString:@"document.write('');"];
+        
         
         if(teg.location != NSNotFound) {
             [s1 deleteCharactersInRange:teg];
@@ -56,6 +58,8 @@
             [s1 replaceCharactersInRange:it withString:@"아이티"];
         }else if(led.location!=NSNotFound) {
             [s1 replaceCharactersInRange:led withString:@"엘이디"]; 
+        }else if(strangetag.location != NSNotFound) {
+            [s1 deleteCharactersInRange:strangetag];
         }else {
            
             break;
