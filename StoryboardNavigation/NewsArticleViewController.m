@@ -21,7 +21,7 @@
 @end
 
 @implementation NewsArticleViewController
-@synthesize passData,passData1,passData2,imagecheckstr,photourl;
+@synthesize passData,passData1,passData2,passData3,imagecheckstr,photourl;
 @synthesize textbuffer;
 @synthesize saveNewsArr,newsdetailarr;
 @synthesize doscrap;
@@ -47,9 +47,14 @@
     linkstring=[NSMutableString stringWithString:[passData2 description]];
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
+    newdate=[NSString stringWithString:[passData3 description]];
+    
     i_height=0;
     i_width=0;
     text_top_margin = 0;
+    
+    //[self openDB];
+    //[self createTableNamed:@"newstable" withField1:@"kindofnews" withField2:@"newstitle" withField3:@"newscontent" withField4:@"newsdate"];
     
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -180,14 +185,91 @@
 
 -(IBAction)doSaveNewsdetail:(id)sender
 {
-    news.title=[NSMutableString stringWithString:[passData description]];
-    news.description=[NSMutableString stringWithString:newsdetail];
-    [saveNewsArr addObject:news];
-    NSLog(@"SAVE TITLE:%@",news.title);
-    news = [[News alloc]init];
-    
+    [self insertRecordIntoTable:@"newstable" withField1:@"kindofnews" fieldvalue:@"경북일보" withField2:@"newstitle" field2value:[passData description] withField3:@"newscontent" field3value:[htmlparsing sethtml:linkstring] withField4:@"newsdate" field4value:newdate];
     
 }
+-(NSString *)filePath
+{
+    NSArray *paths= NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDir=[paths objectAtIndex:0];
+    
+    return  [documentsDir stringByAppendingPathComponent:@"database.sql"];
+    
+}
+
+-(void)openDB
+{
+    if(db==NULL) {
+        sqlite3 *newDBconnection;
+        
+        NSArray *paths= NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+        NSString *documentsDir=[paths objectAtIndex:0];
+        NSString *path =[documentsDir stringByAppendingPathComponent:@"klb_db.sqlite"];
+        
+        if (sqlite3_open([path UTF8String], &newDBconnection)==SQLITE_OK) {
+            NSLog(@"Database Successfully Opened :)");
+            db = newDBconnection;
+        }else if (sqlite3_open([path UTF8String], &newDBconnection)!=SQLITE_OK) {
+            sqlite3_close(db);
+            sqlite3_close(newDBconnection);
+            
+            NSAssert(0,@"Database failed to open");
+        }
+
+    }
+    
+}
+-(void)createTableNamed:(NSString *)tableName withField1:(NSString *) field1 withField2:(NSString *) field2 withField3:(NSString *) field3 withField4:(NSString *) field4
+{
+    char *err;
+    
+    NSString *sql= [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' TEXT, '%@' TEXT PRIMARY KEY, '@' TEXT, '@' TEXT);",tableName, field1,field2,field3,field4];
+    
+    if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err)!= SQLITE_OK)
+    {
+        sqlite3_close(db);
+        NSAssert(0,@"Tabled failed to create");
+    }
+    
+}
+-(void)insertRecordIntoTable:(NSString *)tableName withField1:(NSString *) field1 fieldvalue:(NSString *)fieldvalue withField2:(NSString *) field2 field2value:(NSString *)field2value withField3:(NSString *) field3 field3value:(NSString *)field3value withField4:(NSString *) field4 field4value:(NSString *)field4value
+{
+    NSString *sql =[NSString stringWithFormat:@"INSERT OR REPLACE INTO '%@' ('%@', '%@', %@', '%@') VALUES ('%@', '%@', %@', '%@')",tableName,field1, field2, field3, field4, fieldvalue, field2value, field3value, field4value];
+    
+    char *err;
+    if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err)!= SQLITE_OK)
+    {
+        sqlite3_close(db);
+        NSAssert(0,@"Error updating table");
+    }
+    
+}
+-(void)getAllRowsFromTableNamed: (NSString *)tableName
+{
+    NSString *sql= [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
+    
+    sqlite3_stmt *statement;
+    if(sqlite3_prepare_v2(db, [sql UTF8String], -1, &statement, nil)==SQLITE_OK) {
+        while (sqlite3_step(statement)==SQLITE_ROW) {
+            char *field1 =(char *)sqlite3_column_text(statement,0);
+            NSString *field1str =[[NSString alloc]initWithUTF8String:field1];
+            
+            char *field2 =(char *)sqlite3_column_text(statement,1);
+            NSString *field2str =[[NSString alloc]initWithUTF8String:field2];
+            
+            char *field3 =(char *)sqlite3_column_text(statement,2);
+            NSString *field3str =[[NSString alloc]initWithUTF8String:field3];
+            
+            char *field4 =(char *)sqlite3_column_text(statement,3);
+            NSString *field4str =[[NSString alloc]initWithUTF8String:field4];
+            
+        }
+        
+        sqlite3_finalize(statement);
+    }
+}
+
 
 
 @end

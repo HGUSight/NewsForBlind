@@ -247,6 +247,7 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
+     [self.navigationController popToRootViewControllerAnimated:animated];
 }
 
 

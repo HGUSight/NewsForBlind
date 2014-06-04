@@ -463,7 +463,7 @@
         <scene sceneID="J9C-D1-MZ7">
             <objects>
                 <navigationController title="전체기사보기" id="eig-zB-mLS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="전체기사 보기" image="newspaper_normal.png" id="azm-O9-H29" propertyAccessControl="none">
+                    <tabBarItem key="tabBarItem" title="헤드라인 보기" image="newspaper_normal.png" id="azm-O9-H29" propertyAccessControl="none">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
@@ -501,7 +501,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="foy-Gg-Qh1"/>
         <segue reference="75R-95-pC6"/>
+        <segue reference="Ogu-xd-52T"/>
     </inferredMetricsTieBreakers>
 </document>

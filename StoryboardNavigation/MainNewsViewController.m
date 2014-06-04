@@ -206,10 +206,12 @@ BOOL rememberFocus = false;
             NSString *data=buf.title;
             NSMutableString *data1=buf.description;
             NSMutableString *data2=buf.link;
-            
+            NSMutableString *data3=buf.pubData;
+       
             viewController.passData=data;
             viewController.passData1=data1;
             viewController.passData2=data2;
+            viewController.passData3=data3;
         
     }
     
@@ -223,8 +225,44 @@ BOOL rememberFocus = false;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *sectionName;
-    sectionName = @"헤드라인보기";
+     NSString *sectionName;
+    
+    if(![checkString  isEqual: @"category"]) {
+         sectionName = @"헤드라인 보기";
+
+    }else{
+        
+        if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/total.xml"]) {
+            sectionName = @"전체기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/headline.xml"]) {
+            sectionName = @"헤드라인 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/politics.xml"]) {
+            sectionName = @"정치기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/self-government.xml"]) {
+            sectionName = @"자치행정기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/international.xml"]) {
+            sectionName = @"국제기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/national.xml"]) {
+            sectionName = @"사회기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/economy.xml"]) {
+            sectionName = @"경제기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/culture.xml"]) {
+            sectionName = @"문화기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/regionnews.xml"]) {
+            sectionName = @"지역뉴스기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml"]) {
+            sectionName = @"스포츠,연예기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/editorials.xml"]) {
+            sectionName = @"사설,칼럼 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/special.xml"]) {
+            sectionName = @"특집기사 보기";
+        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/people.xml"]) {
+            sectionName = @"사람들기사 보기";
+        }else {
+            sectionName = @"헤드라인 보기";
+        }
+    }
+
     return sectionName;
     
 }

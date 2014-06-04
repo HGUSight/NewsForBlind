@@ -13,6 +13,7 @@
 		462D3D7B1921C76B001883DF /* GetDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D3D7A1921C76B001883DF /* GetDataClass.m */; };
 		462D3D811923776F001883DF /* kyoungbooklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 462D3D801923776F001883DF /* kyoungbooklogo.png */; };
 		462D3D861923AAC9001883DF /* nonclickedimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 462D3D851923AAC9001883DF /* nonclickedimage.png */; };
+		463433A5193F2C29004C0CC6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 463433A4193F2C29004C0CC6 /* libsqlite3.dylib */; };
 		467F2AB4186EBF6B0074AFB3 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 467F2AB3186EBF6B0074AFB3 /* News.m */; };
 		4684981518952503001EE057 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4684981418952503001EE057 /* CategoryViewController.m */; };
 		468589A618DD53A400E1418B /* MakeHanjaHangleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 468589A518DD53A400E1418B /* MakeHanjaHangleMap.m */; };
@@ -57,6 +58,7 @@
 		462D3D7A1921C76B001883DF /* GetDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDataClass.m; sourceTree = "<group>"; };
 		462D3D801923776F001883DF /* kyoungbooklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kyoungbooklogo.png; sourceTree = "<group>"; };
 		462D3D851923AAC9001883DF /* nonclickedimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nonclickedimage.png; sourceTree = "<group>"; };
+		463433A4193F2C29004C0CC6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		467F2AB2186EBF6B0074AFB3 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		467F2AB3186EBF6B0074AFB3 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		4684981318952503001EE057 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463433A5193F2C29004C0CC6 /* libsqlite3.dylib in Frameworks */,
 				46A06F6E18A8EAA0008A3777 /* libxml2.dylib in Frameworks */,
 				469317FA186D9A4C00005860 /* UIKit.framework in Frameworks */,
 				469317FC186D9A4C00005860 /* Foundation.framework in Frameworks */,
@@ -158,6 +161,7 @@
 		469317F8186D9A4C00005860 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				463433A4193F2C29004C0CC6 /* libsqlite3.dylib */,
 				46A06F6D18A8EAA0008A3777 /* libxml2.dylib */,
 				469317F9186D9A4C00005860 /* UIKit.framework */,
 				469317FB186D9A4C00005860 /* Foundation.framework */,
