@@ -15,6 +15,7 @@
 		462D3D861923AAC9001883DF /* nonclickedimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 462D3D851923AAC9001883DF /* nonclickedimage.png */; };
 		463433A5193F2C29004C0CC6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 463433A4193F2C29004C0CC6 /* libsqlite3.dylib */; };
 		467F2AB4186EBF6B0074AFB3 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 467F2AB3186EBF6B0074AFB3 /* News.m */; };
+		46820F4E193F51DF006D2C03 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46820F4D193F51DF006D2C03 /* Icon.png */; };
 		4684981518952503001EE057 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4684981418952503001EE057 /* CategoryViewController.m */; };
 		468589A618DD53A400E1418B /* MakeHanjaHangleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 468589A518DD53A400E1418B /* MakeHanjaHangleMap.m */; };
 		46878A3918DC422A004CDCE8 /* hanja.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46878A3818DC422A004CDCE8 /* hanja.txt */; };
@@ -61,6 +62,7 @@
 		463433A4193F2C29004C0CC6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		467F2AB2186EBF6B0074AFB3 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		467F2AB3186EBF6B0074AFB3 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
+		46820F4D193F51DF006D2C03 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4684981318952503001EE057 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
 		4684981418952503001EE057 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
 		468589A418DD53A400E1418B /* MakeHanjaHangleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeHanjaHangleMap.h; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		46931800186D9A4C00005860 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				46820F4D193F51DF006D2C03 /* Icon.png */,
 				46931801186D9A4C00005860 /* StoryboardNavigation-Info.plist */,
 				46931802186D9A4C00005860 /* InfoPlist.strings */,
 				46931805186D9A4C00005860 /* main.m */,
@@ -301,6 +304,7 @@
 				888B4998192087BF005D4364 /* setting_click.png in Resources */,
 				888B4995192087BF005D4364 /* newspaper_normal.png in Resources */,
 				46878A3918DC422A004CDCE8 /* hanja.txt in Resources */,
+				46820F4E193F51DF006D2C03 /* Icon.png in Resources */,
 				888B4999192087BF005D4364 /* setting_normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
