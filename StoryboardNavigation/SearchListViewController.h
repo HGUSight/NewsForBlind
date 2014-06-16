@@ -36,7 +36,7 @@ typedef enum {
     NSRange searchrange;
     int resultcheck;
     GetDataClass *getdata;
-    
+    BOOL moveback;
     
 }
 

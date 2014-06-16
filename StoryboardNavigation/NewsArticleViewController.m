@@ -47,7 +47,7 @@
     linkstring=[NSMutableString stringWithString:[passData2 description]];
     newsdetail=[htmlparsing sethtml:linkstring];
     photostring = [htmlparsing getphotourl];
-    newdate=[NSString stringWithString:[passData3 description]];
+    //newdate=[NSString stringWithString:[passData3 description]];
     
     i_height=0;
     i_width=0;
@@ -182,12 +182,13 @@
     [mainScrollView release];
    
 }
-
+/*
 -(IBAction)doSaveNewsdetail:(id)sender
 {
     [self insertRecordIntoTable:@"newstable" withField1:@"kindofnews" fieldvalue:@"경북일보" withField2:@"newstitle" field2value:[passData description] withField3:@"newscontent" field3value:[htmlparsing sethtml:linkstring] withField4:@"newsdate" field4value:newdate];
     
 }
+ */
 -(NSString *)filePath
 {
     NSArray *paths= NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);

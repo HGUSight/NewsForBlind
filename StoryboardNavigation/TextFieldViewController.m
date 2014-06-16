@@ -35,6 +35,10 @@
     [self.navigationItem setIsAccessibilityElement:YES];
     
 }
+-(void)viewWillAppear:(BOOL)animated {
+     [super viewWillAppear:animated];
+     [self.textfield setText: @""];
+}
 -(void)viewDidAppear:(BOOL)animated {
      [super viewDidAppear:animated];
     
@@ -79,10 +83,8 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)viewDidDisappear:(BOOL)animated{
+    
     [super viewDidDisappear:animated];
-    [self.textfield setText: @" "];
-
-   
 }
 
 

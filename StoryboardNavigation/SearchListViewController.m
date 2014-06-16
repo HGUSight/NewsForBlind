@@ -49,6 +49,7 @@
     searchResult=[[NSMutableArray alloc]init];
     getdata=[[GetDataClass alloc]init];
     
+    moveback=true;
     searchvalue=[searchtext description];
     
     UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
@@ -92,6 +93,8 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     UITableView *tableView = (UITableView *)[self view];
 	[tableView reloadData];
+    
+    moveback=true;
     
 }
 #pragma mark XMLParse delegate methods
@@ -183,6 +186,8 @@
         
     }
     
+    moveback=false;
+    
 }
 
 #pragma mark - Table view data source
@@ -247,7 +252,9 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-     [self.navigationController popToRootViewControllerAnimated:animated];
+    if (moveback) {
+       [self.navigationController popToRootViewControllerAnimated:animated];
+    }
 }
 
 
