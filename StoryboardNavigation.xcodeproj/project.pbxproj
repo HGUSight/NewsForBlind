@@ -266,6 +266,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "김사랑";
+				TargetAttributes = {
+					469317F5186D9A4C00005860 = {
+						DevelopmentTeam = Q737PAL46B;
+					};
+				};
 			};
 			buildConfigurationList = 469317F1186D9A4B00005860 /* Build configuration list for PBXProject "StoryboardNavigation" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -420,6 +425,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoryboardNavigation/StoryboardNavigation-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -430,6 +436,7 @@
 				INFOPLIST_FILE = "StoryboardNavigation/StoryboardNavigation-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F701DE0F-40DE-4E45-927D-08E807EB59A8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -440,6 +447,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoryboardNavigation/StoryboardNavigation-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -451,6 +459,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F701DE0F-40DE-4E45-927D-08E807EB59A8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

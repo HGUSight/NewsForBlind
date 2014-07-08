@@ -65,11 +65,13 @@
 }
 - (IBAction) textFieldDoneEditing:(id) sender // 텍스트 필드 입력 종료 액션
 {
-	[sender resignFirstResponder]; // 센더 (텍스트 필드)에게 최초 응답자 자리에서 물러나라는 메시지이다.
+	/*[sender resignFirstResponder]; // 센더 (텍스트 필드)에게 최초 응답자 자리에서 물러나라는 메시지이다.
     SearchListViewController *viewcontroller = [[SearchListViewController alloc] init];
     [self.navigationController pushViewController:viewcontroller animated:YES];
     searchtext=self.textfield.text;
     viewcontroller.searchtext=searchtext;
+     */
+    [self.textfield resignFirstResponder];
 
 }
 - (IBAction) Keyboardhidding:(id) sender // 텍스트 필드 입력 종료 액션

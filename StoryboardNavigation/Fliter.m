@@ -30,7 +30,7 @@
         it=[s1 rangeOfString:@"IT"];
         led=[s1 rangeOfString:@"LED"];
         strangetag=[s1 rangeOfString:@"document.write('');"];
-        
+        ampdel=[s1 rangeOfString:@"amp;"];
         
         if(teg.location != NSNotFound) {
             [s1 deleteCharactersInRange:teg];
@@ -60,6 +60,8 @@
             [s1 replaceCharactersInRange:led withString:@"엘이디"]; 
         }else if(strangetag.location != NSNotFound) {
             [s1 deleteCharactersInRange:strangetag];
+        }else if (ampdel.location !=NSNotFound) {
+            [s1 deleteCharactersInRange:ampdel];
         }else {
            
             break;

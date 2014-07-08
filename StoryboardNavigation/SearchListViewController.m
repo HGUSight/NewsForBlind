@@ -82,7 +82,9 @@
             [(NSMutableString*)str deleteCharactersInRange:rssteg1];
         }
         
-        [appenddata appendString:str];
+        if (str!=NULL) {
+            [appenddata appendString:str];
+        }
         
     }
     

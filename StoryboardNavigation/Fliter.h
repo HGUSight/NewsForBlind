@@ -27,6 +27,7 @@
     NSRange it;
     NSRange led;
     NSRange strangetag;
+    NSRange ampdel;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;
