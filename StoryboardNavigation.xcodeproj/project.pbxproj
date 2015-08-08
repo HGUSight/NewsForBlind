@@ -11,7 +11,6 @@
 		462CA22318ECE96A00289DD2 /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22218ECE96A00289DD2 /* TextFieldViewController.m */; };
 		462CA22618ECFA8B00289DD2 /* SearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CA22518ECFA8B00289DD2 /* SearchListViewController.m */; };
 		462D3D7B1921C76B001883DF /* GetDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 462D3D7A1921C76B001883DF /* GetDataClass.m */; };
-		462D3D811923776F001883DF /* kyoungbooklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 462D3D801923776F001883DF /* kyoungbooklogo.png */; };
 		462D3D861923AAC9001883DF /* nonclickedimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 462D3D851923AAC9001883DF /* nonclickedimage.png */; };
 		463433A5193F2C29004C0CC6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 463433A4193F2C29004C0CC6 /* libsqlite3.dylib */; };
 		467F2AB4186EBF6B0074AFB3 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 467F2AB3186EBF6B0074AFB3 /* News.m */; };
@@ -46,6 +45,9 @@
 		888B4997192087BF005D4364 /* search_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 888B498F192087BF005D4364 /* search_normal.png */; };
 		888B4998192087BF005D4364 /* setting_click.png in Resources */ = {isa = PBXBuildFile; fileRef = 888B4990192087BF005D4364 /* setting_click.png */; };
 		888B4999192087BF005D4364 /* setting_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 888B4991192087BF005D4364 /* setting_normal.png */; };
+		C909B7051984E04600D548CC /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C909B7041984E04600D548CC /* Icon2.png */; };
+		C926958B1B258B5700FBA47E /* kyongbuklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C926958A1B258B5700FBA47E /* kyongbuklogo.png */; };
+		C966748F1AA480DC00E575AD /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C966748E1AA480DC00E575AD /* back_button.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +59,6 @@
 		462CA22518ECFA8B00289DD2 /* SearchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListViewController.m; sourceTree = "<group>"; };
 		462D3D791921C76B001883DF /* GetDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDataClass.h; sourceTree = "<group>"; };
 		462D3D7A1921C76B001883DF /* GetDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDataClass.m; sourceTree = "<group>"; };
-		462D3D801923776F001883DF /* kyoungbooklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kyoungbooklogo.png; sourceTree = "<group>"; };
 		462D3D851923AAC9001883DF /* nonclickedimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nonclickedimage.png; sourceTree = "<group>"; };
 		463433A4193F2C29004C0CC6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		467F2AB2186EBF6B0074AFB3 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
@@ -107,6 +108,9 @@
 		888B498F192087BF005D4364 /* search_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_normal.png; sourceTree = "<group>"; };
 		888B4990192087BF005D4364 /* setting_click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_click.png; sourceTree = "<group>"; };
 		888B4991192087BF005D4364 /* setting_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_normal.png; sourceTree = "<group>"; };
+		C909B7041984E04600D548CC /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2.png; sourceTree = "<group>"; };
+		C926958A1B258B5700FBA47E /* kyongbuklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kyongbuklogo.png; sourceTree = "<group>"; };
+		C966748E1AA480DC00E575AD /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +132,9 @@
 		4626B85818A4C4D800EDFB62 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				C926958A1B258B5700FBA47E /* kyongbuklogo.png */,
+				C966748E1AA480DC00E575AD /* back_button.png */,
 				462D3D851923AAC9001883DF /* nonclickedimage.png */,
-				462D3D801923776F001883DF /* kyoungbooklogo.png */,
 				888B498A192087BE005D4364 /* category_click.png */,
 				888B498B192087BF005D4364 /* category_normal.png */,
 				888B498C192087BF005D4364 /* newspaper_click.png */,
@@ -215,6 +220,7 @@
 		46931800186D9A4C00005860 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C909B7041984E04600D548CC /* Icon2.png */,
 				46820F4D193F51DF006D2C03 /* Icon.png */,
 				46931801186D9A4C00005860 /* StoryboardNavigation-Info.plist */,
 				46931802186D9A4C00005860 /* InfoPlist.strings */,
@@ -268,7 +274,7 @@
 				ORGANIZATIONNAME = "김사랑";
 				TargetAttributes = {
 					469317F5186D9A4C00005860 = {
-						DevelopmentTeam = Q737PAL46B;
+						DevelopmentTeam = HUX6JQ958L;
 					};
 				};
 			};
@@ -296,7 +302,7 @@
 			files = (
 				46931804186D9A4C00005860 /* InfoPlist.strings in Resources */,
 				4693180C186D9A4C00005860 /* Default.png in Resources */,
-				462D3D811923776F001883DF /* kyoungbooklogo.png in Resources */,
+				C966748F1AA480DC00E575AD /* back_button.png in Resources */,
 				462D3D861923AAC9001883DF /* nonclickedimage.png in Resources */,
 				4693180E186D9A4C00005860 /* Default@2x.png in Resources */,
 				888B4996192087BF005D4364 /* search_click.png in Resources */,
@@ -309,7 +315,9 @@
 				888B4998192087BF005D4364 /* setting_click.png in Resources */,
 				888B4995192087BF005D4364 /* newspaper_normal.png in Resources */,
 				46878A3918DC422A004CDCE8 /* hanja.txt in Resources */,
+				C909B7051984E04600D548CC /* Icon2.png in Resources */,
 				46820F4E193F51DF006D2C03 /* Icon.png in Resources */,
+				C926958B1B258B5700FBA47E /* kyongbuklogo.png in Resources */,
 				888B4999192087BF005D4364 /* setting_normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +383,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: KYONGBUKILBO (Q737PAL46B)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -406,7 +415,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: KYONGBUKILBO (Q737PAL46B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: KYONGBUKILBO (Q737PAL46B)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -434,9 +444,10 @@
 					"/Applications/Xcode\\ 2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 				);
 				INFOPLIST_FILE = "StoryboardNavigation/StoryboardNavigation-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F701DE0F-40DE-4E45-927D-08E807EB59A8";
+				PROVISIONING_PROFILE = "bfbe47d6-00f1-4b23-99dd-26b2cac7b7a3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -456,10 +467,10 @@
 					"/Applications/Xcode\\ 2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 				);
 				INFOPLIST_FILE = "StoryboardNavigation/StoryboardNavigation-Info.plist";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F701DE0F-40DE-4E45-927D-08E807EB59A8";
+				PROVISIONING_PROFILE = "bfbe47d6-00f1-4b23-99dd-26b2cac7b7a3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

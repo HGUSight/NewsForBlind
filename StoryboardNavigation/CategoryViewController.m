@@ -5,6 +5,8 @@
 //  Created by 김사랑 on 2014. 1. 26..
 //  Copyright (c) 2014년 김사랑. All rights reserved.
 //
+//  Edited by 김지웅 on 2015. 6. 8
+
 
 #import "CategoryViewController.h"
 #import "MainNewsViewController.h"
@@ -21,19 +23,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     itemlist=[[NSMutableArray alloc]initWithObjects:@"전체기사",@"헤드라인",@"정치",@"자치행정",@"국제",@"사회",@"경제",@"문화",@"지역뉴스",@"스포츠,연예",@"사설,칼럼",@"특집",@"사람들", nil];
+     itemlist=[[NSMutableArray alloc]initWithObjects:@"전체기사",@"경북 대구 울산",@"지방의회",@"정치",@"경제",@"사회",@"국제",@"문화",@"스포츠",@"오피니언",@"특집",@"사람들", nil];
      num=0;
     
-    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    
+    UIImage* myImage = [UIImage imageNamed:@"kyongbuklogo.png"];
+    //[[UINavigationBar appearance] setBackgroundImage:myImage forBarMetrics:UIBarMetricsDefault];
+    
+    
     UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
     [myImageView setIsAccessibilityElement:YES];
     [myImageView setAccessibilityLabel:@"경북일보"];
     [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
     myImageView.frame=CGRectMake(0, 0, 10, 30);
-    
     [self.navigationItem setTitleView:myImageView];
     [self.navigationItem setIsAccessibilityElement:YES];
-   
+    
+
+    // 보이스오버에서 뒤로가기 버튼 2번 읽는 부분을 공백처리함으로써 한번만 읽음
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"   "
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+    
+    [self.navigationItem setBackBarButtonItem:backItem];
+    
+    
+    [backItem release];
+    
 
 }
 
@@ -113,56 +130,52 @@
         viewController.checkString =@"category";
         switch (num) {
                 
-            case 0:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/total.xml";
+            case 0:                     // 전체기사
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/01.xml";
                 break;
                 
-            case 1:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/headline.xml";
+            case 1:                     // 경북 대구 울산
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855002.xml";
                 break;
                 
-            case 2:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/politics.xml";
+            case 2:                     // 지방의회
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855016.xml";
                 break;
                 
-            case 3:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/self-government.xml";
+            case 3:                     // 정치
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855024.xml";
                 break;
                 
-            case 4:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/international.xml";
+            case 4:                     // 경제
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855029.xml";
                 break;
                 
-            case 5:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/national.xml";
+            case 5:                     // 사회
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855033.xml";
                 break;
                 
-            case 6:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/economy.xml";
+            case 6:                     // 국제
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855066.xml";
                 break;
                 
-            case 7:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/culture.xml";
+            case 7:                     // 문화
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855037.xml";
                 break;
 
-            case 8:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/regionnews.xml";
-                break;
-
-            case 9:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml";
+            case 8:                     // 스포츠
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855040.xml";
                 break;
             
-            case 10:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/editorials.xml";
+            case 9:                    // 오피니언
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855052.xml";
                 break;
                 
-            case 11:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/special.xml";
+            case 10:                    // 기획,특집
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855056.xml";
                 break;
                 
-            case 12:
-                viewController.urldata=@"http://www.kyongbuk.co.kr/rss/people.xml";
+            case 11:                    // 사람들
+                viewController.urldata=@"http://ph.kyongbuk.co.kr/rss/1424855049.xml";
                 break;
                 
             default:

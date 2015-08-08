@@ -5,6 +5,7 @@
 //  Created by 김사랑 on 2014. 4. 24..
 //  Copyright (c) 2014년 김사랑. All rights reserved.
 //
+//  Edited by 김지웅 on 2015. 6. 8
 
 #import "SetWrittingTime.h"
 

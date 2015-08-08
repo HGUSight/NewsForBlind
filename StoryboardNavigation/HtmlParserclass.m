@@ -30,9 +30,9 @@ int count;
     
     NSError *error = nil;
     // here can be bottle neck
-    NSString *htmlWillInsert =[NSString stringWithContentsOfURL:
-                               [NSURL URLWithString:htmllink] encoding:-2147481280 error:nil];
-    //
+    // encoding : euc-kr 일 경우 -2147481280
+    // encoding : UTF8 일 경우 NSUTF8StringEncoding 사용
+    NSString *htmlWillInsert =[NSString stringWithContentsOfURL:[NSURL URLWithString:htmllink] encoding:NSUTF8StringEncoding error:nil];    //
     HTMLParser *parser = [[HTMLParser alloc] initWithString:htmlWillInsert error:&error];
     
     if (nil) {
@@ -43,18 +43,18 @@ int count;
     
     NSArray *divNodes = [bodyNode findChildTags:@"div"];
     for (HTMLNode *divNode in divNodes) {
-        if ([[divNode getAttributeNamed:@"id"] isEqualToString:@"news_text"]) {
+        if ([[divNode getAttributeNamed:@"id"] isEqualToString:@"arl_view_content"]) {
            
             str =[NSMutableString stringWithString:[divNode rawContents]];
             
-        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"news_photo"]) {
+        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"news_photo_table"]) {
             
             if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
                 
                 str2 =[NSMutableString stringWithString:[divNode rawContents]];
             }
             
-        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"title_days"]) {
+        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"arl_view_date"]) {
             
             if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
                 
@@ -63,7 +63,7 @@ int count;
                 
             }
         
-        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"writer"]) {
+        }else if([[divNode getAttributeNamed:@"class"] isEqualToString:@"arl_view_writer"]) {
             
             if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
             
@@ -72,7 +72,9 @@ int count;
                 
             }
             
-        }else if([[divNode getAttributeNamed:@"id"] isEqualToString:@"photoimg"]) {
+        }
+        /*
+        else if([[divNode getAttributeNamed:@"id"] isEqualToString:@"photoimg"]) {
             
             if([NSMutableString stringWithString:[divNode rawContents]]!=nil) {
 
@@ -84,6 +86,7 @@ int count;
             }
             
         }
+         */
     }
     for(int i = 0; i < [str length]; i++) {
         if(str2!=NULL) {

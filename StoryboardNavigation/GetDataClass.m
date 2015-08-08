@@ -13,18 +13,17 @@
 - (void)getdataclass {
     
     linkarr=[[NSMutableArray alloc]init];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/headline.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/politics.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/self-government.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/international.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/national.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/economy.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/culture.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/regionnews.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/editorials.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/special.xml"];
-    [linkarr addObject:@"http://www.kyongbuk.co.kr/rss/people.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1425192933.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855024.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855066.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855033.xml"]; //(?)
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855029.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855037.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855016.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855040.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855052.xml"]; 
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855056.xml"];
+    [linkarr addObject:@"http://ph.kyongbuk.co.kr/rss/1424855049.xml"];
     
     receiveData = [[NSMutableData alloc] init];
     totaldataarray=[[NSMutableArray alloc]init];

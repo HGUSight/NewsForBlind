@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="u12-oM-pcw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="u12-oM-pcw">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <development version="5000" identifier="xcode"/>
@@ -10,19 +10,13 @@
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="NewsArticleViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JeD-kk-cRc"/>
-                        <viewControllerLayoutGuide type="bottom" id="zNS-Xo-UWq"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Jjr-9S-izW">
-                        <barButtonItem key="backBarButtonItem" title="뒤로가기" width="50" style="plain" id="1pj-r9-4rE">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="스크랩" id="CWF-dQ-DSR">
                             <connections>
                                 <action selector="doSaveNewsdetail:" destination="2" id="Qlo-6c-kBX"/>
@@ -37,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="3683" y="-703"/>
         </scene>
-        <!--Main News View Controller - 경북일보-->
+        <!--Main News View Controller-->
         <scene sceneID="Nfg-6G-LaB">
             <objects>
                 <tableViewController id="Iji-Im-xk5" customClass="MainNewsViewController" sceneMemberID="viewController">
@@ -80,14 +74,12 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="경북일보" id="qEF-k9-Gyc">
-                        <barButtonItem key="backBarButtonItem" title="뒤로가기" id="EnF-ac-GIF"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qEF-k9-Gyc"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4K-BP-avt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168" y="-695"/>
+            <point key="canvasLocation" x="2140" y="-703"/>
         </scene>
         <!--Navigation Controller - 카테고리별 보기-->
         <scene sceneID="yJJ-rJ-WYi">
@@ -148,20 +140,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="글자 크기 조정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="877-Gw-Z5i">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글자 크기 조정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="877-Gw-Z5i">
                                                     <rect key="frame" x="20" y="0.0" width="258" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-2" minValue="-2" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-2s-gKW">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-2" minValue="-2" maxValue="5" id="6Ia-2s-gKW">
                                                     <rect key="frame" x="51" y="40" width="209" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="sliderChanged:" destination="wkL-uH-Eou" eventType="valueChanged" id="N5f-u2-rh4"/>
                                                     </connections>
                                                 </slider>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLH-ge-PMR">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lLH-ge-PMR">
                                                     <rect key="frame" x="271" y="40" width="39" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration" label="글자크기 증가 버튼"/>
@@ -173,7 +165,7 @@
                                                         <action selector="buttonAdd:" destination="wkL-uH-Eou" eventType="touchUpInside" id="y4z-Cc-TcN"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZu-Y3-Glb">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tZu-Y3-Glb">
                                                     <rect key="frame" x="7" y="38" width="32" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration" label="글자크기 감소버튼"/>
@@ -196,13 +188,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이미지 숨기기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDy-4o-yzb">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미지 숨기기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cDy-4o-yzb">
                                                     <rect key="frame" x="20" y="11" width="94" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="koy-A8-Gl5">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="koy-A8-Gl5">
                                                     <rect key="frame" x="261" y="6" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
@@ -223,7 +215,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="스크랩 기사 보기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLl-zs-dI8">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스크랩 기사 보기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gLl-zs-dI8">
                                                     <rect key="frame" x="20" y="11" width="113" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -307,26 +299,22 @@
         <scene sceneID="L9o-3c-RgD">
             <objects>
                 <viewController id="k4F-1Z-emv" customClass="TextFieldViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="G85-nJ-F4d"/>
-                        <viewControllerLayoutGuide type="bottom" id="Jy8-qE-UIY"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lvn-wW-ZXP">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgF-qA-2Xq">
-                                <rect key="frame" x="40" y="236" width="83" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EgF-qA-2Xq">
+                                <rect key="frame" x="119" y="220" width="83" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="검색하기 버튼">
+                                <state key="normal" title="검색하기">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="70J-hL-Lnk" kind="push" identifier="SearchIdentifier" id="rxJ-iH-HPh"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="검색할 단어를 입력하십시오" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gWT-30-Sx9">
-                                <rect key="frame" x="41" y="177" width="239" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="검색할 단어를 입력하십시오" minimumFontSize="17" id="gWT-30-Sx9">
+                                <rect key="frame" x="41" y="73" width="239" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -334,10 +322,10 @@
                                     <action selector="textFieldDoneEditing:" destination="k4F-1Z-emv" eventType="editingDidEndOnExit" id="VCF-f1-XJY"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DX-9N-fZs">
-                                <rect key="frame" x="183" y="247" width="83" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0DX-9N-fZs">
+                                <rect key="frame" x="119" y="122" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="취소하기 버튼">
+                                <state key="normal" title="취소하기">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -346,7 +334,7 @@
                                     <action selector="Keyboardhidding:" destination="k4F-1Z-emv" eventType="touchCancel" id="c0k-zM-AVA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="   검색하기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1X-Y1-48G">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   검색하기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k1X-Y1-48G">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -360,6 +348,7 @@
                     <navigationItem key="navigationItem" title="검색하기" id="cYZ-G9-6cy"/>
                     <connections>
                         <outlet property="cancel" destination="0DX-9N-fZs" id="lBh-xs-rJh"/>
+                        <outlet property="searchStart" destination="EgF-qA-2Xq" id="ifz-R7-DK1"/>
                         <outlet property="textfield" destination="gWT-30-Sx9" id="azC-1A-Rng"/>
                     </connections>
                 </viewController>
@@ -393,9 +382,7 @@
                             <outlet property="delegate" destination="70J-hL-Lnk" id="IsT-XF-Hku"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="검색결과 리스트" id="HvX-jL-6Zx">
-                        <barButtonItem key="backBarButtonItem" title="뒤로가기" id="dhn-3W-OMR"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="검색결과 리스트" id="HvX-jL-6Zx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovS-b3-aCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -427,9 +414,7 @@
                             <outlet property="delegate" destination="gDB-h9-4Xf" id="Bsr-q7-MBk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="poL-As-6mo">
-                        <barButtonItem key="backBarButtonItem" title="뒤로가기" id="0zm-Na-pRU"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="poL-As-6mo"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JpF-WL-4Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -478,8 +463,9 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="umi-vp-bzx">
-                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
                         <segue destination="Iji-Im-xk5" kind="relationship" relationship="rootViewController" id="Ogu-xd-52T"/>
@@ -495,13 +481,14 @@
         <image name="search_normal.png" width="81" height="49"/>
         <image name="setting_normal.png" width="81" height="49"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="foy-Gg-Qh1"/>
         <segue reference="75R-95-pC6"/>
-        <segue reference="Ogu-xd-52T"/>
     </inferredMetricsTieBreakers>
 </document>

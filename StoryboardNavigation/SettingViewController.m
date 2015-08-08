@@ -27,16 +27,20 @@
     
     [self.hideImage addTarget: self action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
     
-    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    
+    UIImage* myImage = [UIImage imageNamed:@"kyongbuklogo.png"];
+    //[[UINavigationBar appearance] setBackgroundImage:myImage forBarMetrics:UIBarMetricsDefault];
+    
+    
     UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
     [myImageView setIsAccessibilityElement:YES];
     [myImageView setAccessibilityLabel:@"경북일보"];
     [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
     myImageView.frame=CGRectMake(0, 0, 10, 30);
-    
     [self.navigationItem setTitleView:myImageView];
     [self.navigationItem setIsAccessibilityElement:YES];
-
+     
+     
 }
 - (void)viewWillAppear:(BOOL)animated
 

@@ -5,6 +5,8 @@
 //  Created by 김사랑 on 2014. 4. 3..
 //  Copyright (c) 2014년 김사랑. All rights reserved.
 //
+//  Edited by 김지웅 on 2015. 6. 8
+
 
 #import "SearchListViewController.h"
 #import "NewsArticleViewController.h"
@@ -52,25 +54,31 @@
     moveback=true;
     searchvalue=[searchtext description];
     
-    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    
+    UIImage* myImage = [UIImage imageNamed:@"kyongbuklogo.png"];
+    //[[UINavigationBar appearance] setBackgroundImage:myImage forBarMetrics:UIBarMetricsDefault];
+    
+    
     UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
     [myImageView setIsAccessibilityElement:YES];
     [myImageView setAccessibilityLabel:@"경북일보"];
     [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
     myImageView.frame=CGRectMake(0, 0, 10, 30);
-    
     [self.navigationItem setTitleView:myImageView];
     [self.navigationItem setIsAccessibilityElement:YES];
     
+     
+     
 }
 -(void)viewWillAppear:(BOOL)animated {
     
     NSMutableString *appenddata = [[NSMutableString alloc]init];
     
     for (int i=0; i<totaldataarray.count; i++) {
-        
-        NSString *str = [[NSString alloc] initWithData:totaldataarray[i] encoding:-2147481280];
-        str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
+
+        // euc-kr encoding:-2147481280]
+        NSString *str = [[NSString alloc] initWithData: totaldataarray[i] encoding: NSUTF8StringEncoding];
+//        str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
         str = [str stringByReplacingOccurrencesOfString:@"</rss>" withString:@""];
         str = [str stringByReplacingOccurrencesOfString:@"</channel>" withString:@""];
         NSRange rssteg = [str rangeOfString:@"<rss[^<]*>" options:NSRegularExpressionSearch];

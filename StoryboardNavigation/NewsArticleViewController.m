@@ -5,6 +5,8 @@
 //  Created by 김사랑 on 13. 12. 27.628.
 //  Copyright (c) 2013년 김사랑. All rights reserved.
 //
+//  Edited by 김지웅 on 2015. 6. 8
+
 
 #import "NewsArticleViewController.h"
 #import "CategoryViewController.h"
@@ -53,6 +55,32 @@
     i_width=0;
     text_top_margin = 0;
     
+    // 보이스오버에서 뒤로가기 버튼 2번 읽는 부분을 공백처리함으로써 한번만 읽음
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"   "
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+    
+    
+    
+    UIImage* myImage = [UIImage imageNamed:@"kyongbuklogo.png"];
+    //[[UINavigationBar appearance] setBackgroundImage:myImage forBarMetrics:UIBarMetricsDefault];
+    
+    
+    UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
+    [myImageView setIsAccessibilityElement:YES];
+    [myImageView setAccessibilityLabel:@"경북일보"];
+    [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
+    myImageView.frame=CGRectMake(0, 0, 10, 30);
+    [self.navigationItem setTitleView:myImageView];
+    [self.navigationItem setIsAccessibilityElement:YES];
+    
+     
+    [self.navigationItem setBackBarButtonItem:backItem];
+    
+
+    [backItem release];
+
     //[self openDB];
     //[self createTableNamed:@"newstable" withField1:@"kindofnews" withField2:@"newstitle" withField3:@"newscontent" withField4:@"newsdate"];
     
@@ -141,7 +169,10 @@
         [imagetextview setFont:[UIFont systemFontOfSize:15.0f]];
         [imagetextview setFont:[UIFont boldSystemFontOfSize:appDelegate.fontS]];
         imagetextview.userInteractionEnabled=YES;
-        imagetextview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
+        
+        //imagetextview.accessibilityTraits=UIAccessibilityTraitNotEnabled;
+        // voice_over '흐리게표시됨' 지우기
+        
         imagetextview.multipleTouchEnabled=YES;
         imagetextview.opaque=NO;
         imagetextview.tag = 10;

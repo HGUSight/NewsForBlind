@@ -6,6 +6,8 @@
 //  Copyright (c) 2013년 김사랑. All rights reserved.
 //
 // love gim.
+//
+//  Edited by 김지웅 on 2015. 6. 8
 
 
 #import "MainNewsViewController.h"
@@ -48,7 +50,7 @@ BOOL rememberFocus = false;
     controlFlag = 0;
     
     if(![checkString  isEqual: @"category"]) {
-         urlstring = @"http://www.kyongbuk.co.kr/rss/headline.xml";
+         urlstring = @"http://ph.kyongbuk.co.kr/rss/01.xml";
         moveBack = false;
         
     }else{
@@ -79,21 +81,49 @@ BOOL rememberFocus = false;
     writetimeclass=[[SetWrittingTime alloc]init];
 
     imagecheck=true;
+   
     
     
-    UIImage* myImage = [UIImage imageNamed:@"kyoungbooklogo.png"];
+    UIImage* myImage = [UIImage imageNamed:@"kyongbuklogo.png"];
+    //[[UINavigationBar appearance] setBackgroundImage:myImage forBarMetrics:UIBarMetricsDefault];
+    
     UIImageView* myImageView = [[UIImageView alloc] initWithImage:myImage];
     [myImageView setIsAccessibilityElement:YES];
     [myImageView setAccessibilityLabel:@"경북일보"];
     [myImageView setAccessibilityTraits:UIAccessibilityTraitStaticText];
     myImageView.frame=CGRectMake(0, 0, 10, 30);
-    
     [self.navigationItem setTitleView:myImageView];
-    [self.navigationItem setIsAccessibilityElement:YES];
+    //[self.navigationItem setIsAccessibilityElement:YES];
+
+    
+    
+    //UIImage* back_btn = [UIImage imageNamed:@"back_button.png"];
+    
+    // 보이스오버에서 뒤로가기 버튼 2번 읽는 부분을 공백처리함으로써 한번만 읽음
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"   "
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+    
+    
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:back_btn];
+    
+    //UIBarButtonItem *btn_img = [[UIBarButtonItem alloc] initWithImage:back_btn style:UIBarButtonItemStylePlain target:self action:nil];
+    //[self.navigationItem setBackBarButtonItem:btn_img];
+    
+
+    //UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithImage:back_btn style:(UIBarButtonItemStylePlain) target:self action:nil];
     
     
 
-    [myImageView release];
+    
+    
+    [self.navigationItem setBackBarButtonItem:backItem];
+
+    
+    
+    //[myImageView release];
+    [backItem release];
     
     
 }
@@ -117,9 +147,10 @@ BOOL rememberFocus = false;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    NSString *str = [[NSString alloc] initWithData:receiveData encoding:-2147481280];
-    str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
-    receiveData=[[NSMutableData alloc]initWithData:[str dataUsingEncoding:NSUTF8StringEncoding]];
+   // NSString *str = [[NSString alloc] initWithData:receiveData encoding:-2147481280];
+   // str = [str stringByReplacingOccurrencesOfString:@"euc-kr" withString:@"utf-8"];
+   // receiveData=[[NSMutableData alloc]initWithData:[str dataUsingEncoding:NSUTF8StringEncoding]];
+   // 경북일보 예전홈페이지용 (2015년초에 개편함)
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:receiveData];
 	
     [parser setDelegate:self];
@@ -232,37 +263,34 @@ BOOL rememberFocus = false;
 
     }else{
         
-        if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/total.xml"]) {
+        if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/01.xml"]) {
             sectionName = @"전체기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/headline.xml"]) {
-            sectionName = @"헤드라인 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/politics.xml"]) {
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855002.xml"]) {
+            sectionName = @"경북 대구 울산 보기";
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855016.xml"]) {
+            sectionName = @"지방의회기사 보기";
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855024.xml"]) {
             sectionName = @"정치기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/self-government.xml"]) {
-            sectionName = @"자치행정기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/international.xml"]) {
-            sectionName = @"국제기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/national.xml"]) {
-            sectionName = @"사회기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/economy.xml"]) {
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855029.xml"]) {
             sectionName = @"경제기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/culture.xml"]) {
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855033.xml"]) {
+            sectionName = @"사회기사 보기";
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855066.xml"]) {
+            sectionName = @"국제기사 보기";
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855037.xml"]) {
             sectionName = @"문화기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/regionnews.xml"]) {
-            sectionName = @"지역뉴스기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/sportentertainment.xml"]) {
-            sectionName = @"스포츠,연예기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/editorials.xml"]) {
-            sectionName = @"사설,칼럼 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/special.xml"]) {
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855040.xml"]) {
+            sectionName = @"스포츠기사 보기";
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855052.xml"]) {
+            sectionName = @"오피니언";
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855056.xml"]) {
             sectionName = @"특집기사 보기";
-        }else if ([urlstring isEqualToString:@"http://www.kyongbuk.co.kr/rss/people.xml"]) {
+        }else if ([urlstring isEqualToString:@"http://ph.kyongbuk.co.kr/rss/1424855049.xml"]) {
             sectionName = @"사람들기사 보기";
         }else {
             sectionName = @"헤드라인 보기";
         }
     }
-
     return sectionName;
     
 }

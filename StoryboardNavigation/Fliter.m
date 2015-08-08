@@ -15,7 +15,8 @@
 - (NSMutableString *) settext:(NSMutableString *)s1 {
     
     hanjatohangle= [[HanjatoHangle alloc]init];
-   
+    
+    
     for(int i = 0; i < [s1 length]; i++) {
         
         teg = [s1 rangeOfString:@"<[^<]*>" options:NSRegularExpressionSearch];
@@ -30,7 +31,10 @@
         it=[s1 rangeOfString:@"IT"];
         led=[s1 rangeOfString:@"LED"];
         strangetag=[s1 rangeOfString:@"document.write('');"];
-        ampdel=[s1 rangeOfString:@"amp;"];
+        //ampdel=[s1 rangeOfString:@"amp;"];
+        html_Schar = [s1 rangeOfString:@"&[^&]*;" options:NSRegularExpressionSearch];
+        indentation = [s1 rangeOfString:@"\t"];
+
         
         if(teg.location != NSNotFound) {
             [s1 deleteCharactersInRange:teg];
@@ -44,6 +48,8 @@
             [s1 replaceCharactersInRange:wavesymbol2 withString:@"에서 "];
         }else if(centerdot.location!=NSNotFound) {
             [s1 replaceCharactersInRange:centerdot withString:@" "];
+        }else if(html_Schar.location != NSNotFound){
+            [s1 replaceCharactersInRange:html_Schar withString:@" "];
         }else if(corporationmark.location!=NSNotFound) {
             [s1 replaceCharactersInRange:corporationmark withString:@"㈜"];
         }else if(hanja.location!= NSNotFound) {
@@ -60,8 +66,10 @@
             [s1 replaceCharactersInRange:led withString:@"엘이디"]; 
         }else if(strangetag.location != NSNotFound) {
             [s1 deleteCharactersInRange:strangetag];
-        }else if (ampdel.location !=NSNotFound) {
-            [s1 deleteCharactersInRange:ampdel];
+        //}else if (ampdel.location !=NSNotFound) {
+         //   [s1 deleteCharactersInRange:ampdel];
+        }else if(indentation.location !=NSNotFound){
+            [s1 deleteCharactersInRange:indentation];
         }else {
            
             break;

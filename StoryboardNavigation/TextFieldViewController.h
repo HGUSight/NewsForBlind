@@ -10,7 +10,7 @@
 
 @class GetDataClass;
 
-@interface TextFieldViewController : UIViewController {
+@interface TextFieldViewController : UIViewController <UITextFieldDelegate>  {
     
     NSString *searchtext;
     GetDataClass *getdataclass;
@@ -19,6 +19,7 @@
 - (IBAction) Keyboardhidding:(id) sender;
 @property (retain, nonatomic) IBOutlet UIButton *cancel;
 @property (retain, nonatomic) IBOutlet UITextField *textfield;
+@property (retain, nonatomic) IBOutlet UIButton *searchStart;
 
 
 @end

@@ -28,6 +28,8 @@
     NSRange led;
     NSRange strangetag;
     NSRange ampdel;
+    NSRange html_Schar;
+    NSRange indentation;
 }
 
 -(NSMutableString *) settext:(NSMutableString *)s1;
